@@ -1,0 +1,23 @@
+@model FarmProduceManagement.Models.Dtos.UpdateRoleRequestModel
+
+<div>
+    <div>@TempData["message"]</div>
+    <div>
+        <form asp-action="Update">
+            <div>
+                <label asp-for="RoleName"></label>
+                <input type="text" asp-for="RoleName">
+                <span asp-validation-for="RoleName"></span>
+            </div>
+            <div>
+                <label asp-for="RoleDescription"></label>
+                <input type="text" asp-for="RoleDescription">
+                <span asp-validation-for="RoleDescription"></span>
+            </div>
+            <div>
+                <input class="btn btn-primary" type="submit" value="Submit"/>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+@if (User.IsInRole("Admin"))
+{
+    <a class="dropdown-item active" asp-action="Super" asp-controller="User">Admin Dashboard</a>
+    
+    <a class="dropdown-item" asp-action="Add" asp-controller="Role" class="w-100 btn btn-lg btn-primary">Create Role</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Role">List Of Roles</a>
+    
+    <a class="dropdown-item" asp-action="Add" asp-controller="Category" class="w-100 btn btn-lg btn-primary">Create Category</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Category">List Of Categories</a>
+   
+    <a class="dropdown-item" asp-action="Add" asp-controller="Produce" class="w-100 btn btn-lg btn-primary">Create Produce</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Produce">List Of Produce</a>
+  
+   // <button><a class="dropdown-item" asp-action="Add" asp-controller="Role" class="w-100 btn btn-lg btn-primary">Create Role</a></button><br>
+    <!-- <a class="dropdown-item" asp-action="Delete" asp-controller="Role">Delete Role</a> -->
+    @* <a class="dropdown-item" asp-action="Update" asp-controller="Role">Update Role</a> *@
+    
+    <a class="dropdown-item" asp-action="Add" asp-controller="Manager">Create Manager</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Manager">List Of Managers</a>
+   
+    @* <a class="dropdown-item" asp-action="Delete" asp-controller="Manager">Delete Manager</a>
+    <a class="dropdown-item" asp-action="Update" asp-controller="Manager">Update Manager</a> *@
+
+    <a class="dropdown-item" asp-action="List" asp-controller="Farmer">View Farmers</a>
+    <a class="dropdown-item" asp-action="GetPendingFarmers" asp-controller="Farmer">Pending Farmers Registration</a>
+    @* <a class="dropdown-item" asp-action="ApprovePendingFarmers" asp-controller="Farmer">Approved Farmers</a> *@
+
+
+    
+     <a class="dropdown-item" asp-action="" asp-controller="">Wallet Balance</a>
+    
+}
+else if (User.IsInRole("Manager"))
+{
+    <a class="dropdown-item active" asp-action="Manager" asp-controller="User">Manager Dashboard</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Farmer">View Farmers</a>
+   
+    @* <a class="dropdown-item" asp-action="Delete" asp-controller="Farmer">Delete Farmer</a>
+    <a class="dropdown-item" asp-action="Update" asp-controller="Farmer">Update Farmer</a> *@
+}
+else if (User.IsInRole("Farmer"))
+{
+    <a class="dropdown-item active" asp-action="Farmer" asp-controller="User">Farmer Dashboard</a>
+    <a class="dropdown-item" asp-action="Details" asp-controller="Farmer">View Personal Details</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Farmer">Sell Produce</a>
+    <a class="dropdown-item" asp-action="Delete" asp-controller="Farmer">Fund Wallet</a>
+    <a class="dropdown-item" asp-action="Delete" asp-controller="Farmer">Check Wallet Balance</a>
+    <a class="dropdown-item" asp-action="Update" asp-controller="Farmer">Update Personal details</a>
+}

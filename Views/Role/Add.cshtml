@@ -1,0 +1,36 @@
+@model FarmProduceManagement.Models.Dtos.CreateRoleRequestModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create Role";
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+            @await Html.PartialAsync("~/Views/User/Menu.cshtml")
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                
+                <div>@TempData["message"]</div>
+                <form asp-action="Add">
+                    <div>
+                        <label asp-for="RoleName"></label>
+                        <input asp-for="RoleName" class="form-control" type="text" />
+                        <span asp-validation-for="RoleName"></span>
+                    </div>
+                    <div>
+                        <label asp-for="RoleDescription"></label>
+                        <input asp-for="RoleDescription" class="form-control" type="text" />
+                        <span asp-validation-for="RoleDescription"></span>
+                    </div>
+                    <div class="mt-2 text-end">
+                        <button type="submit" class="btn btn-primary" style="width: 30%">Create Role</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>

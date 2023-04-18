@@ -1,0 +1,19 @@
+@model FarmProduceManagement.Models.Dtos.ManagerDto
+
+@{
+    ViewData["Name"] = $"{Model.FirstName} {Model.LastName}";
+    
+}
+<div>
+    <h4>
+        @ViewData["Name"]
+    </h4>
+    <div>
+        Profile Picture : <img src="~/Upload/Images/@Model.ProfilePicture" height="100" width="100">
+    </div>
+    <div class="mt-2 text-end">
+        <button type="submit" class="btn btn-primary" style="width: 30%" >
+            <a asp-action="List" asp-controller="Manager" asp-route-id="@Model.Id">Back</a>
+        </button>
+    </div>
+</div>

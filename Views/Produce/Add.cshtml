@@ -1,0 +1,53 @@
+@model FarmProduceManagement.Models.Dtos.CreateProduceRequestModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create Produce";
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+            @await Html.PartialAsync("~/Views/User/Menu.cshtml")
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                
+                <div>@TempData["message"]</div>
+                <form asp-action="Add">
+                    <div>
+                        <label asp-for="ProduceName"></label>
+                        <input asp-for="ProduceName" class="form-control" type="text" />
+                        <span asp-validation-for="ProduceName"></span>
+                    </div>
+                    <div>
+                        <label asp-for="QuantityAvailable"></label>
+                        <input asp-for="QuantityAvailable" class="form-control" type="text" />
+                        <span asp-validation-for="QuantityAvailable"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Price"></label>
+                        <input asp-for="Price" class="form-control" type="text" />
+                        <span asp-validation-for="Price"></span>
+                    </div>
+                    <div>
+                        <label asp-for="UnitOfMeasurement"></label>
+                        <input asp-for="UnitOfMeasurement" class="form-control" type="text" />
+                        <span asp-validation-for="UnitOfMeasurement"></span>
+                    </div>
+                    <div>
+                        <label asp-for="NameOfCategory"></label>
+                        <input asp-for="NameOfCategory" class="form-control" type="text" />
+                        <span asp-validation-for="NameOfCategory"></span>
+                    </div>
+                    <div class="mt-2 text-end">
+                        <button type="submit" class="btn btn-primary" style="width: 30%">Create Produce</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+
+       

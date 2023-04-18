@@ -1,0 +1,445 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\FarmProduceManagement.bundle.scp.css",
+      "PackagePath": "staticwebassets\\FarmProduceManagement.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\02fb6fab-e02c-4f22-924a-f49a93691648_ram image.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\02fb6fab-e02c-4f22-924a-f49a93691648_ram image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\044cf6cb-f548-4ffa-b070-a0b5f209c838_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\044cf6cb-f548-4ffa-b070-a0b5f209c838_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\0a248673-d1d2-4602-95b8-748f665e8c06_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\0a248673-d1d2-4602-95b8-748f665e8c06_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\0aa9befa-cd9a-4fbb-86bb-a407e831f612_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\0aa9befa-cd9a-4fbb-86bb-a407e831f612_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\0b370942-1e43-4556-8d75-3661cda80386_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\0b370942-1e43-4556-8d75-3661cda80386_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\2080c5a7-e321-4077-ad99-fa6e5aafd16c_bird2.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\2080c5a7-e321-4077-ad99-fa6e5aafd16c_bird2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\21336e47-fb46-4d12-bdab-fd5214e54996_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\21336e47-fb46-4d12-bdab-fd5214e54996_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\261cb3e1-40f8-4aa8-a67d-7c6aa1ec5fc3_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\261cb3e1-40f8-4aa8-a67d-7c6aa1ec5fc3_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\2f99d95d-8c8c-4e26-b5ce-16776dd90b7f_WIN_20220316_09_45_08_Pro.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\2f99d95d-8c8c-4e26-b5ce-16776dd90b7f_WIN_20220316_09_45_08_Pro.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\30b8aa6f-319a-40c8-a786-e58c9d9ca494_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\30b8aa6f-319a-40c8-a786-e58c9d9ca494_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\380e8ace-28b0-46ea-b7ae-4464c0f0dfac_ram image.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\380e8ace-28b0-46ea-b7ae-4464c0f0dfac_ram image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\3c2ded37-fc04-4712-a846-7c18a8f5707c_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\3c2ded37-fc04-4712-a846-7c18a8f5707c_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\492cd43b-bcd3-40b4-9ce1-be5cf67a3d23_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\492cd43b-bcd3-40b4-9ce1-be5cf67a3d23_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\55f7607a-9dd8-454b-b601-289eed840d45_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\55f7607a-9dd8-454b-b601-289eed840d45_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\565a0f48-55a6-4029-b138-367a0f402726_ram image.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\565a0f48-55a6-4029-b138-367a0f402726_ram image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\59a87bc1-3cb5-46a6-8ab2-2155ba82905e_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\59a87bc1-3cb5-46a6-8ab2-2155ba82905e_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\5df4f58e-3188-41d7-b1d7-563e2b506a67_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\5df4f58e-3188-41d7-b1d7-563e2b506a67_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\6395e151-3389-4e3c-a6a5-c1c07bb5c330_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\6395e151-3389-4e3c-a6a5-c1c07bb5c330_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\69953ea5-44a0-4468-8353-22569c8deb7c_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\69953ea5-44a0-4468-8353-22569c8deb7c_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\6d0a01f4-d2d7-4e89-bf17-1e912f97339d_ram image.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\6d0a01f4-d2d7-4e89-bf17-1e912f97339d_ram image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\78aba902-5cc8-4ccb-ba9d-c60b735ea4c6_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\78aba902-5cc8-4ccb-ba9d-c60b735ea4c6_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\807de385-c18c-4ac3-84f2-13d4fae5ed56_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\807de385-c18c-4ac3-84f2-13d4fae5ed56_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\80a71d71-f749-486b-8297-5d8e86c36c6c_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\80a71d71-f749-486b-8297-5d8e86c36c6c_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\8736ac2c-1a52-4562-b7eb-98bac3a57ac2_ram image.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\8736ac2c-1a52-4562-b7eb-98bac3a57ac2_ram image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\8d99d88c-d639-4fb8-9332-7bb648771c0e_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\8d99d88c-d639-4fb8-9332-7bb648771c0e_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\8e1a42fe-1d00-4674-99dd-c241ad87f046_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\8e1a42fe-1d00-4674-99dd-c241ad87f046_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\9909342e-ab6f-4f8b-bd06-441ecdfe4680_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\9909342e-ab6f-4f8b-bd06-441ecdfe4680_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\9d86d6e0-d13c-4819-8d63-489420eabfa3_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\9d86d6e0-d13c-4819-8d63-489420eabfa3_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\a1642136-9555-42e3-b0e5-492cf02f2bbd_ram image.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\a1642136-9555-42e3-b0e5-492cf02f2bbd_ram image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\a625fcd4-0fbc-413d-9013-d1a0fa594336_bird2.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\a625fcd4-0fbc-413d-9013-d1a0fa594336_bird2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\a9f3997d-c70c-4495-b555-c23fda865da1_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\a9f3997d-c70c-4495-b555-c23fda865da1_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\aaf4e8f8-3049-45f6-911b-a5751889433c_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\aaf4e8f8-3049-45f6-911b-a5751889433c_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\ac331d76-7eb7-459b-9d65-582410f11c8a_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\ac331d76-7eb7-459b-9d65-582410f11c8a_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\b7638815-1d67-4961-9520-4aba57465a2d_ram image.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\b7638815-1d67-4961-9520-4aba57465a2d_ram image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\c1bbe2e6-cb56-4fb2-bf2f-b4801c44fb47_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\c1bbe2e6-cb56-4fb2-bf2f-b4801c44fb47_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\c2358b6a-3874-47e9-9757-ff7ec59d83d6_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\c2358b6a-3874-47e9-9757-ff7ec59d83d6_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\cd666181-8c4f-4b46-9293-3f3bc16f63e3_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\cd666181-8c4f-4b46-9293-3f3bc16f63e3_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\cfe1dbf4-309f-4885-bce3-a203cae05c68_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\cfe1dbf4-309f-4885-bce3-a203cae05c68_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\d329ef81-6ec4-4316-8ca5-20a5bfc80ddf_bird2.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\d329ef81-6ec4-4316-8ca5-20a5bfc80ddf_bird2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\e12eabf2-65e2-4d4d-8821-c0ed8f2520eb_ram image.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\e12eabf2-65e2-4d4d-8821-c0ed8f2520eb_ram image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\e17a0b15-3bad-483c-8428-276d6ed84641_ram image.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\e17a0b15-3bad-483c-8428-276d6ed84641_ram image.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\e4b4f69e-e6ad-4592-8eba-c474a80622fb_bird2.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\e4b4f69e-e6ad-4592-8eba-c474a80622fb_bird2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\f60ba66c-fae5-45f1-8d03-6a790dfc4a21_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\f60ba66c-fae5-45f1-8d03-6a790dfc4a21_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\f7d95966-0af3-44a3-b844-42a0b9470c2e_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\f7d95966-0af3-44a3-b844-42a0b9470c2e_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\fc8e874e-eda9-467c-8d32-916b98aea0c5_bird.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\fc8e874e-eda9-467c-8d32-916b98aea0c5_bird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.FarmProduceManagement.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.FarmProduceManagement.props",
+      "PackagePath": "build\\FarmProduceManagement.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.FarmProduceManagement.props",
+      "PackagePath": "buildMultiTargeting\\FarmProduceManagement.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.FarmProduceManagement.props",
+      "PackagePath": "buildTransitive\\FarmProduceManagement.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

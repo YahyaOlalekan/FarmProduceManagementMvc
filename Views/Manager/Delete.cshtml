@@ -1,0 +1,58 @@
+@using FarmProduceManagement.Models.Dtos;
+@* @model FarmProduceManagement.Models.Dtos.ManagerDto; *@
+@model ManagerDto;
+@{
+    ViewData["Title"] = "Delete Manager";
+}
+
+<div class="border mt-4">
+    <div class="col-lg-12"><center><h1>@ViewData["Title"]</h1></center></div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class=""><center>Are you sure you want to delete this Manager?</center></div>
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    @* <tr>
+                        <td><strong>Id</strong></td>
+                        <td>@Model.Id</td>
+                    </tr> *@
+                    <tr>
+                        <td><strong>First Name</strong></td>
+                        <td>@Model.FirstName</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Last Name</strong></td>
+                        <td>@Model.LastName</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Registration Number</strong></td>
+                        <td>@Model.RegistrationNumber</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email</strong></td>
+                        <td>@Model.Email</td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td><strong>Address</strong></td>
+                        <td>@Model.Address</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Profile Picture</strong></td>
+                        @* <td>@Model.ProfilePicture</td> *@
+                        <td><img alt="Profile Picture" src="~/Upload/images/@Model.ProfilePicture" width="150" height="150"></td> 
+                    </tr>
+                   
+                </tbody>
+            </table>
+            <div class="text-end">
+                <form asp-action="Delete">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <button type="submit" class="btn btn-danger">Delete Manager</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

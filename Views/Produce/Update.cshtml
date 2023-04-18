@@ -1,0 +1,39 @@
+@model FarmProduceManagement.Models.Dtos.UpdateProduceRequestModel
+
+<div>
+    <div>@TempData["message"]</div>
+    <div>
+        <form asp-action="Update">
+            <div>
+                <label asp-for="ProduceName"></label>
+                <input type="text" asp-for="ProduceName">
+                <span asp-validation-for="ProduceName"></span>
+            </div>
+            <div>
+                <label asp-for="QuantityAvailable"></label>
+                <input type="text" asp-for="QuantityAvailable">
+                <span asp-validation-for="QuantityAvailable"></span>
+            </div>
+            <div>
+                <label asp-for="Price"></label>
+                <input type="text" asp-for="Price">
+                <span asp-validation-for="Price"></span>
+            </div>
+            <div>
+                <label asp-for="UnitOfMeasurement"></label>
+                <input type="text" asp-for="UnitOfMeasurement">
+                <span asp-validation-for="UnitOfMeasurement"></span>
+            </div>
+            <div>
+                <label asp-for="NameOfCategory"></label>
+                <input type="text" asp-for="NameOfCategory">
+                <span asp-validation-for="NameOfCategory"></span>
+            </div>
+            <div>
+                <input class="btn btn-primary" type="submit" value="Submit"/>
+            </div>
+
+        </form>
+    </div>
+</div>
+
