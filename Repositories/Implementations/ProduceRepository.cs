@@ -40,7 +40,8 @@ namespace FarmProduceManagement.Repositories.Implementations
         {
             return _context.Produces
             .Where(a => a.IsDeleted == false)
-            .Include(a => a.TransactionProduces)
+            .Include(a => a.Category)
+            //.Include(a => a.TransactionProduces)
            // .ThenInclude(a => a.Transaction)
             .ToList();
         }

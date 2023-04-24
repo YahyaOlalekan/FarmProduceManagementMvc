@@ -9,32 +9,37 @@ using FarmProduceManagement.Repositories.Interfaces;
 
 namespace FarmProduceManagement.Repositories.Implementations
 {
-    // public class TransactionRepository : BaseRepository<Transaction>, ITransactionRepository
-    // {
-    //     public Transaction Get(string id)
-    //     {
-    //         throw new NotImplementedException();
-    //     }
+    public class TransactionRepository : BaseRepository<Transaction>, ITransactionRepository
+    {
+        public TransactionRepository(Context context)
+        {
+            _context = context;
+        }
 
-    //     public Transaction Get(Expression<Func<Transaction, bool>> expression)
-    //     {
-    //         throw new NotImplementedException();
-    //     }
+        public Transaction Get(string id)
+        {
+            throw new NotImplementedException();
+        }
 
-    //     public IEnumerable<Transaction> GetAll()
-    //     {
-    //         throw new NotImplementedException();
-    //     }
+        public Transaction Get(Expression<Func<Transaction, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
 
-    //     public IEnumerable<Transaction> GetSelected(List<string> ids)
-    //     {
-    //         throw new NotImplementedException();
-    //     }
+        public IEnumerable<Transaction> GetAll()
+        {
+            throw new NotImplementedException();
+        }
 
-    //     public IEnumerable<Transaction> GetSelected(Expression<Func<Transaction, bool>> expression)
-    //     {
-    //         throw new NotImplementedException();
-    //     }
-    // }
+        public IEnumerable<Transaction> GetSelected(List<string> ids)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Transaction> GetSelected(Expression<Func<Transaction, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
 }

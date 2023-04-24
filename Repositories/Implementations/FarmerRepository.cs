@@ -79,6 +79,7 @@ namespace FarmProduceManagement.Repositories.Implementations
             return _context.Farmers
             .Where(expression)
             .Include(a => a.Transactions)
+            .Include(a => a.User)
             // .Where(a => a.FarmerRegStatus == FarmerRegStatus.Approved)
             .ToList();
         }
