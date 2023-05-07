@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AppDbContext",
+    "\\Repositories",
+    "\\Repositories\\Implementations",
+    "\\Services",
+    "\\Services\\Implementations",
+    "\\Services\\Interfaces"
+  ],
+  "SelectedNode": "\\Services\\Implementations\\TransactionService.cs",
+  "PreviewInSolutionExplorer": false
+}

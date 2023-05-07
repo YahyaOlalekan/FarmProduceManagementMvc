@@ -20,10 +20,12 @@
                         <input asp-for="ProduceName" class="form-control" type="text" />
                         <span asp-validation-for="ProduceName"></span>
                     </div>
-                    <div>
-                        <label asp-for="QuantityAvailable"></label>
-                        <input asp-for="QuantityAvailable" class="form-control" type="text" />
-                        <span asp-validation-for="QuantityAvailable"></span>
+                     <div>
+                        <label asp-for="CategoryId"></label>
+                        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.allCategories">
+                            <option value="0">----select category----</option>
+                        </select>
+                        <span asp-validation-for="CategoryId"></span>
                     </div>
                     <div>
                         <label asp-for="Price"></label>
@@ -35,11 +37,7 @@
                         <input asp-for="UnitOfMeasurement" class="form-control" type="text" />
                         <span asp-validation-for="UnitOfMeasurement"></span>
                     </div>
-                    <div>
-                        <label asp-for="NameOfCategory"></label>
-                        <input asp-for="NameOfCategory" class="form-control" type="text" />
-                        <span asp-validation-for="NameOfCategory"></span>
-                    </div>
+                   
                     <div class="mt-2 text-end">
                         <button type="submit" class="btn btn-primary" style="width: 30%">Create Produce</button>
                     </div>

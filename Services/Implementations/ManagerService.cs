@@ -33,7 +33,16 @@ namespace FarmProduceManagement.Services.Implementations
             {
                 return new BaseResponse<ManagerDto>
                 {
-                    Message = "Invalid details",
+                    Message = "Email already exists",
+                    Status = false,
+                };
+            }
+            var phoneNumer = _managerRepository.Get(m => m.User.PhoneNumber == model.PhoneNumber);
+            if (managerExist != null)
+            {
+                return new BaseResponse<ManagerDto>
+                {
+                    Message = "Phone number already exists",
                     Status = false,
                 };
             }
@@ -122,7 +131,7 @@ namespace FarmProduceManagement.Services.Implementations
 
         public BaseResponse<ManagerDto> Get(string id)
         {
-            var manager = _managerRepository.Get(g => g.Id == id);
+            var manager = _managerRepository.Get(g => g.Id == id || g.UserId == id);
             if (manager != null)
             {
 

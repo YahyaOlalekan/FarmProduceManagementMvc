@@ -3,43 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using System.Transactions;
 using FarmProduceManagement.AppDbContext;
+using FarmProduceManagement.Models.Entities;
 using FarmProduceManagement.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace FarmProduceManagement.Repositories.Implementations
 {
     public class TransactionRepository : BaseRepository<Transaction>, ITransactionRepository
     {
-        public TransactionRepository(Context context)
+        TransactionRepository(Context context)
         {
             _context = context;
         }
 
         public Transaction Get(string id)
         {
-            throw new NotImplementedException();
+            return _context.Transactions
+            .Include(a => a.TransactionProduces)
+            .SingleOrDefault(a => a.Id == id && a.IsDeleted == false);
         }
 
         public Transaction Get(Expression<Func<Transaction, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _context.Transactions
+            .Where(a => a.IsDeleted == false)
+            .Include(a => a.TransactionProduces)
+            .SingleOrDefault(expression);
         }
 
         public IEnumerable<Transaction> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Transactions
+           .Where(a => a.IsDeleted == false)
+           .ToList();
         }
 
         public IEnumerable<Transaction> GetSelected(List<string> ids)
         {
-            throw new NotImplementedException();
+            return _context.Transactions
+            .Where(a => ids.Contains(a.Id) && a.IsDeleted == false)
+            .Include(a => a.TransactionProduces)
+            .ToList();
         }
 
         public IEnumerable<Transaction> GetSelected(Expression<Func<Transaction, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _context.Transactions
+            .Where(expression)
+            .Include(a => a.TransactionProduces)
+            .ToList();
         }
-    }
 
+    }
 }

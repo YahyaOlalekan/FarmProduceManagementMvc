@@ -14,7 +14,10 @@
             <div class="col-md-6">
                 <span class="text-center"><h3>@ViewData["Title"]</h3></span>
                 
-               <div>@ViewBag.Message</div>
+                @if(@ViewBag.Message != null)
+                {
+                    <div style="background-color: red;">@ViewBag.Message</div>
+                }
                 <form asp-action="Register" enctype="multipart/form-data">
             <div>
                 <label asp-for="FirstName"></label>

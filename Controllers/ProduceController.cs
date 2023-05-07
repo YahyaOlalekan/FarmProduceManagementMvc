@@ -5,20 +5,26 @@ using System.Threading.Tasks;
 using FarmProduceManagement.Models.Dtos;
 using FarmProduceManagement.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FarmProduceManagement.Controllers
 {
     public class ProduceController: Controller
     {
          private readonly IProduceService _produceService;
-        public ProduceController(IProduceService produceService)
+         private readonly ICategoryService _categoryService;
+
+        public ProduceController(IProduceService produceService, ICategoryService categoryService)
         {
             _produceService = produceService;
+            _categoryService = categoryService;
         }
 
         [HttpGet]
         public IActionResult Add()
         {
+            var categories = _categoryService.GetAll();
+            ViewData["allCategories"] = new SelectList(categories.Data, "Id", "NameOfCategory");
             return View();
         }
         [HttpPost]
@@ -57,12 +63,54 @@ namespace FarmProduceManagement.Controllers
 
             return View(produce.Data);
         }
+
+        [HttpGet]
+        public IActionResult GetProduce(string id)
+        {
+            var produce = _produceService.GetByCategoryId(id);
+
+            return Json(produce);
+        }
+
+
+
         [HttpGet]
         public IActionResult List()
         {
             var produces = _produceService.GetAll();
             return View(produces.Data);
         }
+
+
+
+        [HttpGet]
+        public IActionResult Sell()
+        {
+            var categories = _categoryService.GetAll();
+
+            var model = new SellProduceRequestModel
+            {
+                CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory"),
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Sell(SellProduceRequestModel model)
+        {
+            BaseResponse<ProduceDto> produce = _produceService.Sell(model);
+            // var produce = _produceService.Create(model);
+            if (produce.Status)
+            {
+                return RedirectToAction("List");
+            }
+
+            var categories = _categoryService.GetAll();
+            model.CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory");
+            return View(model);
+        }
+
         [HttpGet]
         public IActionResult Update()
         {

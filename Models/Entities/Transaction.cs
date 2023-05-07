@@ -13,6 +13,6 @@ namespace FarmProduceManagement.Models.Entities
         public string ManagerId { get; set; }
         public Manager Manager { get; set; }
         public ICollection<TransactionProduce> TransactionProduces { get; set; } = new HashSet<TransactionProduce>();
-
+        
     }
 }

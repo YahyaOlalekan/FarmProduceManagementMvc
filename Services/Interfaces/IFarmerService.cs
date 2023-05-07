@@ -14,8 +14,9 @@ namespace FarmProduceManagement.Services.Interfaces
         // BaseResponse<IEnumerable<FarmerDto>> GetAll(Func<FarmerDto, bool> expression);
         BaseResponse<IEnumerable<FarmerDto>> GetAll();
         BaseResponse<FarmerDto> Delete(string id);
-       BaseResponse<List<FarmerDto>> GetPendingFarmers();
-       BaseResponse<List<FarmerDto>> ApprovePendingFarmers();
+       BaseResponse<IEnumerable<FarmerDto>> GetPendingFarmers();
+       BaseResponse<IEnumerable<FarmerDto>> ApprovedFarmers();
+       BaseResponse<FarmerDto> VerifyFarmers(ApproveFarmerDto model);
       
     }
 }

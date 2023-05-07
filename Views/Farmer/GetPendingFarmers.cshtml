@@ -19,23 +19,37 @@
                     <th>Registration Number</th>
                     <th>Phone Number</th>
                     <th>Address</th>
+                    <th>Action</th>
                     @* <th>Details</th> *@
 
                 </tr>
             </thead>
             <tbody>
-                @{
+                @if(Model.Count() > 0){
+
                     var countSerialNumber = 1;
                     foreach (var farmers in Model)
                     {
                         <tr>
-                            <!--<td>@farmers.Id</td>-->
+                            @* <td>@farmers.UserId</td> *@
                             <td>@countSerialNumber</td>
                             <td>@farmers.FirstName</td>
                             <td>@farmers.LastName</td>
                             <td>@farmers.RegistrationNumber</td>
                             <td>@farmers.PhoneNumber</td>
                             <td>@farmers.Address</td>
+                            <td>
+                                @* <form action="Verify">
+                                    <input type="hidden" name="Id" value="farmers.Id">
+                                    <input type="hidden" name="Approve" value="2">
+                                    <button>Not Verify</button>
+                                </form> *@
+                                <form asp-action="Verify">
+                                    <input type="hidden" name="Id" value="@farmers.UserId">
+                                    <input type="hidden" name="Status" value="2">
+                                    <button type="submit" class="btn btn-primary">Verify</button>
+                                </form>
+                            </td>
                             <!-- <td><img src="~/Upload/Images/@farmers.ProfilePicture" height="100" width="100"></td>-->
 
                             @* <td>
@@ -47,6 +61,11 @@
                     }
 
                 }
+                else{
+                    <tr>
+                        <td colspan="6" class="text-center">No Data</td>
+                    </tr>
+                }
 
             </tbody>
             <div>
@@ -54,10 +73,5 @@
             </div>
            
         </table>
-         <div class="mt-2 text-end">
-                <button type="submit" class="btn btn-primary" style="width: 30%">
-                    <a asp-action="ApprovePendingFarmers" asp-controller="Farmer">ApprovePendingFarmers</a>
-                </button>
-            </div>
     </div>
 </div>

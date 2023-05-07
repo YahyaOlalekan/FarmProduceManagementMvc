@@ -1,0 +1,61 @@
+@using FarmProduceManagement.Models.Dtos;
+@model IEnumerable<FarmerDto>;
+@{
+    ViewData["Title"] = "List Of Approved Farmers";
+}
+<div>
+    <div class="pt-4">
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <div class="text-center"><h3>@ViewData["Title"]</div></h3>
+                <tr>
+                   <!-- <th>Id</th>-->
+                    <th>S/N</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Registration Number</th>
+                    <th>Phone Number</th>                   
+                    <th>Address</th>                   
+                    <th>Details</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                        var countSerialNumber = 1;
+                     foreach (var farmers in Model)
+                     {
+                    <tr>
+                        <!--<td>@farmers.Id</td>-->
+                        <td>@countSerialNumber</td>
+                        <td>@farmers.FirstName</td>
+                        <td>@farmers.LastName</td>
+                        <td>@farmers.RegistrationNumber</td>
+                        <td>@farmers.PhoneNumber</td>
+                        <td>@farmers.Address</td>
+                       <!-- <td><img src="~/Upload/Images/@farmers.ProfilePicture" height="100" width="100"></td>-->
+                       
+                        <td>
+                            <a asp-controller="Farmer" asp-action="Details" asp-route-id="@farmers.Id">View</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Farmer" asp-action="Update" asp-route-id="@farmers.Id">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Farmer" asp-action="Delete" asp-route-id="@farmers.Id">Remove</a>
+                        </td>
+                        
+                    </tr>
+                         countSerialNumber++;
+                     }
+                    
+                }
+                
+            </tbody>
+            <div>
+
+            </div>
+        </table>
+    </div>
+</div> 

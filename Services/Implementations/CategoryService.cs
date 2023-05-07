@@ -19,6 +19,7 @@ namespace FarmProduceManagement.Services.Implementations
         {
             _categoryRepository = categoryRepository;
             _httpAccessor = httpAccessor;
+            
         }
 
         public BaseResponse<CategoryDto> Create(CreateCategoryRequestModel model)

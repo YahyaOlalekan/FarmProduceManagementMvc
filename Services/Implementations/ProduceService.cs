@@ -29,35 +29,23 @@ namespace FarmProduceManagement.Services.Implementations
             var produceExist = _produceRepository.Get(a => a.ProduceName == model.ProduceName);
             if (produceExist == null)
             {
-                var produce = new Produce();
-                produce.ProduceName = model.ProduceName;
-                produce.Category.NameOfCategory = model.NameOfCategory;
-                produce.Price = model.Price;
-                produce.UnitOfMeasurement = model.UnitOfMeasurement;
-                produce.QuantityAvailable = model.QuantityAvailable;
-                produce.CreatedBy = loginId;
+                var produce = new Produce
+                {
+                    ProduceName = model.ProduceName,
+                    CategoryId = model.CategoryId,
+                    Price = model.Price,
+                    UnitOfMeasurement = model.UnitOfMeasurement,
+                    CreatedBy = loginId
+                };
+               
 
-                _produceRepository.Create(produce);
+                var produceSaved = _produceRepository.Create(produce);
                 _produceRepository.Save();
 
                 return new BaseResponse<ProduceDto>
                 {
                     Message = "Successful",
-                    Status = true,
-                    Data = new ProduceDto
-                    {
-                        Id = produce.Id,
-                        ProduceName = produce.ProduceName,
-                        NameOfCategory = produce.Category.NameOfCategory,
-                        Price = produce.Price,
-                        UnitOfMeasurement = produce.UnitOfMeasurement,
-                        QuantityAvailable = produce.QuantityAvailable,
-                        // TransactionProduces = produce.TransactionProduces new TransactionProduceDto
-                        // {
-                        //     Id =
-                        // }
-
-                    }
+                    Status = true
                 };
             }
             return new BaseResponse<ProduceDto>
@@ -115,11 +103,7 @@ namespace FarmProduceManagement.Services.Implementations
                     Price = produce.Price,
                     UnitOfMeasurement = produce.UnitOfMeasurement,
                     QuantityAvailable = produce.QuantityAvailable,
-                    
-                    // TransactionProduces = produce.TransactionProduces new TransactionProduceDto
-                    // {
-                    //     Id =
-                    // }
+                   
                 }
             };
 
@@ -148,14 +132,74 @@ namespace FarmProduceManagement.Services.Implementations
                     Price = p.Price,
                     UnitOfMeasurement = p.UnitOfMeasurement,
                     QuantityAvailable = p.QuantityAvailable,
-                    // TransactionProduces = produce.TransactionProduces new TransactionProduceDto
-                    // {
-                    //     Id =
-                    // }
+                  
                 })
             };
         }
 
+
+        public BaseResponse<IEnumerable<ProduceDto>> GetByCategoryId(string id)
+        {
+            var produce = _produceRepository.GetSelected(p => p.CategoryId == id || p.Id == id);
+            if (produce == null)
+            {
+                return new BaseResponse<IEnumerable<ProduceDto>>
+                {
+                    Message = "Not found",
+                    Status = false,
+                };
+            }
+            return new BaseResponse<IEnumerable<ProduceDto>>
+            {
+                Message = "Found",
+                Status = true,
+                Data = produce.Select(p => new ProduceDto
+                {
+                    Id = p.Id,
+                    ProduceName = p.ProduceName,
+                    /*NameOfCategory = p.Category.NameOfCategory,*/
+                    Price = p.Price,
+                    UnitOfMeasurement = p.UnitOfMeasurement,
+                    QuantityAvailable = p.QuantityAvailable,
+
+                })
+            };
+        }
+
+
+        public BaseResponse<ProduceDto> Sell(SellProduceRequestModel model)
+        {
+            var loginId = _httpAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var produceExist = _produceRepository.Get(a => a.Id == model.ProduceId);
+
+            if (produceExist == null)
+            {
+                var produce = new Produce
+                {
+                    /*ProduceName = model.ProduceName,
+                    CategoryId = model.CategoryId,
+                    Price = model.Price,
+                    UnitOfMeasurement = model.UnitOfMeasurement,
+                    CreatedBy = loginId*/
+                };
+
+
+                var produceSaved = _produceRepository.Create(produce);
+                _produceRepository.Save();
+
+                return new BaseResponse<ProduceDto>
+                {
+                    Message = "Successful",
+                    Status = true
+                };
+            }
+            return new BaseResponse<ProduceDto>
+            {
+                Message = "Already exists",
+                Status = false
+            };
+
+        }
 
         public BaseResponse<ProduceDto> Update(string id, UpdateProduceRequestModel model)
         {
@@ -167,10 +211,8 @@ namespace FarmProduceManagement.Services.Implementations
                 produce.Price = model.Price;
                 produce.QuantityAvailable = model.QuantityAvailable;
                 produce.UnitOfMeasurement = model.UnitOfMeasurement;
-                produce.Category.NameOfCategory = model.UnitOfMeasurement;
-                produce.Category.NameOfCategory = model.NameOfCategory;
-
-
+                // produce.Category.NameOfCategory = model.NameOfCategory;
+               
                 _produceRepository.Update(produce);
                 _produceRepository.Save();
 
@@ -182,14 +224,11 @@ namespace FarmProduceManagement.Services.Implementations
                     {
                         Id = produce.Id,
                         ProduceName = produce.ProduceName,
-                        NameOfCategory = produce.Category.NameOfCategory,
+                        // NameOfCategory = produce.Category.NameOfCategory,
                         Price = produce.Price,
                         UnitOfMeasurement = produce.UnitOfMeasurement,
                         QuantityAvailable = produce.QuantityAvailable,
-                        // TransactionProduces = produce.TransactionProduces new TransactionProduceDto
-                        // {
-                        //     Id =
-                        // }
+                       
                     }
                 };
             }

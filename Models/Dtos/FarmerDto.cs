@@ -33,10 +33,13 @@ namespace FarmProduceManagement.Models.Dtos
     public class CreateFarmerRequestModel
     {
         [Required, MaxLength(20), MinLength(3)]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required, MaxLength(20), MinLength(3)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Required, MaxLength(14), MinLength(11)]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$",
         ErrorMessage = "Enter a valid email address!")]
@@ -45,6 +48,7 @@ namespace FarmProduceManagement.Models.Dtos
         public string Password { get; set; }
         [Required, MaxLength(20), MinLength(3)]
         public string Address { get; set; }
+        [Display(Name = "Profile Picture")]
         public IFormFile ProfilePicture { get; set; }
         // [Required]
         // public decimal Wallet { get; set; }
@@ -52,10 +56,13 @@ namespace FarmProduceManagement.Models.Dtos
     public class UpdateFarmerRequestModel
     {
         [Required, MaxLength(20), MinLength(3)]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required, MaxLength(20), MinLength(3)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Required, MaxLength(14), MinLength(11)]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$",
         ErrorMessage = "Enter a valid email address!")]
@@ -64,8 +71,14 @@ namespace FarmProduceManagement.Models.Dtos
         // public string Password { get; set; }
         [Required, MaxLength(20), MinLength(3)]
         public string Address { get; set; }
+        [Display(Name = "Profile picture")]
         public IFormFile ProfilePicture { get; set; }
         // [Required]
         // public decimal Wallet { get; set; }
+    }
+
+    public class ApproveFarmerDto{
+        public string Id { get; set; }
+        public int Status { get; set; }
     }
 }

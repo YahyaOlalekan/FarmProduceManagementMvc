@@ -17,15 +17,19 @@ namespace FarmProduceManagement.Models.Dtos
     public class CreateCategoryRequestModel
     {
         [Required, MaxLength(30), MinLength(3)]
+        [Display(Name = "Name of category")]
         public string NameOfCategory { get; set; }
         [Required, MaxLength(60), MinLength(3)]
+        [Display(Name = "Description of Category")]
         public string DescriptionOfCategory { get; set; }
     }
     public class UpdateCategoryRequestModel
     {
         [Required, MaxLength(30), MinLength(3)]
+         [Display(Name = "Name of category")]
         public string NameOfCategory { get; set; }
         [Required, MaxLength(60), MinLength(3)]
+        [Display(Name = "Description of Category")]
         public string DescriptionOfCategory { get; set; }
     }
 

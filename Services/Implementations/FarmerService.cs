@@ -33,7 +33,17 @@ namespace FarmProduceManagement.Services.Implementations
             {
                 return new BaseResponse<FarmerDto>
                 {
-                    Message = "Invalid details",
+                    Message = "Email already exists",
+                    Status = false,
+                };
+            }
+
+            var phoneExist = _farmerRepository.Get(f => f.User.PhoneNumber == model.PhoneNumber);
+            if (farmerExist != null)
+            {
+                return new BaseResponse<FarmerDto>
+                {
+                    Message = "Phone number already exists",
                     Status = false,
                 };
             }
@@ -60,7 +70,7 @@ namespace FarmProduceManagement.Services.Implementations
             {
                 CreatedBy = user.Id,
                 RegistrationNumber = GenerateFarmerRegNum(),
-               // Wallet = model.Wallet,
+                // Wallet = model.Wallet,
                 UserId = user.Id,
                 User = user,
                 FarmerRegStatus = FarmerRegStatus.Pending,
@@ -77,7 +87,7 @@ namespace FarmProduceManagement.Services.Implementations
                 {
                     Id = farmer.Id,
                     RegistrationNumber = farmer.RegistrationNumber,
-                    Wallet = farmer.Wallet,
+                    // Wallet = farmer.Wallet,
                     FirstName = farmer.User.FirstName,
                     LastName = farmer.User.LastName,
                     Email = farmer.User.Email,
@@ -125,7 +135,7 @@ namespace FarmProduceManagement.Services.Implementations
 
         public BaseResponse<FarmerDto> Get(string id)
         {
-            var farmer = _farmerRepository.Get(g => g.Id == id && g.FarmerRegStatus == Models.Enums.FarmerRegStatus.Approved);
+            var farmer = _farmerRepository.Get(g => (g.Id == id || g.UserId == id) && g.FarmerRegStatus == Models.Enums.FarmerRegStatus.Approved);
             if (farmer != null)
             {
 
@@ -137,7 +147,7 @@ namespace FarmProduceManagement.Services.Implementations
                     {
                         Id = farmer.Id,
                         RegistrationNumber = farmer.RegistrationNumber,
-                        Wallet = farmer.Wallet,
+                       // Wallet = farmer.Wallet,
                         FirstName = farmer.User.FirstName,
                         LastName = farmer.User.LastName,
                         Email = farmer.User.Email,
@@ -176,7 +186,7 @@ namespace FarmProduceManagement.Services.Implementations
                 {
                     Id = f.Id,
                     RegistrationNumber = f.RegistrationNumber,
-                    Wallet = f.Wallet,
+                    // Wallet = f.Wallet,
                     FirstName = f.User.FirstName,
                     LastName = f.User.LastName,
                     Email = f.User.Email,
@@ -187,18 +197,66 @@ namespace FarmProduceManagement.Services.Implementations
             };
         }
 
-
-        public BaseResponse<List<FarmerDto>> ApprovePendingFarmers()
+        public BaseResponse<FarmerDto> VerifyFarmers(ApproveFarmerDto model)
         {
             // var approvedFarmer = GetPendingFarmers();
-            var approvedFarmer = _farmerRepository.GetAll(x => x.FarmerRegStatus == FarmerRegStatus.Pending);
+            var approvedFarmer = _farmerRepository.Get(model.Id);
 
-            foreach (var item in approvedFarmer)
+            if (approvedFarmer == null)
             {
-                item.FarmerRegStatus = FarmerRegStatus.Approved;
-
+                return new BaseResponse<FarmerDto>
+                {
+                    Message = "Farmer not found",
+                    Status = false,
+                };
             }
+
+            approvedFarmer.FarmerRegStatus = (FarmerRegStatus)model.Status;
+            _farmerRepository.Update(approvedFarmer);
             _farmerRepository.Save();
+
+            return new BaseResponse<FarmerDto>
+            {
+                Message = "Successful",
+                Status = true,
+                Data = new FarmerDto
+                {
+                    Id = approvedFarmer.Id,
+                    RegistrationNumber = approvedFarmer.RegistrationNumber,
+                    // Wallet = approvedFarmer.Wallet,
+                    FirstName = approvedFarmer.User.FirstName,
+                    LastName = approvedFarmer.User.LastName,
+                    Email = approvedFarmer.User.Email,
+                    PhoneNumber = approvedFarmer.User.PhoneNumber,
+                    Address = approvedFarmer.User.Address,
+                    ProfilePicture = approvedFarmer.User.ProfilePicture,
+                }
+            };
+        }
+
+
+        public BaseResponse<IEnumerable<FarmerDto>> ApprovedFarmers()
+        {
+            // var approvedFarmer = GetPendingFarmers();
+            var approvedFarmer = _farmerRepository.GetSelected(f => f.FarmerRegStatus == FarmerRegStatus.Approved && !f.IsDeleted);
+
+            if (approvedFarmer == null)
+            {
+                return new BaseResponse<IEnumerable<FarmerDto>>
+                {
+                    Message = "Farmer not found",
+                    Status = false,
+                };
+            }
+
+
+
+            // foreach (var item in approvedFarmer)
+            // {
+            //     item.FarmerRegStatus = FarmerRegStatus.Approved;
+
+            // }
+            // _farmerRepository.Save();
 
             //    for(int i = 0; i < approvedFarmer.Data.Count(); i++)
             //    {
@@ -206,7 +264,7 @@ namespace FarmProduceManagement.Services.Implementations
             //          _farmerRepository.Save();
             //    }
 
-            return new BaseResponse<List<FarmerDto>>
+            return new BaseResponse<IEnumerable<FarmerDto>>
             {
                 Message = "Successful",
                 Status = true,
@@ -214,30 +272,29 @@ namespace FarmProduceManagement.Services.Implementations
                 {
                     Id = f.Id,
                     RegistrationNumber = f.RegistrationNumber,
-                    Wallet = f.Wallet,
                     FirstName = f.User.FirstName,
                     LastName = f.User.LastName,
                     Email = f.User.Email,
                     PhoneNumber = f.User.PhoneNumber,
                     Address = f.User.Address,
                     ProfilePicture = f.User.ProfilePicture,
-                }).ToList()
+                })
             };
         }
-        public BaseResponse<List<FarmerDto>> GetPendingFarmers()
+        public BaseResponse<IEnumerable<FarmerDto>> GetPendingFarmers()
         {
             var penderFarmers = _farmerRepository.GetAll();
             var farmers = penderFarmers.Where(x => x.FarmerRegStatus == FarmerRegStatus.Pending).ToList();
-            if (farmers.Count() == 0)
+            if (farmers == null)
             {
-                return new BaseResponse<List<FarmerDto>>
+                return new BaseResponse<IEnumerable<FarmerDto>>
                 {
                     Message = "No Farmer found",
-                    Status = false
+                    Status = false,
                 };
             }
 
-            return new BaseResponse<List<FarmerDto>>
+            return new BaseResponse<IEnumerable<FarmerDto>>
             {
                 Message = "Successful",
                 Status = true,
@@ -245,7 +302,8 @@ namespace FarmProduceManagement.Services.Implementations
                 {
                     Id = f.Id,
                     RegistrationNumber = f.RegistrationNumber,
-                    Wallet = f.Wallet,
+                    // Wallet = f.Wallet,
+                    UserId = f.UserId,
                     FirstName = f.User.FirstName,
                     LastName = f.User.LastName,
                     Email = f.User.Email,

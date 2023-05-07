@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarmProduceManagement.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230411155418_init")]
-    partial class init
+    [Migration("20230505150546_Farm")]
+    partial class Farm
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,6 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
@@ -40,7 +39,6 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
@@ -56,26 +54,53 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("DescriptionOfCategory")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("NameOfCategory")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("FarmProduceManagement.Models.Entities.Customer", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("RegistrationNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<decimal>("Wallet")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("FarmProduceManagement.Models.Entities.Farmer", b =>
@@ -84,7 +109,6 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
@@ -97,11 +121,9 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("RegistrationNumber")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<decimal>("Wallet")
@@ -120,21 +142,18 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("FarmerId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ManagerId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
@@ -152,7 +171,6 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
@@ -162,11 +180,9 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("RegistrationNumber")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
@@ -182,11 +198,9 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CategoryId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
@@ -199,14 +213,12 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("ProduceName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<double>("QuantityAvailable")
                         .HasColumnType("double");
 
                     b.Property<string>("UnitOfMeasurement")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -222,7 +234,6 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
@@ -232,11 +243,9 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("RoleDescription")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("RoleName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -250,25 +259,21 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("FarmerId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ManagerId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("TransactionNum")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -289,7 +294,6 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
@@ -299,14 +303,12 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ProduceId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<double>("Quantity")
                         .HasColumnType("double");
 
                     b.Property<string>("TransactionId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
@@ -324,50 +326,44 @@ namespace FarmProduceManagement.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProfilePicture")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("RoleId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
+
+                    b.HasIndex("Email", "PhoneNumber")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
@@ -376,9 +372,16 @@ namespace FarmProduceManagement.Migrations
                 {
                     b.HasOne("FarmProduceManagement.Models.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FarmProduceManagement.Models.Entities.Customer", b =>
+                {
+                    b.HasOne("FarmProduceManagement.Models.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -387,9 +390,7 @@ namespace FarmProduceManagement.Migrations
                 {
                     b.HasOne("FarmProduceManagement.Models.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -398,15 +399,11 @@ namespace FarmProduceManagement.Migrations
                 {
                     b.HasOne("FarmProduceManagement.Models.Entities.Farmer", "Farmer")
                         .WithMany("FarmerManagers")
-                        .HasForeignKey("FarmerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FarmerId");
 
                     b.HasOne("FarmProduceManagement.Models.Entities.Manager", "Manager")
                         .WithMany("FarmerManagers")
-                        .HasForeignKey("ManagerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ManagerId");
 
                     b.Navigation("Farmer");
 
@@ -417,9 +414,7 @@ namespace FarmProduceManagement.Migrations
                 {
                     b.HasOne("FarmProduceManagement.Models.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -428,9 +423,7 @@ namespace FarmProduceManagement.Migrations
                 {
                     b.HasOne("FarmProduceManagement.Models.Entities.Category", "Category")
                         .WithMany("Produces")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
                 });
@@ -439,15 +432,11 @@ namespace FarmProduceManagement.Migrations
                 {
                     b.HasOne("FarmProduceManagement.Models.Entities.Farmer", "Farmer")
                         .WithMany("Transactions")
-                        .HasForeignKey("FarmerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FarmerId");
 
                     b.HasOne("FarmProduceManagement.Models.Entities.Manager", "Manager")
                         .WithMany("Transactions")
-                        .HasForeignKey("ManagerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ManagerId");
 
                     b.Navigation("Farmer");
 
@@ -458,15 +447,11 @@ namespace FarmProduceManagement.Migrations
                 {
                     b.HasOne("FarmProduceManagement.Models.Entities.Produce", "Produce")
                         .WithMany("TransactionProduces")
-                        .HasForeignKey("ProduceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProduceId");
 
                     b.HasOne("FarmProduceManagement.Models.Entities.Transaction", "Transaction")
                         .WithMany("TransactionProduces")
-                        .HasForeignKey("TransactionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TransactionId");
 
                     b.Navigation("Produce");
 
@@ -477,9 +462,7 @@ namespace FarmProduceManagement.Migrations
                 {
                     b.HasOne("FarmProduceManagement.Models.Entities.Role", "Role")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoleId");
 
                     b.Navigation("Role");
                 });

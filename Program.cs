@@ -22,8 +22,8 @@ builder.Services.AddScoped<IFarmerService, FarmerService>();
 builder.Services.AddScoped<IManagerRepository, ManagerRepository>();
 builder.Services.AddScoped<IManagerService, ManagerService>();
 
-// builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
-// builder.Services.AddScoped<ITransactionService, TransactionService>();
+//builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+//builder.Services.AddScoped<ITransactionService, TransactionService>();
 
 builder.Services.AddScoped<IProduceRepository, ProduceRepository>();
 builder.Services.AddScoped<IProduceService, ProduceService>();
@@ -33,6 +33,9 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -69,6 +72,8 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=User}/{action=Login}/{id?}");
+
+AdminMocking.Mock(app);    
 
 app.Run();

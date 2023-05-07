@@ -36,8 +36,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Farmer/ApprovePendingFarmers.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXEFwcHJvdmVQZW5kaW5nRmFybWVycy5jc2h0bWw=
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Customer/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Customer/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Customer/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Customer/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Customer/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Farmer/Approved.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXEFwcHJvdmVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Farmer/Delete.cshtml]
@@ -62,6 +82,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Farmer/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Farmer/Verify.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWVyXFZlcmlmeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Home/Index.cshtml]
@@ -108,6 +132,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZVxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Produce/ProduceNumber.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZVxQcm9kdWNlTnVtYmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Produce/Sell.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZVxTZWxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Produce/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZVxVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -138,6 +170,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/Transaction/TransactionDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cVHJhbnNhY3Rpb25EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USER PC/Desktop/FarmProduceManagement/Views/User/Customer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDdXN0b21lci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/USER PC/Desktop/FarmProduceManagement/Views/User/Farmer.cshtml]

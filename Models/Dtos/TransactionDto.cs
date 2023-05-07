@@ -23,24 +23,36 @@ namespace FarmProduceManagement.Models.Dtos
 
     public class CreateTransactionRequestModel
     {
+
+        public List<TransactionDetailsRequestModel> Products { get; set; }
+    }
+
+    public class TransactionDetailsRequestModel
+    {
+
+        //[Required]
+        //[Display(Name = "Name")]
+        //public string ProduceName { get; set; }
         [Required]
-        public string TransactionNum { get; set; }
-         [Required]
-        public string ProduceName { get; set; }
-         [Required]
-        public double QuantityAvailable { get; set; }
-         [Required]
-        public decimal Price { get; set; }
-         [Required]
-        public string UnitOfMeasurement { get; set; }
+        [Display(Name = "Quantity")]
+        public double Quantity { get; set; }
+        [Required]
+        [Display(Name = "Produce")]
+        public string ProduceId { get; set; }
+        //[Required]
+        //[Display(Name = "Unit Of Measurement")]
+        //public string UnitOfMeasurement { get; set; }
     }
     public class UpdateTransactionRequestModel
     {
-         [Required]
+        [Required]
+        [Display(Name = "Name")]
         public string ProduceName { get; set; }
-         [Required]
+        [Required]
+        [Display(Name = "Quantity Available")]
         public double QuantityAvailable { get; set; }
-         [Required]
+        [Required]
+        [Display(Name = "Unit Of Measurement")]
         public string UnitOfMeasurement { get; set; }
     }
 

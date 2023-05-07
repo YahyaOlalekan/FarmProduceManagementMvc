@@ -64,6 +64,10 @@ namespace FarmProduceManagement.Controllers
                     {
                         return RedirectToAction("Farmer");
                     }
+                    else if (user.Data.RoleName.Contains("Customer"))
+                    {
+                        return RedirectToAction("Customer");
+                    }
                 }
 
             }
@@ -90,10 +94,13 @@ namespace FarmProduceManagement.Controllers
         {
             return View();
         }
-
+        public IActionResult Customer()
+        {
+            return View();
+        }
         public IActionResult Logout()
         {
-            HttpContext.SignOutAsync();
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }
     }

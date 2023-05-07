@@ -1,0 +1,47 @@
+@model SellProduceRequestModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Produce Selection";
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+            @await Html.PartialAsync("~/Views/User/Menu.cshtml")
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                
+                <div>@TempData["message"]</div>
+                <form asp-action="Sell">
+                     <div>
+                        <label >Category</label>
+                        <select class="form-control" asp-for="CategoryId" asp-items="@Model.CategoryList" id="CategoryId">
+                            <option value="sel">---select category---</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Produce</label>
+                        <select class="form-control" id="ProduceId">
+
+                        </select>
+                    </div>
+                    <div>
+                        <label id="Price"></label>
+                    </div>
+                    <div>
+                        <label>Quantity</label>
+                        <input class="form-control" type="text" />
+                    </div>
+                    <div class="mt-2 text-end">
+                        <button type="submit" class="btn btn-primary" style="width: 30%">Next</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+
+       

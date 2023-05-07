@@ -55,12 +55,26 @@ namespace FarmProduceManagement.Controllers
            return View(result.Data);
             
         }
-        public IActionResult ApprovePendingFarmers()
+        public IActionResult Verify(ApproveFarmerDto model)
         {
-          var result = _farmerService.ApprovePendingFarmers();
-          return View(result.Data);
+          var result = _farmerService.VerifyFarmers(model);
+          return RedirectToAction("Approved");
             
         }
+
+        
+        public IActionResult Approved()
+        {
+          var result =_farmerService.ApprovedFarmers();
+        //   if(result == null)
+        //   {
+        //     return RedirectToAction("User" ,"Super");
+        //   }
+           return View(result.Data);
+            
+        }
+
+
         public IActionResult Index()
         {
             return View();
