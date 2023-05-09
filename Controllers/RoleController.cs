@@ -24,13 +24,16 @@ namespace FarmProduceManagement.Controllers
         [HttpPost]
         public IActionResult Add(CreateRoleRequestModel model)
         {
-           BaseResponse<RoleDto> role = _roleService.Create(model);
-          // var role = _roleService.Create(model);
-          if(role.Status)
-          {
-             return RedirectToAction("List");
-          }
-          return View(model); 
+            BaseResponse<RoleDto> role = _roleService.Create(model);
+            // var role = _roleService.Create(model);
+            if (ModelState.IsValid)
+            {
+                if (role.Status)
+                {
+                    return RedirectToAction("List");
+                }
+            }
+            return View(model);
         }
         [HttpGet]
         public IActionResult Delete(string id)
@@ -41,13 +44,13 @@ namespace FarmProduceManagement.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult ActualDelete(string id)
         {
-           var role = _roleService.Delete(id);
-           TempData["message"] = role.Message;
-           if(role.Status)
-           {
-             return RedirectToAction("List");
-           }
-           return View();
+            var role = _roleService.Delete(id);
+            TempData["message"] = role.Message;
+            if (role.Status)
+            {
+                return RedirectToAction("List");
+            }
+            return View();
         }
 
         [HttpGet]

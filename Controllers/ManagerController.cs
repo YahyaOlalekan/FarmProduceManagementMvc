@@ -38,9 +38,12 @@ namespace FarmProduceManagement.Controllers
              var loginId =  _httpAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var result = _managerService.Create(loginId, model);
             ViewBag.Message = result.Message;
-            if (result.Status)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("List");
+                if (result.Status)
+                {
+                    return RedirectToAction("List");
+                }
             }
             return View(model);
         }
@@ -92,7 +95,7 @@ namespace FarmProduceManagement.Controllers
             {
                 return RedirectToAction("List");
             }
-            return View(result);
+            return View(result.Data);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

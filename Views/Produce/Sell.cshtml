@@ -20,19 +20,22 @@
                         <select class="form-control" asp-for="CategoryId" asp-items="@Model.CategoryList" id="CategoryId">
                             <option value="sel">---select category---</option>
                         </select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
                     </div>
                     <div>
-                        <label>Produce</label>
-                        <select class="form-control" id="ProduceId">
+                        <label asp-for="ProduceId"></label>
+                        <select class="form-control" id="ProduceId" asp-for="ProduceId">
 
                         </select>
+                        <span asp-validation-for="ProduceId" class="text-danger"></span>
                     </div>
                     <div>
-                        <label id="Price"></label>
+                        <label id=" Price"></label>
                     </div>
                     <div>
-                        <label>Quantity</label>
-                        <input class="form-control" type="text" />
+                        <label asp-for="QuantityToBuy"></label>
+                        <input class="form-control" type="number" asp-for="QuantityToBuy" />
+                        <span asp-validation-for="QuantityToBuy" class="text-danger"></span>
                     </div>
                     <div class="mt-2 text-end">
                         <button type="submit" class="btn btn-primary" style="width: 30%">Next</button>

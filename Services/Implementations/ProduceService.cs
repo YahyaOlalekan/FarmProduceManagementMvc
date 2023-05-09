@@ -14,12 +14,18 @@ namespace FarmProduceManagement.Services.Implementations
 {
     public class ProduceService : IProduceService
     {
+        private readonly IFarmerRepository _farmerRepository;
         private readonly IProduceRepository _produceRepository;
+        private readonly ITransactionRepository _transactionRepository;
+        private readonly ITransactionProduceRepository _transactionProduceRepository;
         private readonly IHttpContextAccessor _httpAccessor;
 
-        public ProduceService(IProduceRepository produceRepository, IHttpContextAccessor httpAccessor)
+        public ProduceService(IFarmerRepository farmerRepository, IProduceRepository produceRepository, ITransactionRepository transactionRepository, ITransactionProduceRepository transactionProduceRepository, IHttpContextAccessor httpAccessor)
         {
+            _farmerRepository = farmerRepository;
             _produceRepository = produceRepository;
+            _transactionRepository = transactionRepository;
+            _transactionProduceRepository = transactionProduceRepository;
             _httpAccessor = httpAccessor;
         }
 
@@ -33,7 +39,7 @@ namespace FarmProduceManagement.Services.Implementations
                 {
                     ProduceName = model.ProduceName,
                     CategoryId = model.CategoryId,
-                    Price = model.Price,
+                    CostPrice = model.CostPrice,
                     UnitOfMeasurement = model.UnitOfMeasurement,
                     CreatedBy = loginId
                 };
@@ -100,9 +106,9 @@ namespace FarmProduceManagement.Services.Implementations
                     Id = produce.Id,
                     ProduceName = produce.ProduceName,
                     NameOfCategory = produce.Category.NameOfCategory,
-                    Price = produce.Price,
+                    CostPrice = produce.CostPrice,
                     UnitOfMeasurement = produce.UnitOfMeasurement,
-                    QuantityAvailable = produce.QuantityAvailable,
+                    QuantityToBuy = produce.QuantityToBuy,
                    
                 }
             };
@@ -129,9 +135,9 @@ namespace FarmProduceManagement.Services.Implementations
                     Id = p.Id,
                     ProduceName = p.ProduceName,
                     NameOfCategory = p.Category.NameOfCategory,
-                    Price = p.Price,
+                    CostPrice = p.CostPrice,
                     UnitOfMeasurement = p.UnitOfMeasurement,
-                    QuantityAvailable = p.QuantityAvailable,
+                    QuantityToBuy = p.QuantityToBuy,
                   
                 })
             };
@@ -158,45 +164,61 @@ namespace FarmProduceManagement.Services.Implementations
                     Id = p.Id,
                     ProduceName = p.ProduceName,
                     /*NameOfCategory = p.Category.NameOfCategory,*/
-                    Price = p.Price,
+                    CostPrice = p.CostPrice,
                     UnitOfMeasurement = p.UnitOfMeasurement,
-                    QuantityAvailable = p.QuantityAvailable,
+                    QuantityToBuy = p.QuantityToBuy,
 
                 })
             };
         }
 
 
-        public BaseResponse<ProduceDto> Sell(SellProduceRequestModel model)
+        public BaseResponse<ProduceDto> Sell(string userId, SellProduceRequestModel model)
         {
             var loginId = _httpAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var produceExist = _produceRepository.Get(a => a.Id == model.ProduceId);
+            var produce = _produceRepository.Get(a => a.Id == model.ProduceId);
 
-            if (produceExist == null)
+            if (produce == null)
             {
-                var produce = new Produce
-                {
-                    /*ProduceName = model.ProduceName,
-                    CategoryId = model.CategoryId,
-                    Price = model.Price,
-                    UnitOfMeasurement = model.UnitOfMeasurement,
-                    CreatedBy = loginId*/
-                };
-
-
-                var produceSaved = _produceRepository.Create(produce);
-                _produceRepository.Save();
-
                 return new BaseResponse<ProduceDto>
                 {
-                    Message = "Successful",
-                    Status = true
+                    Message = "Produce not available",
+                    Status = false
                 };
             }
+
+            var farmer = _farmerRepository.Get(f => f.UserId == userId);
+
+
+            var transaction = new Transaction{
+                TransactionNum = "",
+                FarmerId = farmer.Id
+            };
+
+
+            var transactionProduce = new TransactionProduce{
+                TransactionId = transaction.Id,
+                ProduceId = produce.Id
+            };
+
+
+            _transactionRepository.Create(transaction);
+            _transactionProduceRepository.Create(transactionProduce);
+            _produceRepository.Save();
+
             return new BaseResponse<ProduceDto>
             {
-                Message = "Already exists",
-                Status = false
+                Message = "Successful",
+                Status = true,
+                Data = new ProduceDto{
+                    Id = produce.Id,
+                    ProduceName = produce.ProduceName,
+                    CategoryId = produce.CategoryId,
+                    QuantityToBuy = model.QuantityToBuy,
+                    CostPrice = produce.CostPrice,
+                    UnitOfMeasurement = produce.UnitOfMeasurement,
+                    // NameOfCategory = produce.Category.NameOfCategory,
+                }
             };
 
         }
@@ -208,8 +230,8 @@ namespace FarmProduceManagement.Services.Implementations
             {
 
                 produce.ProduceName = model.ProduceName;
-                produce.Price = model.Price;
-                produce.QuantityAvailable = model.QuantityAvailable;
+                produce.CostPrice = model.CostPrice;
+                produce.QuantityToBuy = model.QuantityToBuy;
                 produce.UnitOfMeasurement = model.UnitOfMeasurement;
                 // produce.Category.NameOfCategory = model.NameOfCategory;
                
@@ -225,9 +247,9 @@ namespace FarmProduceManagement.Services.Implementations
                         Id = produce.Id,
                         ProduceName = produce.ProduceName,
                         // NameOfCategory = produce.Category.NameOfCategory,
-                        Price = produce.Price,
+                        CostPrice = produce.CostPrice,
                         UnitOfMeasurement = produce.UnitOfMeasurement,
-                        QuantityAvailable = produce.QuantityAvailable,
+                        QuantityToBuy = produce.QuantityToBuy,
                        
                     }
                 };

@@ -18,7 +18,7 @@ namespace FarmProduceManagement.Models.Dtos
         public string ProfilePicture { get; set; }
         public string RegistrationNumber { get; set; }
         public string UserId { get; set; }
-         public string TransactionId { get; set; }
+        public string TransactionId { get; set; }
         public List<TransactionDto> Transactions { get; set; }
     }
     public class CreateManagerRequestModel
@@ -29,8 +29,10 @@ namespace FarmProduceManagement.Models.Dtos
         [Required, MaxLength(20), MinLength(3)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
         [Required, MaxLength(14), MinLength(11)]
         [Display(Name = "Phone Number")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$",
        ErrorMessage = "Enter a valid email address!")]
@@ -39,7 +41,9 @@ namespace FarmProduceManagement.Models.Dtos
         public string Password { get; set; }
         [Required, MaxLength(20), MinLength(3)]
         public string Address { get; set; }
-        [Display(Name = "Profile Picture")]
+
+        [Display(Name = "Profile Picture"), Required(ErrorMessage = "Please select file.")]
+        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif|.jpeg)$", ErrorMessage = "Only Image file allowed.")]
         public IFormFile ProfilePicture { get; set; }
 
     }
@@ -55,13 +59,15 @@ namespace FarmProduceManagement.Models.Dtos
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$",
-       ErrorMessage = "Enter a valid email address!")]
+        ErrorMessage = "Enter a valid email address!")]
         public string Email { get; set; }
         // [Required, MaxLength(12), MinLength(3)]
         // public string Password { get; set; }
         [Required, MaxLength(20), MinLength(3)]
         public string Address { get; set; }
-        [Display(Name = "Profile Picture")]
+
+        [Display(Name = "Profile Picture"), Required(ErrorMessage = "Please select file.")]
+        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif|.jpeg)$", ErrorMessage = "Only Image file allowed.")]
         public IFormFile ProfilePicture { get; set; }
     }
 }

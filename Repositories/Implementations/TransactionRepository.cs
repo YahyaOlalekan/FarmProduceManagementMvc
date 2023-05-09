@@ -12,9 +12,15 @@ namespace FarmProduceManagement.Repositories.Implementations
 {
     public class TransactionRepository : BaseRepository<Transaction>, ITransactionRepository
     {
-        TransactionRepository(Context context)
+        public TransactionRepository(Context context)
         {
             _context = context;
+        }
+
+        public bool CreateTransactions(List<Transaction> transactions)
+        {
+            _context.AddRange(transactions);
+            return true;
         }
 
         public Transaction Get(string id)

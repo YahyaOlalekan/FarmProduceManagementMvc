@@ -12,52 +12,52 @@ namespace FarmProduceManagement.Services.Implementations
 {
     public class TransactionService : ITransactionService
     {
-         private readonly ITransactionRepository _transactionRepository;
+        private readonly ITransactionRepository _transactionRepository;
         private readonly IHttpContextAccessor _httpAccessor;
+        private readonly IProduceRepository _produceRepository;
 
-        public TransactionService(ITransactionRepository transactionRepository, IHttpContextAccessor httpAccessor)
+        public TransactionService(ITransactionRepository transactionRepository, IHttpContextAccessor httpAccessor, IProduceRepository produceRepository)
         {
+            _produceRepository = produceRepository;
             _transactionRepository = transactionRepository;
             _httpAccessor = httpAccessor;
         }
 
-        public BaseResponse<TransactionDto> Create(CreateTransactionRequestModel model)
+        public BaseResponse<bool> Create(CreateTransactionRequestModel model)
         {
             var loginId = _httpAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var transactionExist = _transactionRepository.Get(a => a.TransactionNum == model.Transaction);
-            //if (transactionExist == null)
-            //{
-            //    var transaction = new Transaction
-            //    {
-            //        TransactionNum = GenerateTransactionRegNum(),
-            //        FarmerId = loginId,
-            //       // Price = model.Price,
-            //       // ProduceName = model.ProduceName,
-            //       // UnitOfMeasurement = model.UnitOfMeasurement,
-            //        //CreatedBy = loginId
-            //    };
-            //    _transactionRepository.Create(transaction);
-            //    _transactionRepository.Save();
+            var transactionExist = _transactionRepository.Get(a => a.TransactionNum == model.TransactionNum);
+            TransactionProduce transactionProduce = new();
+            if (transactionExist == null)
+            {
+                List<Transaction> transactions = new();
+                foreach (var produce in model.Produce)
+                {
+                    var transaction = new Transaction
+                    {
+                        TransactionNum = GenerateTransactionRegNum(),
+                        FarmerId = loginId,
+                        CreatedBy = loginId,
+                        DateCreated = DateTime.Now,
+                    };
+                    transactions.Add(transaction);
+                }
 
-            //    return new BaseResponse<TransactionDto>
-            //    {
-            //        Message = "Successful",
-            //        Status = true,
-            //        Data = new TransactionDto
-            //        {
-            //            Id = transaction.Id,
-            //            Price = model.Price,
-            //            TransactionNum = GenerateTransactionRegNum(),
-            //            ProduceName = model.ProduceName,
-            //            UnitOfMeasurement = model.UnitOfMeasurement,
+                _transactionRepository.CreateTransactions(transactions);
+                _transactionRepository.Save();
 
-            //        }
-            //    };
-            //}
-            return new BaseResponse<TransactionDto>
+                return new BaseResponse<bool>
+                {
+                    Message = "Successful",
+                    Status = true,
+                    Data = true
+                };
+            }
+            return new BaseResponse<bool>
             {
                 Message = "Already exists",
-                Status = false
+                Status = false,
+                Data = false
             };
 
         }
@@ -111,7 +111,7 @@ namespace FarmProduceManagement.Services.Implementations
                 {
                     Id = transaction.Id,
                     TransactionNum = GenerateTransactionRegNum(),
-                   
+
                 }
             };
 
@@ -136,7 +136,7 @@ namespace FarmProduceManagement.Services.Implementations
                 {
                     Id = c.Id,
                     TransactionNum = GenerateTransactionRegNum(),
-                   
+
                 })
             };
         }
@@ -150,7 +150,7 @@ namespace FarmProduceManagement.Services.Implementations
             {
 
                 transaction.TransactionNum = GenerateTransactionRegNum();
-               
+
 
 
                 _transactionRepository.Update(transaction);
@@ -162,7 +162,7 @@ namespace FarmProduceManagement.Services.Implementations
                     Status = true,
                     Data = new TransactionDto
                     {
-                       
+
                         TransactionNum = GenerateTransactionRegNum(),
                         ProduceName = model.ProduceName,
                         UnitOfMeasurement = model.UnitOfMeasurement,

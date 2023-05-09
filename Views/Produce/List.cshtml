@@ -19,7 +19,7 @@
                             @* <th>Id</th> *@
                             <th>S/N</th>
                             <th>Produce Name</th>
-                            <th>Quantity Available</th>
+                            @* <th>Quantity</th> *@
                             <th>Price</th>
                             <th>Unit Of Measurement</th>
                             <th>Name Of Category</th>
@@ -36,8 +36,8 @@
                                 <tr>
                                     <td>@serialNumberCount</td>
                                     <td>@produce.ProduceName</td>
-                                    <td>@produce.QuantityAvailable</td>
-                                    <td>@produce.Price</td>
+                                    @* <td>@produce.QuantityToBuy</td> *@
+                                    <td>@Math.Round(produce.CostPrice, 4)</td>
                                     <td>@produce.UnitOfMeasurement</td>
                                     <td>@produce.NameOfCategory</td>
                                     <td><a asp-action="Update" asp-controller="Produce" asp-route-id="@produce.Id">Update</a></td>

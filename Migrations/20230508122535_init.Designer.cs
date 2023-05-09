@@ -3,6 +3,7 @@ using System;
 using FarmProduceManagement.AppDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarmProduceManagement.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230508122535_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,80 +228,6 @@ namespace FarmProduceManagement.Migrations
                     b.ToTable("Managers");
                 });
 
-            modelBuilder.Entity("FarmProduceManagement.Models.Entities.Order", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("OrderNumber")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("FarmProduceManagement.Models.Entities.OrderProduct", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("OrderId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("ProductId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<double>("Quantity")
-                        .HasColumnType("double");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderProducts");
-                });
-
             modelBuilder.Entity("FarmProduceManagement.Models.Entities.Produce", b =>
                 {
                     b.Property<string>("Id")
@@ -308,9 +236,6 @@ namespace FarmProduceManagement.Migrations
                     b.Property<string>("CategoryId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<decimal>("CostPrice")
-                        .HasColumnType("decimal(65,30)");
-
                     b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
 
@@ -326,10 +251,13 @@ namespace FarmProduceManagement.Migrations
                     b.Property<DateTime>("ModifiedOn")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(65,30)");
+
                     b.Property<string>("ProduceName")
                         .HasColumnType("longtext");
 
-                    b.Property<double>("QuantityToBuy")
+                    b.Property<double>("QuantityAvailable")
                         .HasColumnType("double");
 
                     b.Property<string>("UnitOfMeasurement")
@@ -340,51 +268,6 @@ namespace FarmProduceManagement.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Produces");
-                });
-
-            modelBuilder.Entity("FarmProduceManagement.Models.Entities.Product", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("CategoryId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("ModifiedOn")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("ProduceName")
-                        .HasColumnType("longtext");
-
-                    b.Property<double>("QuantityToSell")
-                        .HasColumnType("double");
-
-                    b.Property<decimal>("SellingPrice")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<string>("UnitOfMeasurement")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("FarmProduceManagement.Models.Entities.Role", b =>
@@ -602,43 +485,10 @@ namespace FarmProduceManagement.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("FarmProduceManagement.Models.Entities.Order", b =>
-                {
-                    b.HasOne("FarmProduceManagement.Models.Entities.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("FarmProduceManagement.Models.Entities.OrderProduct", b =>
-                {
-                    b.HasOne("FarmProduceManagement.Models.Entities.Order", "Order")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("OrderId");
-
-                    b.HasOne("FarmProduceManagement.Models.Entities.Product", "Product")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("FarmProduceManagement.Models.Entities.Produce", b =>
                 {
                     b.HasOne("FarmProduceManagement.Models.Entities.Category", "Category")
                         .WithMany("Produces")
-                        .HasForeignKey("CategoryId");
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("FarmProduceManagement.Models.Entities.Product", b =>
-                {
-                    b.HasOne("FarmProduceManagement.Models.Entities.Category", "Category")
-                        .WithMany()
                         .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
@@ -700,19 +550,9 @@ namespace FarmProduceManagement.Migrations
                     b.Navigation("Transactions");
                 });
 
-            modelBuilder.Entity("FarmProduceManagement.Models.Entities.Order", b =>
-                {
-                    b.Navigation("OrderProducts");
-                });
-
             modelBuilder.Entity("FarmProduceManagement.Models.Entities.Produce", b =>
                 {
                     b.Navigation("TransactionProduces");
-                });
-
-            modelBuilder.Entity("FarmProduceManagement.Models.Entities.Product", b =>
-                {
-                    b.Navigation("OrderProducts");
                 });
 
             modelBuilder.Entity("FarmProduceManagement.Models.Entities.Role", b =>

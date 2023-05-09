@@ -9,10 +9,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FarmProduceManagement.Controllers
 {
-    public class ProduceController: Controller
+    public class ProduceController : Controller
     {
-         private readonly IProduceService _produceService;
-         private readonly ICategoryService _categoryService;
+        private readonly IProduceService _produceService;
+        private readonly ICategoryService _categoryService;
 
         public ProduceController(IProduceService produceService, ICategoryService categoryService)
         {
@@ -30,14 +30,30 @@ namespace FarmProduceManagement.Controllers
         [HttpPost]
         public IActionResult Add(CreateProduceRequestModel model)
         {
-           BaseResponse<ProduceDto> produce = _produceService.Create(model);
-          // var produce = _produceService.Create(model);
-          if(produce.Status)
-          {
-             return RedirectToAction("List");
-          }
-          return View(model); 
+            BaseResponse<ProduceDto> produce = _produceService.Create(model);
+            // var produce = _produceService.Create(model);
+            if (ModelState.IsValid)
+            {
+                if (produce.Status)
+                {
+                    return RedirectToAction("List");
+                }
+            }
+            return View(model);
         }
+
+        [HttpGet]
+        public IActionResult ProduceNumber()
+        {
+            return View();
+        }
+
+        // [HttpPost]
+        // public IActionResult ProduceNumber()
+        // {
+        //     return RedirectToAction();
+        // }
+
         [HttpGet]
         public IActionResult Delete(string id)
         {
@@ -47,13 +63,13 @@ namespace FarmProduceManagement.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult ActualDelete(string id)
         {
-           var produce = _produceService.Delete(id);
-           TempData["message"] = produce.Message;
-           if(produce.Status)
-           {
-             return RedirectToAction("List");
-           }
-           return View();
+            var produce = _produceService.Delete(id);
+            TempData["message"] = produce.Message;
+            if (produce.Status)
+            {
+                return RedirectToAction("List");
+            }
+            return View();
         }
 
         [HttpGet]
@@ -97,13 +113,19 @@ namespace FarmProduceManagement.Controllers
         }
 
         [HttpPost]
-        public IActionResult Sell(SellProduceRequestModel model)
+        public IActionResult Sell(string id, SellProduceRequestModel model)
         {
-            BaseResponse<ProduceDto> produce = _produceService.Sell(model);
+            
             // var produce = _produceService.Create(model);
-            if (produce.Status)
+            
+            if(ModelState.IsValid)
             {
-                return RedirectToAction("List");
+                BaseResponse<ProduceDto> produce = _produceService.Sell(id, model);
+                
+                if (produce.Status)
+                {
+                    return RedirectToAction("List");
+                }
             }
 
             var categories = _categoryService.GetAll();

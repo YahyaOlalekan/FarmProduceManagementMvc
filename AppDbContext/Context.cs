@@ -21,11 +21,13 @@ namespace FarmProduceManagement.AppDbContext
         public DbSet<Role> Roles { get; set; }
         public DbSet<Manager> Managers { get; set; }
         public DbSet<Produce> Produces { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<TransactionProduce> TransactionProduces { get; set; }
+        public DbSet<OrderProduct> OrderProducts { get; set; }
         public DbSet<FarmerManager> FarmerManagers { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        //public DbSet<Order> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
         //public DbSet<CustomerManager> CustomerManagers { get; set; }
 
 

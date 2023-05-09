@@ -9,6 +9,7 @@ namespace FarmProduceManagement.Repositories.Interfaces
 {
     public interface ITransactionRepository : IBaseRepository<Transaction>
     {
+        bool CreateTransactions(List<Transaction> transactions);
         Transaction Get(string id);
         Transaction Get(Expression<Func<Transaction, bool>> expression);
         IEnumerable<Transaction> GetSelected(List<string> ids);

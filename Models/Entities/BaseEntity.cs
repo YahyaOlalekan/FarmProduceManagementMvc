@@ -11,5 +11,7 @@ namespace FarmProduceManagement.Models.Entities
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public string CreatedBy { get; set; }
+        public DateTime ModifiedOn { get; set; } = DateTime.Now;
+        public string ModifiedBy { get; set; }  
     }
 }

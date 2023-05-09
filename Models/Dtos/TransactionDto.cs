@@ -23,8 +23,8 @@ namespace FarmProduceManagement.Models.Dtos
 
     public class CreateTransactionRequestModel
     {
-
-        public List<TransactionDetailsRequestModel> Products { get; set; }
+        public List<TransactionDetailsRequestModel> Produce { get; set; }
+        public string TransactionNum { get; set; }
     }
 
     public class TransactionDetailsRequestModel
@@ -39,6 +39,9 @@ namespace FarmProduceManagement.Models.Dtos
         [Required]
         [Display(Name = "Produce")]
         public string ProduceId { get; set; }
+        [Required]
+        [Display(Name = "Category")]
+        public string CategoryId { get; set; }
         //[Required]
         //[Display(Name = "Unit Of Measurement")]
         //public string UnitOfMeasurement { get; set; }

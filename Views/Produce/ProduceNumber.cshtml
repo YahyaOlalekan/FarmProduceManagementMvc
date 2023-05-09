@@ -1,4 +1,4 @@
-@model SellProduceRequestModel
+@* @model SellProduceRequestModel *@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Number of Produces to Sell";
@@ -15,27 +15,14 @@
                 
                 
                 <form asp-action="ProduceNumber">
-                     <div>
-                        <label >Category</label>
-                        <select class="form-control" asp-for="CategoryId" asp-items="@Model.CategoryList" id="CategoryId">
-                            <option value="sel">---select category---</option>
-                        </select>
-                    </div>
+                    
                     <div>
-                        <label>Produce</label>
-                        <select class="form-control" id="ProduceId">
-
-                        </select>
-                    </div>
-                    <div>
-                        <label id="Price"></label>
-                    </div>
-                    <div>
-                        <label>Quantity</label>
+                        <label>Enter the Number of Produces to Sell</label>
                         <input class="form-control" type="text" />
                     </div>
+                    <br>
                     <div class="mt-2 text-end">
-                        <button type="submit" class="btn btn-primary" style="width: 30%">Submit</button>
+                        <button type="submit" class="btn btn-primary" style="width: 30%">Next</button>
                     </div>
                 </form>
             </div>

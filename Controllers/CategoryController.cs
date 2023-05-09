@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FarmProduceManagement.Controllers
 {
-    public class CategoryController: Controller
+    public class CategoryController : Controller
     {
-         private readonly ICategoryService _categoryService;
+        private readonly ICategoryService _categoryService;
         public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
@@ -24,13 +24,16 @@ namespace FarmProduceManagement.Controllers
         [HttpPost]
         public IActionResult Add(CreateCategoryRequestModel model)
         {
-           BaseResponse<CategoryDto> category = _categoryService.Create(model);
-          // var category = _categoryService.Create(model);
-          if(category.Status)
-          {
-             return RedirectToAction("List");
-          }
-          return View(model); 
+            BaseResponse<CategoryDto> category = _categoryService.Create(model);
+            // var category = _categoryService.Create(model);
+            if (ModelState.IsValid)
+            {
+                if (category.Status)
+                {
+                    return RedirectToAction("List");
+                }
+            }
+            return View(model);
         }
         [HttpGet]
         public IActionResult Delete(string id)
@@ -41,13 +44,13 @@ namespace FarmProduceManagement.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult ActualDelete(string id)
         {
-           var category = _categoryService.Delete(id);
-           TempData["message"] = category.Message;
-           if(category.Status)
-           {
-             return RedirectToAction("List");
-           }
-           return View();
+            var category = _categoryService.Delete(id);
+            TempData["message"] = category.Message;
+            if (category.Status)
+            {
+                return RedirectToAction("List");
+            }
+            return View();
         }
 
         [HttpGet]

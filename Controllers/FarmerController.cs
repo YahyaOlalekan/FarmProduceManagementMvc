@@ -9,20 +9,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FarmProduceManagement.Controllers
 {
-    public class FarmerController: Controller
+    public class FarmerController : Controller
     {
-      
+
         private readonly ILogger<FarmerController> _logger;
         private readonly IFarmerService _farmerService;
-        private readonly IHttpContextAccessor  _httpAccessor;
-        
+        private readonly IHttpContextAccessor _httpAccessor;
+
 
         public FarmerController(ILogger<FarmerController> logger, IFarmerService farmerService, IHttpContextAccessor httpAccessor)
         {
             _logger = logger;
             _farmerService = farmerService;
             _httpAccessor = httpAccessor;
-            
+
         }
 
 
@@ -47,31 +47,31 @@ namespace FarmProduceManagement.Controllers
         // }
         public IActionResult GetPendingFarmers()
         {
-          var result =_farmerService.GetPendingFarmers();
-        //   if(result == null)
-        //   {
-        //     return RedirectToAction("User" ,"Super");
-        //   }
-           return View(result.Data);
-            
+            var result = _farmerService.GetPendingFarmers();
+            //   if(result == null)
+            //   {
+            //     return RedirectToAction("User" ,"Super");
+            //   }
+            return View(result.Data);
+
         }
         public IActionResult Verify(ApproveFarmerDto model)
         {
-          var result = _farmerService.VerifyFarmers(model);
-          return RedirectToAction("Approved");
-            
+            var result = _farmerService.VerifyFarmers(model);
+            return RedirectToAction("Approved");
+
         }
 
-        
+
         public IActionResult Approved()
         {
-          var result =_farmerService.ApprovedFarmers();
-        //   if(result == null)
-        //   {
-        //     return RedirectToAction("User" ,"Super");
-        //   }
-           return View(result.Data);
-            
+            var result = _farmerService.ApprovedFarmers();
+            //   if(result == null)
+            //   {
+            //     return RedirectToAction("User" ,"Super");
+            //   }
+            return View(result.Data);
+
         }
 
 
@@ -86,15 +86,18 @@ namespace FarmProduceManagement.Controllers
         }
 
         [HttpPost]
-        
+
         public IActionResult Register(CreateFarmerRequestModel model)
         {
-            
+
             var result = _farmerService.Create(model);
             ViewBag.Message = result.Message;
-            if (result.Status)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Login" ,"User");
+                if (result.Status)
+                {
+                    return RedirectToAction("Login", "User");
+                }
             }
             return View(model);
         }
@@ -102,15 +105,15 @@ namespace FarmProduceManagement.Controllers
         public IActionResult Delete(string id)
         {
             BaseResponse<FarmerDto> result = _farmerService.Get(id);
-           // var result = _farmerService.Get(id);
+            // var result = _farmerService.Get(id);
             return View(result.Data);
         }
 
         [HttpPost, ActionName("Delete")]
         public IActionResult RealDelete(string id)
         {
-             var result = _farmerService.Delete(id);
-             TempData["message"] = result.Message;
+            var result = _farmerService.Delete(id);
+            TempData["message"] = result.Message;
             if (result.Status)
             {
                 return RedirectToAction("List");
@@ -123,7 +126,7 @@ namespace FarmProduceManagement.Controllers
             var result = _farmerService.Get(id);
             return View(result.Data);
         }
-        
+
         public IActionResult List()
         {
             var result = _farmerService.GetAll();
@@ -154,5 +157,5 @@ namespace FarmProduceManagement.Controllers
         {
             return View("Error!");
         }
-   }
+    }
 }
