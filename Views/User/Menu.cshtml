@@ -38,6 +38,8 @@
     else if (User.IsInRole("Manager"))
     {
         <a class="dropdown-item active" asp-action="Manager" asp-controller="User">Dashboard</a>
+          @* <span id ="CompanyBalance"> 0.00</span> *@
+
         <a class="dropdown-item" asp-action="Details" asp-controller="Manager" asp-route-id="@userId">View Profile</a>
         <a class="dropdown-item" asp-action="Update" asp-controller="Manager" asp-route-id="@userId">Update Profile</a>
         <a class="dropdown-item" asp-action="List" asp-controller="Farmer">View Farmers</a>

@@ -26,6 +26,18 @@ namespace FarmProduceManagement.Controllers
         {
             return View();
         }
+       
+        public IActionResult Balance()
+        {
+           var balance = _managerService.GetCompanyBalance();
+           
+            return Json(Ok(
+                new {
+                    Status = "success",
+                    Balance = balance
+                }
+            ));
+        }
 
         public IActionResult Add()
         {

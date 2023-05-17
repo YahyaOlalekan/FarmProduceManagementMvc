@@ -91,9 +91,31 @@ $(document).ready(function () {
         }
     })
 
+    CompanyBalance();
+   
+    function CompanyBalance(){
+        $.ajax({
+            url: '/Manager/Balance/',
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+                
+                let balance = "Company Balance: #"+ data.value.balance;
+                //console.log(balance);
+
+                $("#CompanyBalance").html(balance);
+            }
+        })
+
+    }
+
+           
+
+            
+            // alert(url);
+        
 
 
 
 })
-
 

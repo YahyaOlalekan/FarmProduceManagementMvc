@@ -16,13 +16,15 @@ namespace FarmProduceManagement.Services.Implementations
         private readonly IRoleRepository _roleRepository;
         private readonly IUserRepository _userRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IAdminRepository _adminRepository;
 
-        public ManagerService(IManagerRepository managerRepository, IRoleRepository roleRepository, IUserRepository userRepository, IWebHostEnvironment webHostEnvironment)
+        public ManagerService(IManagerRepository managerRepository, IRoleRepository roleRepository, IUserRepository userRepository, IWebHostEnvironment webHostEnvironment, IAdminRepository adminRepository)
         {
             _managerRepository = managerRepository;
             _roleRepository = roleRepository;
             _userRepository = userRepository;
             _webHostEnvironment = webHostEnvironment;
+            _adminRepository = adminRepository;
         }
 
         public BaseResponse<ManagerDto> Create(string loginId, CreateManagerRequestModel model)
@@ -232,6 +234,10 @@ namespace FarmProduceManagement.Services.Implementations
             };
         }
 
+        public decimal GetCompanyBalance()
+        {
+            return _adminRepository.GetCompanyWallet();
+        }
 
         private string GenerateManagerRegNum()
         {

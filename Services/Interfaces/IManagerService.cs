@@ -15,6 +15,8 @@ namespace FarmProduceManagement.Services.Interfaces
         BaseResponse<IEnumerable<ManagerDto>> GetAll();
         BaseResponse<ManagerDto> Delete(string id);
       //  BaseResponse<ManagerDto> GetByEmail(string email);
+        decimal GetCompanyBalance();
+
                 
     }
 }
