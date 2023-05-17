@@ -25,7 +25,7 @@ namespace FarmProduceManagement.Repositories.Implementations
             // .Where(a => a.FarmerRegStatus == FarmerRegStatus.Approved)
             .Include(a => a.Transactions)
              .Include(a => a.User)
-             .FirstOrDefault(a => a.UserId == id && a.IsDeleted == false);
+             .FirstOrDefault(a => a.Id == id && a.IsDeleted == false);
         }
 
         public Farmer Get(Expression<Func<Farmer, bool>> expression)

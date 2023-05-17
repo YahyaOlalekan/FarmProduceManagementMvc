@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using FarmProduceManagement.Models.Dtos;
 using FarmProduceManagement.Services.Interfaces;
@@ -13,11 +14,13 @@ namespace FarmProduceManagement.Controllers
     {
         private readonly IProduceService _produceService;
         private readonly ICategoryService _categoryService;
+        private  readonly IAuth  _auth;
 
-        public ProduceController(IProduceService produceService, ICategoryService categoryService)
+        public ProduceController(IProduceService produceService, ICategoryService categoryService, IAuth auth)
         {
             _produceService = produceService;
             _categoryService = categoryService;
+            _auth = auth;
         }
 
         [HttpGet]
@@ -93,6 +96,10 @@ namespace FarmProduceManagement.Controllers
         [HttpGet]
         public IActionResult List()
         {
+            
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = user.Balance;
+            
             var produces = _produceService.GetAll();
             return View(produces.Data);
         }
@@ -100,38 +107,69 @@ namespace FarmProduceManagement.Controllers
 
 
         [HttpGet]
-        public IActionResult Sell()
+        public IActionResult Purchase()
         {
-            var categories = _categoryService.GetAll();
+            // var categories = _categoryService.GetAll();
 
-            var model = new SellProduceRequestModel
-            {
-                CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory"),
-            };
+            // var model = new PurchaseProduceRequestModel
+            // {
+            //     CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory"),
+            // };
 
-            return View(model);
+            return View();
         }
 
+       
         [HttpPost]
-        public IActionResult Sell(string id, SellProduceRequestModel model)
+        public IActionResult Purchase(PurchaseProduceRequestModel model)
         {
-            
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             // var produce = _produceService.Create(model);
             
             if(ModelState.IsValid)
             {
-                BaseResponse<ProduceDto> produce = _produceService.Sell(id, model);
+                BaseResponse<ProduceDto> produce = _produceService.Purchase(userId, model);
                 
                 if (produce.Status)
                 {
-                    return RedirectToAction("List");
+                    return RedirectToAction("List","Transaction", new{id = userId});
                 }
             }
 
-            var categories = _categoryService.GetAll();
-            model.CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory");
+            // var categories = _categoryService.GetAll();
+            // model.CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory");
             return View(model);
         }
+
+         // [HttpPost]
+        // public IActionResult Sell(SellProduceRequestModel model)
+        // {
+        //     // var produce = _produceService.Create(model);
+            
+        //     if(ModelState.IsValid)
+        //     {
+        //         BaseResponse<ProduceDto> produce = _produceService.Sell(model);
+                
+        //         if (produce.Status)
+        //         {
+        //             return RedirectToAction("List");
+        //         }
+        //     }
+
+        //     // var categories = _categoryService.GetAll();
+        //     // model.CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory");
+        //     // return View(model);
+
+        //     var categories = _categoryService.GetAll();
+
+        //     var modell = new SellProduceRequestModel
+        //     {
+        //         CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory"),
+        //     };
+
+        //     return View(modell);
+        // }
+
 
         [HttpGet]
         public IActionResult Update()

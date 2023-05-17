@@ -38,7 +38,7 @@ namespace FarmProduceManagement.Services.Implementations
                 };
             }
             var phoneNumer = _managerRepository.Get(m => m.User.PhoneNumber == model.PhoneNumber);
-            if (managerExist != null)
+            if (phoneNumer != null)
             {
                 return new BaseResponse<ManagerDto>
                 {

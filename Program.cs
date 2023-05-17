@@ -1,3 +1,4 @@
+using FarmProduceManagement;
 using FarmProduceManagement.AppDbContext;
 using FarmProduceManagement.Repositories.Implementations;
 using FarmProduceManagement.Repositories.Interfaces;
@@ -50,10 +51,15 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 
+builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
+builder.Services.AddScoped<ICartItemService, CartItemService>();
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-// builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 // builder.Services.AddScoped<IAdminService, AdminService>();
+
+builder.Services.AddScoped<IAuth, Auth>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

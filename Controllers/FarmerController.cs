@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using FarmProduceManagement.Models.Dtos;
 using FarmProduceManagement.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FarmProduceManagement.Controllers
@@ -15,37 +16,18 @@ namespace FarmProduceManagement.Controllers
         private readonly ILogger<FarmerController> _logger;
         private readonly IFarmerService _farmerService;
         private readonly IHttpContextAccessor _httpAccessor;
+        private readonly IAuth _auth;
 
-
-        public FarmerController(ILogger<FarmerController> logger, IFarmerService farmerService, IHttpContextAccessor httpAccessor)
+        public FarmerController(ILogger<FarmerController> logger, IFarmerService farmerService, IHttpContextAccessor httpAccessor, IAuth auth)
         {
             _logger = logger;
             _farmerService = farmerService;
             _httpAccessor = httpAccessor;
-
+            _auth = auth;
         }
 
 
-
-
-        //   [HttpGet]
-        // public IActionResult Register()
-        // {
-        //     return View();
-        // }
-
-        // [HttpPost]
-        // public IActionResult Register(string loginId, CreateFarmerRequestModel model)
-        // {
-        //     var farmer = _farmerService.Create(loginId, model);
-
-        //     if(farmer is not null)
-        //     {
-        //         TempData["Exist"] = "Farmer created Successfully";
-        //     }
-        //     return RedirectToAction("Login" ,"User");
-        // }
-        public IActionResult GetPendingFarmers()
+        public IActionResult Pending()
         {
             var result = _farmerService.GetPendingFarmers();
             //   if(result == null)
@@ -55,10 +37,19 @@ namespace FarmProduceManagement.Controllers
             return View(result.Data);
 
         }
+
+
+        [HttpPost]
         public IActionResult Verify(ApproveFarmerDto model)
         {
             var result = _farmerService.VerifyFarmers(model);
-            return RedirectToAction("Approved");
+            
+            if(result.Status)
+            { 
+                return RedirectToAction("Approved");
+            }
+
+            return RedirectToAction("Pending");
 
         }
 
@@ -66,12 +57,18 @@ namespace FarmProduceManagement.Controllers
         public IActionResult Approved()
         {
             var result = _farmerService.ApprovedFarmers();
-            //   if(result == null)
-            //   {
+            // if(result.Status)
+            // {
             //     return RedirectToAction("User" ,"Super");
-            //   }
+            // }
             return View(result.Data);
 
+        }
+        public IActionResult Declined()
+        {
+            var result = _farmerService.GetDeclinedFarmers();
+           
+            return View(result.Data);
         }
 
 
@@ -121,8 +118,12 @@ namespace FarmProduceManagement.Controllers
             return View(result);
         }
 
+        
         public IActionResult Details(string id)
         {
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = user.Balance;
+            
             var result = _farmerService.Get(id);
             return View(result.Data);
         }
@@ -136,6 +137,10 @@ namespace FarmProduceManagement.Controllers
 
         public IActionResult Update(string id)
         {
+            
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = user.Balance;
+
             var result = _farmerService.Get(id);
             return View(result.Data);
         }
@@ -143,6 +148,9 @@ namespace FarmProduceManagement.Controllers
         [HttpPost]
         public IActionResult Update(string id, UpdateFarmerRequestModel model)
         {
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = user.Balance;
+
             var result = _farmerService.Update(id, model);
             TempData["message"] = result.Message;
             if (result.Status)
@@ -151,6 +159,25 @@ namespace FarmProduceManagement.Controllers
             }
             return View(result);
         }
+
+
+        //   [HttpGet]
+        // public IActionResult Register()
+        // {
+        //     return View();
+        // }
+
+        // [HttpPost]
+        // public IActionResult Register(string loginId, CreateFarmerRequestModel model)
+        // {
+        //     var farmer = _farmerService.Create(loginId, model);
+
+        //     if(farmer is not null)
+        //     {
+        //         TempData["Exist"] = "Farmer created Successfully";
+        //     }
+        //     return RedirectToAction("Login" ,"User");
+        // }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -71,8 +71,9 @@ $(document).ready(function () {
 
                     if (result.status) {
 
-                        /*console.log(result.data[0].price);*/
-                        let price = 'Price: ' + result.data[0].price
+                        // console.log(result.data);
+                        let price = 'Price: ' + result.data[0].costPrice
+                        // console.log(price);
                         $("#Price").html(price);
                     }
 
@@ -89,6 +90,10 @@ $(document).ready(function () {
             $("#Price").html(price);
         }
     })
+
+
+
+
 })
 
 

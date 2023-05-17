@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Farmer Registration";
      Layout = "~/Views/Shared/_Layout.cshtml";
+     var message = ViewBag.Message ?? "";
 }
 <div class="">
     <div class="row">
@@ -14,10 +15,8 @@
             <div class="col-md-6">
                 <span class="text-center"><h3>@ViewData["Title"]</h3></span>
                 
-                @if(@ViewBag.Message != null)
-                {
-                    <div style="background-color: red;">@ViewBag.Message</div>
-                }
+               <div style="background-color: red;">@message</div>
+                
                 <form asp-action="Register" enctype="multipart/form-data">
             <div>
                 <label asp-for="FirstName"></label>
@@ -69,3 +68,9 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

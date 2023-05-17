@@ -34,8 +34,8 @@ namespace FarmProduceManagement.Services.Implementations
                 };
             }
 
-           BaseEntity phoneExist = _customerRepository.Get(c => c.User.PhoneNumber == model.PhoneNumber);
-            if (customerExist != null)
+           BaseEntity phoneNumber = _customerRepository.Get(c => c.User.PhoneNumber == model.PhoneNumber);
+            if (phoneNumber != null)
             {
                 return new BaseResponse<CustomerDto>
                 {

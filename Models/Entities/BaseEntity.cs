@@ -12,6 +12,6 @@ namespace FarmProduceManagement.Models.Entities
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public string CreatedBy { get; set; }
         public DateTime ModifiedOn { get; set; } = DateTime.Now;
-        public string ModifiedBy { get; set; }  
+        public string ModifiedBy { get; set; } = "System";
     }
 }

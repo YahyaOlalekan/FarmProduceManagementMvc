@@ -23,4 +23,11 @@ namespace FarmProduceManagement.Models.Dtos
         public string Email { get; set; }
         public string Password { get; set; }
     }
+
+
+    public class LoginUserModel
+    {
+        public decimal Balance { get; set; }
+        public string UserId { get; set; }
+    }
 }

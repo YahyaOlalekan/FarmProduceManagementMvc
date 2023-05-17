@@ -22,7 +22,8 @@ namespace FarmProduceManagement.Models.Dtos
         public decimal Wallet { get; set; }
         public FarmerRegStatus FarmerRegStatus { get; set; }
         public string UserId { get; set; }
-        public string RoleId { get; set; }
+        public string Role { get; set; }
+        public User User { get; set; }
         public string TransactionId { get; set; }
 
         public List<TransactionDto> Transactions { get; set; }
@@ -40,8 +41,9 @@ namespace FarmProduceManagement.Models.Dtos
         public string LastName { get; set; }
 
         [Required, MaxLength(14), MinLength(11)]
+        
         [Display(Name = "Phone Number")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+        // [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
 
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$",
@@ -88,6 +90,6 @@ namespace FarmProduceManagement.Models.Dtos
 
     public class ApproveFarmerDto{
         public string Id { get; set; }
-        public int Status { get; set; }
+        public FarmerRegStatus Status { get; set; }
     }
 }

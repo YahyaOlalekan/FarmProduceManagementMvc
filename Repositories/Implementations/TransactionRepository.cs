@@ -26,7 +26,9 @@ namespace FarmProduceManagement.Repositories.Implementations
         public Transaction Get(string id)
         {
             return _context.Transactions
+            .Include(a => a.Farmer)
             .Include(a => a.TransactionProduces)
+            .ThenInclude(a => a.Produce)
             .SingleOrDefault(a => a.Id == id && a.IsDeleted == false);
         }
 
@@ -34,7 +36,9 @@ namespace FarmProduceManagement.Repositories.Implementations
         {
             return _context.Transactions
             .Where(a => a.IsDeleted == false)
+            .Include(a => a.Farmer)
             .Include(a => a.TransactionProduces)
+            .ThenInclude(a => a.Produce)
             .SingleOrDefault(expression);
         }
 
@@ -42,6 +46,9 @@ namespace FarmProduceManagement.Repositories.Implementations
         {
             return _context.Transactions
            .Where(a => a.IsDeleted == false)
+            .Include(a => a.Farmer)
+            .Include(a => a.TransactionProduces)
+            .ThenInclude(a => a.Produce)
            .ToList();
         }
 
@@ -49,7 +56,9 @@ namespace FarmProduceManagement.Repositories.Implementations
         {
             return _context.Transactions
             .Where(a => ids.Contains(a.Id) && a.IsDeleted == false)
+            .Include(a => a.Farmer)
             .Include(a => a.TransactionProduces)
+            .ThenInclude(a => a.Produce)
             .ToList();
         }
 
@@ -57,9 +66,15 @@ namespace FarmProduceManagement.Repositories.Implementations
         {
             return _context.Transactions
             .Where(expression)
+            .Include(a => a.Farmer)
             .Include(a => a.TransactionProduces)
+            .ThenInclude(a => a.Produce)
             .ToList();
         }
 
+        public string GenerateTransactionRegNum()
+        {
+            return "FPM/TRA/00" + $"{GetAll().Count() + 1}";
+        }
     }
 }

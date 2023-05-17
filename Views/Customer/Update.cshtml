@@ -1,7 +1,15 @@
 ﻿@model FarmProduceManagement.Models.Dtos.CustomerDto;
 
-<h2>Customer Update Form</h2>
+@{Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Customer Update Form";}
 
+<div class="text-center"><h1>@ViewData["Title"]</h1></div>
+<div class="row">
+      <div class="col-md-2">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+        </div>
+    <div class="col-md-10">
+           
 <div>
     <div>@TempData["message"]</div>
     <form asp-action="Update" enctype="multipart/form-data">
@@ -56,4 +64,16 @@
         </div>
     </form>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+    </div>
+    
+</div>
+
+
+
 

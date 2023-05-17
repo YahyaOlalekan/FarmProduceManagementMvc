@@ -36,39 +36,8 @@
         <div class="col-md-4">
         </div>
     </div>
-
-
-    
 </div>
 
-
-
-
-
-
-
-
-
-@* <div>
-    <p><b>Use this Form To Login</b></p>
-    <form asp-action="Login">
-        <div class="form-control">
-            <div>
-                <label asp-for="Email"></label>
-                <input type="text" asp-for="Email" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-             <div>
-                <label asp-for="Password"></label>
-                <input type="password" asp-for="Password"/>
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div>
-                <input class="btn btn-primary" type="submit" value="Submit"/>
-            </div>
-        </div>
-    </form>
-</div> *@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

@@ -1,10 +1,29 @@
 @model FarmProduceManagement.Models.Dtos.RoleDto
 
-<div>
-    <h4>
-        Name : @Model.RoleName
-    </h4>
-    <P>
-        Description : @Model.RoleDescription
-    </P>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "";
+}
+
+<div class="text-center">
+    <h1>@ViewData["Title"]</h1>
 </div>
+<div class="row">
+    <div class="col-md-2">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+    </div>
+    <div class="col-md-10">
+        <div>
+            <h4>
+                Name : @Model.RoleName
+            </h4>
+            <P>
+                Description : @Model.RoleDescription
+            </P>
+        </div>
+    </div>
+
+</div>
+
+
+

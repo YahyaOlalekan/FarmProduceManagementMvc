@@ -38,8 +38,8 @@ namespace FarmProduceManagement.Services.Implementations
                 };
             }
 
-            var phoneExist = _farmerRepository.Get(f => f.User.PhoneNumber == model.PhoneNumber);
-            if (farmerExist != null)
+            var phoneNumber = _farmerRepository.Get(f => f.User.PhoneNumber == model.PhoneNumber);
+            if (phoneNumber != null)
             {
                 return new BaseResponse<FarmerDto>
                 {
@@ -135,7 +135,8 @@ namespace FarmProduceManagement.Services.Implementations
 
         public BaseResponse<FarmerDto> Get(string id)
         {
-            var farmer = _farmerRepository.Get(g => (g.Id == id || g.UserId == id) && g.FarmerRegStatus == Models.Enums.FarmerRegStatus.Approved);
+            // var farmer = _farmerRepository.Get(g => (g.Id == id || g.UserId == id) && g.FarmerRegStatus == Models.Enums.FarmerRegStatus.Approved);
+            var farmer = _farmerRepository.Get(g => (g.Id == id || g.UserId == id));
             if (farmer != null)
             {
 
@@ -147,7 +148,7 @@ namespace FarmProduceManagement.Services.Implementations
                     {
                         Id = farmer.Id,
                         RegistrationNumber = farmer.RegistrationNumber,
-                       // Wallet = farmer.Wallet,
+                        Wallet = farmer.Wallet,
                         FirstName = farmer.User.FirstName,
                         LastName = farmer.User.LastName,
                         Email = farmer.User.Email,
@@ -177,7 +178,7 @@ namespace FarmProduceManagement.Services.Implementations
                 };
             }
 
-            var approvedFarmer = farmers.Where(x => x.FarmerRegStatus == FarmerRegStatus.Approved);
+            // var approvedFarmer = farmers.Where(x => x.FarmerRegStatus == FarmerRegStatus.Approved);
             return new BaseResponse<IEnumerable<FarmerDto>>
             {
                 Message = "Successful",
@@ -211,7 +212,7 @@ namespace FarmProduceManagement.Services.Implementations
                 };
             }
 
-            approvedFarmer.FarmerRegStatus = (FarmerRegStatus)model.Status;
+            approvedFarmer.FarmerRegStatus = model.Status;
             _farmerRepository.Update(approvedFarmer);
             _farmerRepository.Save();
 
@@ -285,6 +286,38 @@ namespace FarmProduceManagement.Services.Implementations
         {
             var penderFarmers = _farmerRepository.GetAll();
             var farmers = penderFarmers.Where(x => x.FarmerRegStatus == FarmerRegStatus.Pending).ToList();
+            if (farmers == null)
+            {
+                return new BaseResponse<IEnumerable<FarmerDto>>
+                {
+                    Message = "No Farmer found",
+                    Status = false,
+                };
+            }
+
+            return new BaseResponse<IEnumerable<FarmerDto>>
+            {
+                Message = "Successful",
+                Status = true,
+                Data = farmers.Select(f => new FarmerDto
+                {
+                    Id = f.Id,
+                    RegistrationNumber = f.RegistrationNumber,
+                    // Wallet = f.Wallet,
+                    UserId = f.UserId,
+                    FirstName = f.User.FirstName,
+                    LastName = f.User.LastName,
+                    Email = f.User.Email,
+                    PhoneNumber = f.User.PhoneNumber,
+                    Address = f.User.Address,
+                    ProfilePicture = f.User.ProfilePicture,
+                }).ToList()
+            };
+        }
+        public BaseResponse<IEnumerable<FarmerDto>> GetDeclinedFarmers()
+        {
+            var declinedFarmers = _farmerRepository.GetAll();
+            var farmers = declinedFarmers.Where(x => x.FarmerRegStatus == FarmerRegStatus.Declined).ToList();
             if (farmers == null)
             {
                 return new BaseResponse<IEnumerable<FarmerDto>>

@@ -1,23 +1,42 @@
 @model FarmProduceManagement.Models.Dtos.UpdateRoleRequestModel
 
-<div>
-    <div>@TempData["message"]</div>
-    <div>
-        <form asp-action="Update">
-            <div>
-                <label asp-for="RoleName"></label>
-                <input type="text" asp-for="RoleName">
-                <span asp-validation-for="RoleName"></span>
-            </div>
-            <div>
-                <label asp-for="RoleDescription"></label>
-                <input type="text" asp-for="RoleDescription">
-                <span asp-validation-for="RoleDescription"></span>
-            </div>
-            <div>
-                <input class="btn btn-primary" type="submit" value="Submit"/>
-            </div>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "";
+}
 
-        </form>
-    </div>
+<div class="text-center">
+    <h1>@ViewData["Title"]</h1>
 </div>
+<div class="row">
+    <div class="col-md-2">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+    </div>
+    <div class="col-md-10">
+        <div>
+            <div>@TempData["message"]</div>
+            <div>
+                <form asp-action="Update">
+                    <div>
+                        <label asp-for="RoleName"></label>
+                        <input type="text" asp-for="RoleName">
+                        <span asp-validation-for="RoleName"></span>
+                    </div>
+                    <div>
+                        <label asp-for="RoleDescription"></label>
+                        <input type="text" asp-for="RoleDescription">
+                        <span asp-validation-for="RoleDescription"></span>
+                    </div>
+                    <div>
+                        <input class="btn btn-primary" type="submit" value="Submit" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FarmProduceManagement.Models.Entities
 {
-    public class Admin :BaseEntity
+    public class Admin : BaseEntity
     {
         public decimal CompanyWallet { get; set; }
         public string UserId { get; set; }

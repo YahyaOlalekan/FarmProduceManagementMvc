@@ -7,7 +7,7 @@ namespace FarmProduceManagement.Models.Entities
 {
     public class TransactionProduce : BaseEntity
     {
-        public decimal Amount { get; set; }
+        public decimal Price { get; set; }
         public double Quantity { get; set; }
         public string TransactionId { get; set; }
         public Transaction Transaction { get; set; }

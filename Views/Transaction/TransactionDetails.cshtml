@@ -1,26 +1,47 @@
 ﻿@model CreateTransactionRequestModel
 
-<form asp-action="TransactionDetails">
-  
-    <div id="productDetails">
-        <div class="productRow">
-            <label name="ProduceId">Product:</label>
-            <input type="text" id="product1" name="productId">
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "";
+}
 
-            <label name="Quantity">Quantity:</label>
-            <input type="number" id="quantity1" name="Quantity">
 
-            <button type="button" class="removeButton">Remove</button>
-        </div>
+<div class="row">
+    <div class="col-md-2">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+    </div>
+    <div class="col-md-10">
+        <div class="text-center">
+    <h1>@ViewData["Title"]</h1>
+    </div>
+        <form asp-action="TransactionDetails">
+
+            <div id="productDetails">
+                <div class="productRow">
+                    <label name="ProduceId">Product:</label>
+                    <input type="text" id="product1" name="productId">
+
+                    <label name="Quantity">Quantity:</label>
+                    <input type="number" id="quantity1" name="Quantity">
+
+                    <button type="button" class="removeButton">Remove</button>
+                </div>
+            </div>
+
+            <button type="button" id="addProductButton">Add Product</button>
+
+            <button type="submit">Submit</button>
+        </form>
+
     </div>
 
-    <button type="button" id="addProductButton">Add Product</button>
+</div>
 
-    <button type="submit">Submit</button>
-</form>
 
-@section Scripts
-    {
+
+
+@* 
+@section Scripts{
     <script>
         // Get the add product button and product details div
         var addProductButton = document.getElementById("addProductButton");
@@ -67,6 +88,15 @@
 
             var quantityInput = document.createElement("input");
             quantityInput.setAttribute("type", "number");
-            quantityInput.setAttribute("id", "quantity"
+            quantityInput.setAttribute("id", "quantity");
+        }
     </script>
-}
+} *@
+
+
+
+
+
+
+
+

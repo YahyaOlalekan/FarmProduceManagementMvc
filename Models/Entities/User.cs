@@ -18,6 +18,10 @@ namespace FarmProduceManagement.Models.Entities
          public string ProfilePicture { get; set; }
         public string RoleId { get; set; }
         public Role Role { get; set; }
-        
+
+        internal static object FindFirst(string role)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

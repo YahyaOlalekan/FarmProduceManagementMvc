@@ -1,10 +1,28 @@
 @model FarmProduceManagement.Models.Dtos.CategoryDto
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "";
+}
 
-<div>
-    <h4>
-        Name : @Model.NameOfCategory
-    </h4>
-    <P>
-        Description : @Model.DescriptionOfCategory
-    </P>
+<div class="text-center">
+    <h1>@ViewData["Title"]</h1>
 </div>
+<div class="row">
+    <div class="col-md-2">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+    </div>
+    <div class="col-md-10">
+
+        <div>
+            <h4>
+                Name : @Model.NameOfCategory
+            </h4>
+            <P>
+                Description : @Model.DescriptionOfCategory
+            </P>
+        </div>
+    </div>
+
+</div>
+
+

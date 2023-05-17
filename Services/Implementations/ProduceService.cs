@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using FarmProduceManagement.Models.Dtos;
 using FarmProduceManagement.Models.Entities;
+using FarmProduceManagement.Models.Enums;
 using FarmProduceManagement.Repositories.Interfaces;
 using FarmProduceManagement.Services.Interfaces;
 
@@ -14,16 +15,20 @@ namespace FarmProduceManagement.Services.Implementations
 {
     public class ProduceService : IProduceService
     {
+        private readonly ICartItemRepository _cartItemRepository;
         private readonly IFarmerRepository _farmerRepository;
         private readonly IProduceRepository _produceRepository;
+        private readonly IProductRepository _productRepository;
         private readonly ITransactionRepository _transactionRepository;
         private readonly ITransactionProduceRepository _transactionProduceRepository;
         private readonly IHttpContextAccessor _httpAccessor;
 
-        public ProduceService(IFarmerRepository farmerRepository, IProduceRepository produceRepository, ITransactionRepository transactionRepository, ITransactionProduceRepository transactionProduceRepository, IHttpContextAccessor httpAccessor)
+        public ProduceService(ICartItemRepository cartItemRepository, IFarmerRepository farmerRepository, IProduceRepository produceRepository, IProductRepository productRepository, ITransactionRepository transactionRepository, ITransactionProduceRepository transactionProduceRepository, IHttpContextAccessor httpAccessor)
         {
+            _cartItemRepository = cartItemRepository;
             _farmerRepository = farmerRepository;
             _produceRepository = produceRepository;
+            _productRepository = productRepository;
             _transactionRepository = transactionRepository;
             _transactionProduceRepository = transactionProduceRepository;
             _httpAccessor = httpAccessor;
@@ -172,13 +177,48 @@ namespace FarmProduceManagement.Services.Implementations
             };
         }
 
+        public BaseResponse<ProduceDto> GetByStatus(Status status)
+        {
+            throw new NotImplementedException();
+        }
 
-        public BaseResponse<ProduceDto> Sell(string userId, SellProduceRequestModel model)
+
+        // public BaseResponse<IEnumerable<ProduceDto>> GetByStatus(bool status)
+        // {
+        //     var produce = _produceRepository.GetSelected(p => p.CategoryId == id || p.Id == id);
+        //     if (produce == null)
+        //     {
+        //         return new BaseResponse<IEnumerable<ProduceDto>>
+        //         {
+        //             Message = "Not found",
+        //             Status = false,
+        //         };
+        //     }
+        //     return new BaseResponse<IEnumerable<ProduceDto>>
+        //     {
+        //         Message = "Found",
+        //         Status = true,
+        //         Data = produce.Select(p => new ProduceDto
+        //         {
+        //             Id = p.Id,
+        //             ProduceName = p.ProduceName,
+        //             /*NameOfCategory = p.Category.NameOfCategory,*/
+        //             CostPrice = p.CostPrice,
+        //             UnitOfMeasurement = p.UnitOfMeasurement,
+        //             QuantityToBuy = p.QuantityToBuy,
+
+        //         })
+        //     };
+        // }
+
+
+        public BaseResponse<ProduceDto> Purchase(string id, PurchaseProduceRequestModel model)
         {
             var loginId = _httpAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var produce = _produceRepository.Get(a => a.Id == model.ProduceId);
 
-            if (produce == null)
+            var cartItems = _cartItemRepository.GetSelected(p => p.UserId == loginId);
+
+            if (cartItems == null)
             {
                 return new BaseResponse<ProduceDto>
                 {
@@ -187,38 +227,74 @@ namespace FarmProduceManagement.Services.Implementations
                 };
             }
 
-            var farmer = _farmerRepository.Get(f => f.UserId == userId);
+            var totalAmount = cartItems.Select(p => p.TotalCostPrice).Sum();
+            var totalQuantity = cartItems.Select(p => p.QuantityToBuy).Sum();
+
+            var farmer = _farmerRepository.Get(f => f.UserId == loginId);
 
 
             var transaction = new Transaction{
-                TransactionNum = "",
-                FarmerId = farmer.Id
+                TransactionNum = _transactionRepository.GenerateTransactionRegNum(),
+                CreatedBy = loginId,
+                FarmerId = farmer.Id,
+                TotalAmount = totalAmount,
+                TotalQuantity = totalQuantity,
+                Status = TransactionStatus.Pending
             };
 
-
-            var transactionProduce = new TransactionProduce{
+            var transactionProduce = cartItems.Select(p => new TransactionProduce{
                 TransactionId = transaction.Id,
-                ProduceId = produce.Id
-            };
+                ProduceId = p.ProduceId,
+                Quantity = p.QuantityToBuy,
+                Price = p.CostPrice,
+                CreatedBy = loginId,
+            });
 
 
+
+             // Add transactionProduct to database
+            foreach (var item in transactionProduce)
+            {
+                _transactionProduceRepository.Create(item);
+            }
+            
+            
+            
+            // _productRepository.Create(product);
             _transactionRepository.Create(transaction);
-            _transactionProduceRepository.Create(transactionProduce);
+
+
+             // Add transactionProduct to database
+            foreach (var item in cartItems)
+            {
+                _cartItemRepository.Delete(item);
+            }
+
+           
+
             _produceRepository.Save();
+            
+            // Delete cart Items
+            // cartItems.Select(item => _cartItemRepository.Delete(item));
 
             return new BaseResponse<ProduceDto>
             {
                 Message = "Successful",
                 Status = true,
-                Data = new ProduceDto{
-                    Id = produce.Id,
-                    ProduceName = produce.ProduceName,
-                    CategoryId = produce.CategoryId,
-                    QuantityToBuy = model.QuantityToBuy,
-                    CostPrice = produce.CostPrice,
-                    UnitOfMeasurement = produce.UnitOfMeasurement,
-                    // NameOfCategory = produce.Category.NameOfCategory,
-                }
+                // Data = new ProduceDto{
+                //     Id = produce.Id,
+                //     ProduceName { get; set; }
+                //     CategoryId { get; set; }
+                //     QuantityToBuy { get; set; }
+                //     CostPrice { get; set; }
+                //     SellingPrice { get; set; }
+                //     UnitOfMeasurement { get; set; }
+                //     NameOfCategory { get; set; }
+                //     Status { get; set; } = Status.Pending;
+                //     DescriptionOfCategory { get; set; }
+
+                //     List<TransactionProduceDto> TransactionProduces { get; set; }
+                // }
             };
 
         }

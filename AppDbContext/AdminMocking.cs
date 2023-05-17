@@ -13,6 +13,7 @@ namespace FarmProduceManagement.AppDbContext
             using (var service = _applicationBuilder.ApplicationServices.CreateScope())
             {
                 var _context = service.ServiceProvider.GetService<Context>();
+
                 if (!_context.Users.Any())
                 {
                     var role = new Role
@@ -33,8 +34,17 @@ namespace FarmProduceManagement.AppDbContext
                         RoleId = role.Id
                     };
                    
+                    var admin = new Admin
+                    {
+                        UserId = user.Id,
+                        CompanyWallet = 0,
+                        CreatedBy = "System",
+                        ModifiedBy = "System"
+                    };
+                   
                     _context.Roles.Add(role);
                     _context.Users.Add(user);
+                    _context.Admin.Add(admin);
                     _context.SaveChanges();
                 }
             }

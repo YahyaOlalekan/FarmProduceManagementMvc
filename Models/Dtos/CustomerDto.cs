@@ -58,7 +58,7 @@ namespace FarmProduceManagement.Models.Dtos
         public string LastName { get; set; }
         [Required, MaxLength(14), MinLength(11)]
         [Display(Name = "Phone Number")]
-         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+        // [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$",
         ErrorMessage = "Enter a valid email address!")]

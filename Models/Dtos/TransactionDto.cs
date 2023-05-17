@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using FarmProduceManagement.Models.Enums;
 
 namespace FarmProduceManagement.Models.Dtos
 {
@@ -11,14 +12,17 @@ namespace FarmProduceManagement.Models.Dtos
         public string Id { get; set; }
         public string TransactionNum { get; set; }
         public string FarmerId { get; set; }
-        public string ManagerId { get; set; }
-        public List<ManagerDto> Managers { get; set; }
-        public List<FarmerDto> Farmers { get; set; }
+        public FarmerDto Farmer { get; set; }
         public List<TransactionProduceDto> TransactionProduces { get; set; }
         public string ProduceName { get; set; }
-        public double QuantityAvailable { get; set; }
-        public decimal Price { get; set; }
+        public TransactionStatus Status  { get; set; }
+        public double TotalQuantity { get; set; }
+        public decimal TotalAmount { get; set; }
         public string UnitOfMeasurement { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime DateCreated { get; set; }
+        public string ModifiedBy { get; set; }
+        public DateTime ModifiedOn { get; set; }
     }
 
     public class CreateTransactionRequestModel

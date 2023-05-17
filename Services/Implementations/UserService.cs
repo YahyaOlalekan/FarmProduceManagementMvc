@@ -11,10 +11,12 @@ namespace FarmProduceManagement.Services.Implementations
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IFarmerRepository _farmerRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IFarmerRepository farmerRepository)
         {
             _userRepository = userRepository;
+            _farmerRepository = farmerRepository;
         }
 
         public BaseResponse<UserDto> Get(string id)
@@ -91,6 +93,27 @@ namespace FarmProduceManagement.Services.Implementations
                         RoleDescription = user.Role.RoleDescription
                     }
                 };
+
+                // var farmer = _farmerRepository.Get(f => f.Id == user.Id);
+                // if(farmer.FarmerRegStatus != Models.Enums.FarmerRegStatus.Approved)
+                // {
+                //     if(farmer.FarmerRegStatus == Models.Enums.FarmerRegStatus.Pending)
+                //     {
+                //          new BaseResponse<FarmerDto>
+                //          {
+                //             Message = "The approval of your application is still pending!",
+                //             Status = false,
+                //          };
+                //     }
+                //     else if(farmer.FarmerRegStatus == Models.Enums.FarmerRegStatus.Declined)
+                //     {
+                //           new BaseResponse<FarmerDto>
+                //          {
+                //             Message = "Sorry, your application is declined!",
+                //             Status = false,
+                //          }; 
+                //     }
+                // }
                 return userLogin;
 
             }

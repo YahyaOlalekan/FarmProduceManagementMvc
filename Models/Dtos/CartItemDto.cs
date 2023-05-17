@@ -1,0 +1,44 @@
+using FarmProduceManagement.Models.Entities;
+using FarmProduceManagement.Models.Enums;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace FarmProduceManagement.Models.Dtos
+{
+    public class CartItemDto
+    {
+        public string Id { get; set; }
+        public string ProduceId { get; set; }
+        public Produce Produce { get; set; }
+        public double QuantityToBuy { get; set; }
+        public decimal CostPrice { get; set; }
+        public string NameOfCategory { get; set; }
+        public string UnitOfMeasurement { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
+        
+    }
+
+    public class CreateCartItemRequestModel
+    {
+        [Required, MinLength(3), MaxLength(50)]
+        [Display(Name = "Name")]
+        public string ProduceId { get; set; }
+        [Required]
+        public double QuantityToBuy { get; set; }
+        [Required]
+        [Display(Name = "Price")]
+        public decimal CostPrice { get; set; }
+        [Required]
+        [Display(Name = "Unit Of Measurement")]
+        public string UnitOfMeasurement { get; set; }
+        [Required]
+        [Display(Name = "Category")]
+        public string CategoryId { get; set; }
+        
+    }
+}

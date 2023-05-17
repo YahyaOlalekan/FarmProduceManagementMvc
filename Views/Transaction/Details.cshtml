@@ -1,0 +1,95 @@
+﻿@model FarmProduceManagement.Models.Dtos.TransactionDto
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewData["Title"] = "Transaction Details";
+
+    var name = User.FindFirst(ClaimTypes.Name)?.Value;
+    var role = User.FindFirst(ClaimTypes.Role)?.Value;
+}
+
+
+<div class="row">
+    <div class="col-md-2">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+    </div>
+    <div class="col-md-10">
+        <h1>@ViewData["Title"]</h1>
+
+     <div>
+            <h4>
+                Transaction No : @Model.TransactionNum
+            </h4>
+            <p>
+                Name : @name
+            </p>
+            <P>
+                Total Quantity : @Model.TotalQuantity
+            </P>
+            <P>
+                Total Price : @Model.TotalAmount
+            </P>
+            <P>
+                Date Created : @Model.DateCreated
+            </P>
+            <P>
+                Status : @Model.Status
+            </P>
+            <table class="table">
+                <tr>
+                    <th colspan="5">Items</th>
+                </tr>
+                <tr>
+                    <th>Sn</th>
+                    <th>Produce Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+                @{
+
+                    var serialNo = 1;
+                    foreach (var item in Model.TransactionProduces)
+                    {
+                        var total = (decimal)item.Quantity * item.Price;
+                        <tr>
+                            <td>@serialNo</td>
+                            <td>@item.Produce.ProduceName</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Price</td>
+                            <td>@total</td>
+                        </tr>
+                        serialNo++;
+                    }
+                }
+            </table>
+        </div>
+        @{
+            if (role == "Manager" && @Model.Status == TransactionStatus.Pending)
+            {
+                <div class="">
+                    @* <button>Not Approve</button> *@
+                    <a class="btn btn-primary" asp-action="Approve" asp-route-id="@Model.Id">Approve</a>
+                    <a class="btn btn-warning">Not Approve</a>
+                </div>
+                <div class=""></div>
+
+            }
+            else if (role == "Manager" && @Model.Status == TransactionStatus.Approved)
+            {
+                <div class="">
+                    <a class="btn btn-primary" asp-action="Deliver" asp-route-id="@Model.Id">Delivered</a>
+                    <a class="btn btn-warning">Not Delivered</a>
+                </div>
+                <div class=""></div>
+
+            }
+        }
+
+    </div>
+    <div class="col-md-2">
+    </div>
+</div>
+
+
+

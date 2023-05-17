@@ -28,5 +28,10 @@ namespace FarmProduceManagement.Repositories.Implementations
             _context.Set<T>().Update(entity);
             return entity;
         }
+        public T Delete(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+            return entity;
+        }
     }
 }

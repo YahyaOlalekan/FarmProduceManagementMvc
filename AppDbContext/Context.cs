@@ -28,6 +28,7 @@ namespace FarmProduceManagement.AppDbContext
         public DbSet<FarmerManager> FarmerManagers { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
         //public DbSet<CustomerManager> CustomerManagers { get; set; }
 
 

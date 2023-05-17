@@ -15,5 +15,6 @@ namespace FarmProduceManagement.Repositories.Interfaces
         IEnumerable<Transaction> GetSelected(List<string> ids);
         IEnumerable<Transaction> GetSelected(Expression<Func<Transaction, bool>> expression);
         IEnumerable<Transaction> GetAll();
+        string GenerateTransactionRegNum();
     }
 }
