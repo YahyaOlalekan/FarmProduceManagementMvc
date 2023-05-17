@@ -29,7 +29,7 @@ namespace FarmProduceManagement.Controllers
         public IActionResult Login(LoginUserRequestModel model)
         {
             var user = _userService.Login(model);
-            TempData["meassage"] = user.Message;
+            TempData["message"] = user.Message;
             if (user.Status)
             {
                 var claims = new List<Claim>

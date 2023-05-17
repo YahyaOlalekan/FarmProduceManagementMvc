@@ -177,40 +177,10 @@ namespace FarmProduceManagement.Services.Implementations
             };
         }
 
-        public BaseResponse<ProduceDto> GetByStatus(Status status)
-        {
-            throw new NotImplementedException();
-        }
+       
 
 
-        // public BaseResponse<IEnumerable<ProduceDto>> GetByStatus(bool status)
-        // {
-        //     var produce = _produceRepository.GetSelected(p => p.CategoryId == id || p.Id == id);
-        //     if (produce == null)
-        //     {
-        //         return new BaseResponse<IEnumerable<ProduceDto>>
-        //         {
-        //             Message = "Not found",
-        //             Status = false,
-        //         };
-        //     }
-        //     return new BaseResponse<IEnumerable<ProduceDto>>
-        //     {
-        //         Message = "Found",
-        //         Status = true,
-        //         Data = produce.Select(p => new ProduceDto
-        //         {
-        //             Id = p.Id,
-        //             ProduceName = p.ProduceName,
-        //             /*NameOfCategory = p.Category.NameOfCategory,*/
-        //             CostPrice = p.CostPrice,
-        //             UnitOfMeasurement = p.UnitOfMeasurement,
-        //             QuantityToBuy = p.QuantityToBuy,
-
-        //         })
-        //     };
-        // }
-
+       
 
         public BaseResponse<ProduceDto> Purchase(string id, PurchaseProduceRequestModel model)
         {
@@ -251,20 +221,15 @@ namespace FarmProduceManagement.Services.Implementations
             });
 
 
-
-             // Add transactionProduct to database
             foreach (var item in transactionProduce)
             {
                 _transactionProduceRepository.Create(item);
             }
             
             
-            
-            // _productRepository.Create(product);
             _transactionRepository.Create(transaction);
 
 
-             // Add transactionProduct to database
             foreach (var item in cartItems)
             {
                 _cartItemRepository.Delete(item);
@@ -274,27 +239,13 @@ namespace FarmProduceManagement.Services.Implementations
 
             _produceRepository.Save();
             
-            // Delete cart Items
             // cartItems.Select(item => _cartItemRepository.Delete(item));
 
             return new BaseResponse<ProduceDto>
             {
                 Message = "Successful",
                 Status = true,
-                // Data = new ProduceDto{
-                //     Id = produce.Id,
-                //     ProduceName { get; set; }
-                //     CategoryId { get; set; }
-                //     QuantityToBuy { get; set; }
-                //     CostPrice { get; set; }
-                //     SellingPrice { get; set; }
-                //     UnitOfMeasurement { get; set; }
-                //     NameOfCategory { get; set; }
-                //     Status { get; set; } = Status.Pending;
-                //     DescriptionOfCategory { get; set; }
 
-                //     List<TransactionProduceDto> TransactionProduces { get; set; }
-                // }
             };
 
         }
@@ -335,10 +286,39 @@ namespace FarmProduceManagement.Services.Implementations
                 Message = "Unable to Update",
                 Status = false,
             };
-
-
-
         }
+
+
+        
+        
+         // public BaseResponse<IEnumerable<ProduceDto>> GetByStatus(bool status)
+        // {
+        //     var produce = _produceRepository.GetSelected(p => p.CategoryId == id || p.Id == id);
+        //     if (produce == null)
+        //     {
+        //         return new BaseResponse<IEnumerable<ProduceDto>>
+        //         {
+        //             Message = "Not found",
+        //             Status = false,
+        //         };
+        //     }
+        //     return new BaseResponse<IEnumerable<ProduceDto>>
+        //     {
+        //         Message = "Found",
+        //         Status = true,
+        //         Data = produce.Select(p => new ProduceDto
+        //         {
+        //             Id = p.Id,
+        //             ProduceName = p.ProduceName,
+        //             /*NameOfCategory = p.Category.NameOfCategory,*/
+        //             CostPrice = p.CostPrice,
+        //             UnitOfMeasurement = p.UnitOfMeasurement,
+        //             QuantityToBuy = p.QuantityToBuy,
+
+        //         })
+        //     };
+        // }
+
     }
 }
 

@@ -45,17 +45,6 @@ namespace FarmProduceManagement.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult ProduceNumber()
-        {
-            return View();
-        }
-
-        // [HttpPost]
-        // public IActionResult ProduceNumber()
-        // {
-        //     return RedirectToAction();
-        // }
 
         [HttpGet]
         public IActionResult Delete(string id)
@@ -109,12 +98,6 @@ namespace FarmProduceManagement.Controllers
         [HttpGet]
         public IActionResult Purchase()
         {
-            // var categories = _categoryService.GetAll();
-
-            // var model = new PurchaseProduceRequestModel
-            // {
-            //     CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory"),
-            // };
 
             return View();
         }
@@ -136,12 +119,60 @@ namespace FarmProduceManagement.Controllers
                 }
             }
 
-            // var categories = _categoryService.GetAll();
-            // model.CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory");
             return View(model);
         }
 
-         // [HttpPost]
+
+        [HttpGet]
+        public IActionResult Update()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Update(string id, UpdateProduceRequestModel produceModel)
+        {
+            var updateProduce = _produceService.Update(id, produceModel);
+            TempData["message"] = updateProduce.Message;
+            if (updateProduce.Status)
+            {
+                return RedirectToAction("List");
+            }
+            return View(produceModel);
+        }
+
+
+
+
+
+        //         [HttpGet]
+        // public IActionResult Purchase()
+        // {
+        //     // var categories = _categoryService.GetAll();
+
+        //     // var model = new PurchaseProduceRequestModel
+        //     // {
+        //     //     CategoryList = new SelectList(categories.Data, "Id", "NameOfCategory"),
+        //     // };
+
+        //     return View();
+        // }
+
+
+
+                // [HttpGet]
+        // public IActionResult ProduceNumber()
+        // {
+        //     return View();
+        // }
+
+        // [HttpPost]
+        // public IActionResult ProduceNumber()
+        // {
+        //     return RedirectToAction();
+        // }
+
+
+                 // [HttpPost]
         // public IActionResult Sell(SellProduceRequestModel model)
         // {
         //     // var produce = _produceService.Create(model);
@@ -171,21 +202,5 @@ namespace FarmProduceManagement.Controllers
         // }
 
 
-        [HttpGet]
-        public IActionResult Update()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Update(string id, UpdateProduceRequestModel produceModel)
-        {
-            var updateProduce = _produceService.Update(id, produceModel);
-            TempData["message"] = updateProduce.Message;
-            if (updateProduce.Status)
-            {
-                return RedirectToAction("List");
-            }
-            return View(produceModel);
-        }
     }
 }

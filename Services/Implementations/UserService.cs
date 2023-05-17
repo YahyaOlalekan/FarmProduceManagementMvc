@@ -75,9 +75,38 @@ namespace FarmProduceManagement.Services.Implementations
         public BaseResponse<UserDto> Login(LoginUserRequestModel model)
         {
             var user = _userRepository.Get(a => a.Email == model.Email && a.Password == model.Password);
+
             if (user != null)
             {
-                var userLogin = new BaseResponse<UserDto>
+
+                if(user.Role.RoleName == "Farmer")
+                {
+                    
+                    var farmer = _farmerRepository.Get(f => f.UserId == user.Id);
+                    if(farmer.FarmerRegStatus != Models.Enums.FarmerRegStatus.Approved)
+                    {
+                        if(farmer.FarmerRegStatus == Models.Enums.FarmerRegStatus.Pending)
+                        {
+                            return new BaseResponse<UserDto>
+                            {
+                                Message = "The approval of your application is still pending!",
+                                Status = false,
+                            };
+                        }
+                        else if(farmer.FarmerRegStatus == Models.Enums.FarmerRegStatus.Declined)
+                        {
+                            return new BaseResponse<UserDto>
+                            {
+                                Message = "Sorry, your application is declined!",
+                                Status = false,
+                            }; 
+                        }
+                    }
+                }
+
+
+
+                return new BaseResponse<UserDto>
                 {
                     Message = "Login Successful",
                     Status = true,
@@ -93,28 +122,6 @@ namespace FarmProduceManagement.Services.Implementations
                         RoleDescription = user.Role.RoleDescription
                     }
                 };
-
-                // var farmer = _farmerRepository.Get(f => f.Id == user.Id);
-                // if(farmer.FarmerRegStatus != Models.Enums.FarmerRegStatus.Approved)
-                // {
-                //     if(farmer.FarmerRegStatus == Models.Enums.FarmerRegStatus.Pending)
-                //     {
-                //          new BaseResponse<FarmerDto>
-                //          {
-                //             Message = "The approval of your application is still pending!",
-                //             Status = false,
-                //          };
-                //     }
-                //     else if(farmer.FarmerRegStatus == Models.Enums.FarmerRegStatus.Declined)
-                //     {
-                //           new BaseResponse<FarmerDto>
-                //          {
-                //             Message = "Sorry, your application is declined!",
-                //             Status = false,
-                //          }; 
-                //     }
-                // }
-                return userLogin;
 
             }
             return new BaseResponse<UserDto>

@@ -13,7 +13,7 @@ namespace FarmProduceManagement.Services.Interfaces
         BaseResponse<ProduceDto> Purchase(string id, PurchaseProduceRequestModel model);
         BaseResponse<ProduceDto> Update(string id, UpdateProduceRequestModel model);
         BaseResponse<ProduceDto> Get(string id);
-        BaseResponse<ProduceDto> GetByStatus(Status status);
+        //BaseResponse<ProduceDto> GetByStatus(Status status);
         BaseResponse<IEnumerable<ProduceDto>> GetAll();
         BaseResponse<IEnumerable<ProduceDto>> GetByCategoryId(string categoryId);
         BaseResponse<ProduceDto> Delete(string id);
