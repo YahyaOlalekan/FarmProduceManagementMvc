@@ -9,7 +9,7 @@ namespace FarmProduceManagement.Models.Entities
         public string UserId { get; set; }
         public User User { get; set; }
 
-        //public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
        // public ICollection<CustomerManager> CustomerManagers { get; set; } = new HashSet<CustomerManager>();
 
     }

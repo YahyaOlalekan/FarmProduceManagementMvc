@@ -10,9 +10,11 @@ namespace FarmProduceManagement.Services.Interfaces
 {
     public interface ITransactionService
     {
-        BaseResponse<TransactionDto> ApproveTransaction(string userId, string id);
+        BaseResponse<TransactionDto> Approved(string userId, string id);
+        BaseResponse<TransactionDto> Declined(string userId, string id);
         BaseResponse<TransactionDto> Create(CreateTransactionRequestModel model);
-        BaseResponse<TransactionDto> DeliveredTransaction(string id);
+        BaseResponse<TransactionDto> Delivered(string id);
+        BaseResponse<TransactionDto> NotDelivered(string id);
         BaseResponse<TransactionDto> Update(string id, UpdateTransactionRequestModel model);
         BaseResponse<TransactionDto> Get(string id);
         BaseResponse<IEnumerable<TransactionDto>> GetAll();

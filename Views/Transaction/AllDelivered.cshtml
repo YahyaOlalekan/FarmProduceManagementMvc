@@ -15,6 +15,7 @@
         </div>
     <div class="col-md-10 border">
         <div class="text-center"><h1>@ViewData["Title"]</h1></div>
+        <div class="text-center" style="color : red">@TempData["message"]</div> 
          <div>
         <table class="table">
              <tr>
@@ -43,7 +44,7 @@
                 }
                 else{
                     <tr>  
-                        <td colspan="5" class="text-center">No pending transaction</td>
+                        <td colspan="5" class="text-center">No data</td>
                     </tr>
                 }
                 

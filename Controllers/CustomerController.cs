@@ -76,19 +76,33 @@ namespace FarmProduceManagement.Controllers
         public IActionResult Update(string id)
         {
             var result = _customerService.Get(id);
-            return View(result.Data);
+            var model = new UpdateCustomerRequestModel
+            {
+                Address = result.Data.Address,
+                Email = result.Data.Email,
+                FirstName = result.Data.FirstName,
+                LastName = result.Data.LastName,
+                PhoneNumber = result.Data.PhoneNumber,
+                // ProfilePicture = result.Data.ProfilePicture,
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult Update(string id, UpdateCustomerRequestModel model)
         {
-            var result = _customerService.Update(id, model);
-            TempData["message"] = result.Message;
-            if (result.Status)
+
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("List");
+                var result = _customerService.Update(id, model);
+                TempData["message"] = result.Message;
+                if (result.Status)
+                {
+                    return RedirectToAction("List");
+                }
             }
-            return View(result);
+             return View(model);
         }
 
 

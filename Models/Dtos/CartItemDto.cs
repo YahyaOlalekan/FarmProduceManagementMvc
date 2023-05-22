@@ -14,8 +14,8 @@ namespace FarmProduceManagement.Models.Dtos
         public string Id { get; set; }
         public string ProduceId { get; set; }
         public Produce Produce { get; set; }
-        public double QuantityToBuy { get; set; }
-        public decimal CostPrice { get; set; }
+        public double Quantity { get; set; }
+        public decimal Price { get; set; }
         public string NameOfCategory { get; set; }
         public string UnitOfMeasurement { get; set; }
         public string UserId { get; set; }
@@ -29,10 +29,10 @@ namespace FarmProduceManagement.Models.Dtos
         [Display(Name = "Name")]
         public string ProduceId { get; set; }
         [Required]
-        public double QuantityToBuy { get; set; }
+        public double Quantity { get; set; }
         [Required]
         [Display(Name = "Price")]
-        public decimal CostPrice { get; set; }
+        public decimal Price { get; set; }
         [Required]
         [Display(Name = "Unit Of Measurement")]
         public string UnitOfMeasurement { get; set; }

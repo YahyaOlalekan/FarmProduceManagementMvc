@@ -124,19 +124,33 @@ namespace FarmProduceManagement.Controllers
 
 
         [HttpGet]
-        public IActionResult Update()
+        public IActionResult Update(string id)
         {
-            return View();
+            var result = _produceService.Get(id);
+            //TempData["message"] = result.Message;
+            var model = new UpdateProduceRequestModel
+            {
+               ProduceName = result.Data.ProduceName,
+               CostPrice = result.Data.CostPrice,
+               SellingPrice = result.Data.SellingPrice,
+               QuantityToBuy = result.Data.QuantityToBuy,
+               UnitOfMeasurement = result.Data.UnitOfMeasurement,
+            };
+             return View(model);
         }
         [HttpPost]
         public IActionResult Update(string id, UpdateProduceRequestModel produceModel)
         {
-            var updateProduce = _produceService.Update(id, produceModel);
-            TempData["message"] = updateProduce.Message;
-            if (updateProduce.Status)
-            {
-                return RedirectToAction("List");
-            }
+           if(ModelState.IsValid)
+           {
+                 var updateProduce = _produceService.Update(id, produceModel);
+                TempData["message"] = updateProduce.Message;
+                if (updateProduce.Status)
+                {
+                    return RedirectToAction("List");
+                }
+               
+           }
             return View(produceModel);
         }
 

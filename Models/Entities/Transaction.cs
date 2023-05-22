@@ -11,9 +11,9 @@ namespace FarmProduceManagement.Models.Entities
         public string TransactionNum {get;set;}
         public string FarmerId { get; set; }
         public Farmer Farmer { get; set; }
-        public ICollection<TransactionProduce> TransactionProduces { get; set; } = new HashSet<TransactionProduce>();
         public TransactionStatus Status { get; set; }
         public decimal TotalAmount { get; set; }
         public double TotalQuantity { get; set; }
+        public ICollection<TransactionProduce> TransactionProduces { get; set; } = new HashSet<TransactionProduce>();
     }
 }

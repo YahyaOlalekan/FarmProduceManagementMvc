@@ -12,5 +12,6 @@ namespace FarmProduceManagement.Models.Enums
         Pending,
 
         Rejected,
+        NotDelivered
     }
 }

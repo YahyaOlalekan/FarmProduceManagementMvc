@@ -2,20 +2,20 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "";
+    ViewData["Title"] = "Category Update";
 }
 
-<div class="text-center">
-    <h1>@ViewData["Title"]</h1>
-</div>
+
 <div class="row">
     <div class="col-md-2">
         <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
     </div>
     <div class="col-md-10">
-
+        <div class="text-center">
+    <h3>@ViewData["Title"]</h3>
+    </div>
         <div>
-            <div>@TempData["message"]</div>
+            <div style="color: red;">@TempData["message"]</div>
             <div>
                 <form asp-action="Update">
                     <div>

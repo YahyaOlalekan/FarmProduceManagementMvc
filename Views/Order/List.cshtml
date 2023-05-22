@@ -1,0 +1,64 @@
+﻿@model IEnumerable<FarmProduceManagement.Models.Dtos.OrderDto>
+   
+    @{Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Orders";}
+
+
+<div class="row">
+      <div class="col-md-2 border">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+        </div>
+    <div class="col-md-10 border">
+        <div class="text-center"><h1>@ViewData["Title"]</h1></div>
+         <div>
+        <table class="table">
+             <tr>
+                    <th>S/N</th>
+                    <th>Order Number</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    @* <th>Status</th> *@
+                    <th>Details</th>
+            </tr>
+           
+                @if(Model.Count() > 0)
+                {
+                    int serialNumCount = 1;
+                   
+                   
+                    @foreach(var order in Model)
+                    {
+                         <tr>  
+                            <td>@serialNumCount</td>
+                            <td>@order.OrderNumber</td>
+                            <td>@Math.Round(order.TotalQuantity, 4)</td>
+                            <td>@Math.Round(order.TotalAmount, 4)</td>
+                            @* <td>@order.Status</td> *@
+                            <td><a asp-action="Details" asp-route-id="@order.Id">Click</a></td>
+                        </tr>
+                         serialNumCount ++;
+                    }
+
+                   
+                }
+                
+            
+
+        </table>
+      
+    </div>
+        
+    </div>
+     
+</div>
+
+
+
+
+
+   
+
+    @* <button type="button" id="addProductButton">Add Product</button> *@
+
+  
+

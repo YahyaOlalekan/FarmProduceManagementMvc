@@ -32,7 +32,7 @@ namespace FarmProduceManagement
             {
                 userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                 var farmer = _farmerService.Get(userId);
-                userBalance = farmer.Data.Wallet;
+                userBalance = Math.Round(farmer.Data.Wallet, 4);
             }
 
             return new LoginUserModel

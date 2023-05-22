@@ -67,12 +67,12 @@ namespace FarmProduceManagement.Services.Implementations
 
         }
 
-        public BaseResponse<TransactionDto> ApproveTransaction(string userId, string id)
+        public BaseResponse<TransactionDto> Approved(string userId, string id)
         {
 
             var transaction = _transactionRepository.Get(id);
 
-            
+
             if (transaction == null)
             {
 
@@ -92,11 +92,69 @@ namespace FarmProduceManagement.Services.Implementations
                     Message = "Transaction already approved",
                     Status = false,
                 };
-                
+
             }
 
 
             transaction.Status = TransactionStatus.Approved;
+            transaction.ModifiedBy = userId;
+
+            _transactionRepository.Save();
+
+            return new BaseResponse<TransactionDto>
+            {
+                Message = "Successful",
+                Status = true,
+                Data = new TransactionDto
+                {
+                    Id = transaction.Id,
+                    DateCreated = transaction.DateCreated,
+                    Status = transaction.Status,
+                    TotalQuantity = transaction.TotalQuantity,
+                    TotalAmount = transaction.TotalAmount,
+                    TransactionNum = transaction.TransactionNum,
+                    TransactionProduces = transaction.TransactionProduces.Select(t => new TransactionProduceDto
+                    {
+                        Price = t.Price,
+                        Quantity = t.Quantity,
+                        Produce = t.Produce,
+                        ProduceId = t.ProduceId,
+
+                    }).ToList()
+                }
+            };
+
+        }
+
+        public BaseResponse<TransactionDto> Declined(string userId, string id)
+        {
+
+            var transaction = _transactionRepository.Get(id);
+
+            if (transaction == null)
+            {
+
+                return new BaseResponse<TransactionDto>
+                {
+                    Message = "Transaction not found",
+                    Status = false,
+                };
+            }
+
+
+            if (transaction.Status == TransactionStatus.Rejected)
+            {
+
+                return new BaseResponse<TransactionDto>
+                {
+                    Message = "Sorry, Transaction already Declined!",
+                    Status = false,
+                };
+
+            }
+
+
+            transaction.Status = TransactionStatus.Rejected;
             transaction.ModifiedBy = userId;
 
             _transactionRepository.Save();
@@ -169,16 +227,13 @@ namespace FarmProduceManagement.Services.Implementations
 
         }
 
-        public BaseResponse<TransactionDto> DeliveredTransaction(string id)
+        public BaseResponse<TransactionDto> Delivered(string id)
         {
             var loginId = _httpAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
             var transaction = _transactionRepository.Get(id);
 
-            
             if (transaction == null)
             {
-
                 return new BaseResponse<TransactionDto>
                 {
                     Message = "Transaction not found",
@@ -186,35 +241,26 @@ namespace FarmProduceManagement.Services.Implementations
                 };
             }
 
-
             if (transaction.Status == TransactionStatus.Delivered)
             {
-
                 return new BaseResponse<TransactionDto>
                 {
                     Message = "Transaction already delivered",
                     Status = false,
                 };
-                
             }
 
-
-            
-
             var admin = _adminRepository.GetAdmin();
-            // var companyWallet = _adminRepository.GetCompanyWallet();
             admin.CompanyWallet -= transaction.TotalAmount;
 
-            if(admin.CompanyWallet <= 0)
+            if (admin.CompanyWallet <= 0)
             {
-                
                 return new BaseResponse<TransactionDto>
                 {
                     Message = "Error, Try again",
                     Status = false,
                 };
             }
-
 
 
             transaction.Status = TransactionStatus.Delivered;
@@ -226,7 +272,8 @@ namespace FarmProduceManagement.Services.Implementations
 
                 if (product == null)
                 {
-                    product = new Product{
+                    product = new Product
+                    {
                         CategoryId = item.Produce.CategoryId,
                         CreatedBy = transaction.FarmerId,
                         QuantityToSell = item.Quantity,
@@ -246,15 +293,11 @@ namespace FarmProduceManagement.Services.Implementations
                     product.SellingPrice = item.Produce.SellingPrice;
                     product.IsAvailable = true;
                 }
-
-                
             }
 
-
             var farmer = _farmerRepository.Get(transaction.FarmerId);
-            if(farmer == null)
+            if (farmer == null)
             {
-
                 return new BaseResponse<TransactionDto>
                 {
                     Message = "Farmer not found",
@@ -263,7 +306,6 @@ namespace FarmProduceManagement.Services.Implementations
             }
 
             farmer.Wallet += transaction.TotalAmount;
-
 
             _transactionRepository.Save();
 
@@ -291,6 +333,62 @@ namespace FarmProduceManagement.Services.Implementations
             };
 
         }
+
+
+         public BaseResponse<TransactionDto> NotDelivered(string id)
+        {
+            var loginId = _httpAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var transaction = _transactionRepository.Get(id);
+
+            if (transaction == null)
+            {
+                return new BaseResponse<TransactionDto>
+                {
+                    Message = "Transaction not found",
+                    Status = false,
+                };
+            }
+
+            if (transaction.Status == TransactionStatus.NotDelivered)
+            {
+                return new BaseResponse<TransactionDto>
+                {
+                    Message = "Transaction not delivered",
+                    Status = false,
+                };
+            }
+
+            transaction.Status = TransactionStatus.NotDelivered;
+            transaction.ModifiedBy = loginId;
+
+            _transactionRepository.Save();
+            
+            return new BaseResponse<TransactionDto>
+            {
+                Message = "Successful",
+                Status = true,
+                Data = new TransactionDto
+                {
+                    Id = transaction.Id,
+                    DateCreated = transaction.DateCreated,
+                    Status = transaction.Status,
+                    TotalQuantity = transaction.TotalQuantity,
+                    TotalAmount = transaction.TotalAmount,
+                    TransactionNum = transaction.TransactionNum,
+                    TransactionProduces = transaction.TransactionProduces.Select(t => new TransactionProduceDto
+                    {
+                        Price = t.Price,
+                        Quantity = t.Quantity,
+                        Produce = t.Produce,
+                        ProduceId = t.ProduceId,
+
+                    }).ToList()
+                }
+            };
+
+        }
+
+
 
         public BaseResponse<TransactionDto> Delete(string id)
         {
@@ -485,7 +583,7 @@ namespace FarmProduceManagement.Services.Implementations
                         Price = p.Price,
                         Produce = p.Produce,
                     }).ToList(),
-                    
+
 
                 })
             };

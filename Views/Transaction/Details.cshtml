@@ -27,7 +27,7 @@
                 Total Quantity : @Model.TotalQuantity
             </P>
             <P>
-                Total Price : @Model.TotalAmount
+                Total Price : @Math.Round(Model.TotalAmount, 4)
             </P>
             <P>
                 Date Created : @Model.DateCreated
@@ -56,8 +56,8 @@
                             <td>@serialNo</td>
                             <td>@item.Produce.ProduceName</td>
                             <td>@item.Quantity</td>
-                            <td>@item.Price</td>
-                            <td>@total</td>
+                            <td>@Math.Round(item.Price, 4)</td>
+                            <td>@Math.Round(total, 4)</td>
                         </tr>
                         serialNo++;
                     }
@@ -70,7 +70,7 @@
                 <div class="">
                     @* <button>Not Approve</button> *@
                     <a class="btn btn-primary" asp-action="Approve" asp-route-id="@Model.Id">Approve</a>
-                    <a class="btn btn-warning">Not Approve</a>
+                    <a class="btn btn-warning" asp-action="Decline" asp-route-id="@Model.Id">Decline</a>
                 </div>
                 <div class=""></div>
 
@@ -78,8 +78,8 @@
             else if (role == "Manager" && @Model.Status == TransactionStatus.Approved)
             {
                 <div class="">
-                    <a class="btn btn-primary" asp-action="Deliver" asp-route-id="@Model.Id">Delivered</a>
-                    <a class="btn btn-warning">Not Delivered</a>
+                    <a class="btn btn-primary" asp-action="Delivered" asp-route-id="@Model.Id">Delivered</a>
+                    <a class="btn btn-warning" asp-action="NotDelivered" asp-route-id="@Model.Id">Undelivered</a>
                 </div>
                 <div class=""></div>
 

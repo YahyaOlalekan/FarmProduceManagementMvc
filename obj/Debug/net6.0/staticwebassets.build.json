@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tN5bkfvDZKVMATEzCyY0x3eCbppLHfCFrbUY0lob3qk=",
+  "Hash": "DgszPCLz4+lhW2H80N1HR4CqGq2FKch/rUHWJ4UZ82Q=",
   "Source": "FarmProduceManagement",
   "BasePath": "_content/FarmProduceManagement",
   "Mode": "Default",
@@ -1190,6 +1190,23 @@
       "OriginalItemSpec": "wwwroot\\Upload\\images\\090ab467-c999-4ec5-bbe3-37a7ad0b16b2_ram image.jpg"
     },
     {
+      "Identity": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\09716b93-8ffb-4566-9145-4dfad585f280_ram image.jpg",
+      "SourceId": "FarmProduceManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\",
+      "BasePath": "_content/FarmProduceManagement",
+      "RelativePath": "Upload/images/09716b93-8ffb-4566-9145-4dfad585f280_ram image.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\images\\09716b93-8ffb-4566-9145-4dfad585f280_ram image.jpg"
+    },
+    {
       "Identity": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\0a248673-d1d2-4602-95b8-748f665e8c06_bird.jpg",
       "SourceId": "FarmProduceManagement",
       "SourceType": "Discovered",
@@ -1375,6 +1392,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Upload\\images\\23885636-ee8d-457d-adfe-012df5023283_ram image.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\2425b7ae-fbf3-4e22-b445-9dc196604a43_ram image.jpg",
+      "SourceId": "FarmProduceManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\",
+      "BasePath": "_content/FarmProduceManagement",
+      "RelativePath": "Upload/images/2425b7ae-fbf3-4e22-b445-9dc196604a43_ram image.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\images\\2425b7ae-fbf3-4e22-b445-9dc196604a43_ram image.jpg"
     },
     {
       "Identity": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\247097f5-352c-490a-82fa-0b379c3d0e6d_ram image.jpg",
@@ -1870,6 +1904,23 @@
       "OriginalItemSpec": "wwwroot\\Upload\\images\\81968ac4-9ce9-4c4f-a69c-827b8e65e15a_bird.jpg"
     },
     {
+      "Identity": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\84651378-2a59-452b-9872-afe25fb13afa_ram image.jpg",
+      "SourceId": "FarmProduceManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\",
+      "BasePath": "_content/FarmProduceManagement",
+      "RelativePath": "Upload/images/84651378-2a59-452b-9872-afe25fb13afa_ram image.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\images\\84651378-2a59-452b-9872-afe25fb13afa_ram image.jpg"
+    },
+    {
       "Identity": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\8736ac2c-1a52-4562-b7eb-98bac3a57ac2_ram image.jpg",
       "SourceId": "FarmProduceManagement",
       "SourceType": "Discovered",
@@ -2210,6 +2261,23 @@
       "OriginalItemSpec": "wwwroot\\Upload\\images\\bb993095-1a1c-4edd-bffd-fd0c0e1eafb3_bird.jpg"
     },
     {
+      "Identity": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\bd3ce30b-8ed8-4fd2-aef6-db25446f6e62_ram image.jpg",
+      "SourceId": "FarmProduceManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\",
+      "BasePath": "_content/FarmProduceManagement",
+      "RelativePath": "Upload/images/bd3ce30b-8ed8-4fd2-aef6-db25446f6e62_ram image.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\images\\bd3ce30b-8ed8-4fd2-aef6-db25446f6e62_ram image.jpg"
+    },
+    {
       "Identity": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\c1bbe2e6-cb56-4fb2-bf2f-b4801c44fb47_bird.jpg",
       "SourceId": "FarmProduceManagement",
       "SourceType": "Discovered",
@@ -2446,6 +2514,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Upload\\images\\e4b4f69e-e6ad-4592-8eba-c474a80622fb_bird2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\f4d8e737-4c8c-4e1f-8efe-42fa88708f43_ram image.jpg",
+      "SourceId": "FarmProduceManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\",
+      "BasePath": "_content/FarmProduceManagement",
+      "RelativePath": "Upload/images/f4d8e737-4c8c-4e1f-8efe-42fa88708f43_ram image.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\images\\f4d8e737-4c8c-4e1f-8efe-42fa88708f43_ram image.jpg"
     },
     {
       "Identity": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\f60ba66c-fae5-45f1-8d03-6a790dfc4a21_bird.jpg",

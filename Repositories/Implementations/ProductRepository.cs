@@ -20,26 +20,31 @@ namespace FarmProduceManagement.Repositories.Implementations
         public Product Get(string id)
         {
             return _context.Products
-            .Where(a => a.IsDeleted == false)
-            .Include(a => a.OrderProducts)
-            .FirstOrDefault(x => x.Id == id);
+            .Where(prod => prod.IsDeleted == false)
+            .Include(p => p.Produce)
+            .Include(op => op.OrderProducts)
+            .ThenInclude(o => o.Order)
+            .FirstOrDefault(prod => prod.Id == id);
         }
 
        
         public Product Get(Expression<Func<Product, bool>> expression)
         {
             return _context.Products
-            .Where(a => a.IsDeleted == false)
-            .Include(a => a.OrderProducts)
+            .Where(prod => prod.IsDeleted == false)
+            .Include(p => p.Produce)
+            .Include(op => op.OrderProducts)
+            .ThenInclude(o => o.Order)
             .FirstOrDefault(expression);
         }
 
         public IEnumerable<Product> GetAll()
         {
             return _context.Products
-            .Where(a => a.IsDeleted == false)
+            .Where(prod => prod.IsDeleted == false)
+            .Include(p => p.Produce)
             .Include(a => a.Category)
-            //.Include(a => a.OrderProducts)
+            .Include(a => a.OrderProducts)
             .ToList();
         }
 
@@ -47,7 +52,9 @@ namespace FarmProduceManagement.Repositories.Implementations
         public IEnumerable<Product> GetSelected(Expression<Func<Product, bool>> expression)
         {
             return _context.Products
+            .Include(p => p.Produce)
             .Include(a => a.OrderProducts)
+            .ThenInclude(o => o.Order)
             .Where(expression)
             .ToList();
         }
@@ -55,7 +62,9 @@ namespace FarmProduceManagement.Repositories.Implementations
         public IEnumerable<Product> GetSelected(List<string> ids)
         {
             return _context.Products
+            .Include(p => p.Produce)
             .Include(a => a.OrderProducts)
+            .ThenInclude(o => o.Order)
             .Where(a => ids.Contains(a.Id) && a.IsDeleted == false)
             .ToList();
         }

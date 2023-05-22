@@ -14,11 +14,14 @@ namespace FarmProduceManagement.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IAuth _auth;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IAuth auth)
         {
             _userService = userService;
+            _auth = auth;
         }
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -92,6 +95,10 @@ namespace FarmProduceManagement.Controllers
         }
         public IActionResult Farmer()
         {
+            
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = user.Balance;
+
             return View();
         }
         public IActionResult Customer()

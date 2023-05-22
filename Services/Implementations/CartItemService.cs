@@ -30,10 +30,10 @@ namespace FarmProduceManagement.Services.Implementations
             {
                 cartItem = new CartItem{
                     NameOfCategory = model.CategoryId,
-                    CostPrice = model.CostPrice,
+                    Price = model.Price,
                     ProduceId = model.ProduceId,
-                    QuantityToBuy = model.QuantityToBuy,
-                    TotalCostPrice = (decimal)model.QuantityToBuy * model.CostPrice,
+                    Quantity = model.Quantity,
+                    TotalPrice = (decimal)model.Quantity * model.Price,
                     UnitOfMeasurement = model.UnitOfMeasurement,
                     UserId = loginId,
                     CreatedBy = loginId,
@@ -43,7 +43,7 @@ namespace FarmProduceManagement.Services.Implementations
             }
             else
             {
-                 cartItem.QuantityToBuy += model.QuantityToBuy;
+                 cartItem.Quantity += model.Quantity;
             }
 
              
@@ -57,10 +57,10 @@ namespace FarmProduceManagement.Services.Implementations
                 {
                     Id = cartItem.Id,
                     NameOfCategory = cartItem.NameOfCategory,
-                    CostPrice = cartItem.CostPrice,
+                    Price = cartItem.Price,
                     ProduceId = cartItem.ProduceId,
                     Produce = cartItem.Produce,
-                    QuantityToBuy = cartItem.QuantityToBuy,
+                    Quantity = cartItem.Quantity,
                     UnitOfMeasurement = cartItem.UnitOfMeasurement,
                     UserId = cartItem.UserId,
                     User = cartItem.User,
@@ -156,10 +156,10 @@ namespace FarmProduceManagement.Services.Implementations
                     {
                         Id = c.Id,
                         NameOfCategory = c.NameOfCategory,
-                        CostPrice = c.CostPrice,
+                        Price = c.Price,
                         ProduceId = c.ProduceId,
                         Produce = c.Produce,
-                        QuantityToBuy = c.QuantityToBuy,
+                        Quantity = c.Quantity,
                         UnitOfMeasurement = c.UnitOfMeasurement,
                         UserId = c.UserId,
                         User = c.User,

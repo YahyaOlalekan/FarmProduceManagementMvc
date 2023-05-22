@@ -13,7 +13,7 @@ namespace FarmProduceManagement.Controllers
     {
         private readonly ILogger<ManagerController> _logger;
         private readonly IManagerService _managerService;
-        private readonly IHttpContextAccessor  _httpAccessor;
+        private readonly IHttpContextAccessor _httpAccessor;
 
         public ManagerController(ILogger<ManagerController> logger, IManagerService managerService, IHttpContextAccessor httpAccessor)
         {
@@ -26,13 +26,14 @@ namespace FarmProduceManagement.Controllers
         {
             return View();
         }
-       
+
         public IActionResult Balance()
         {
-           var balance = _managerService.GetCompanyBalance();
-           
+            var balance = _managerService.GetCompanyBalance();
+
             return Json(Ok(
-                new {
+                new
+                {
                     Status = "success",
                     Balance = balance
                 }
@@ -47,7 +48,7 @@ namespace FarmProduceManagement.Controllers
         [HttpPost]
         public IActionResult Add(CreateManagerRequestModel model)
         {
-             var loginId =  _httpAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var loginId = _httpAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var result = _managerService.Create(loginId, model);
             ViewBag.Message = result.Message;
             if (ModelState.IsValid)
@@ -63,15 +64,15 @@ namespace FarmProduceManagement.Controllers
         public IActionResult Delete(string id)
         {
             BaseResponse<ManagerDto> result = _managerService.Get(id);
-           // var result = _managerService.Get(id);
+            // var result = _managerService.Get(id);
             return View(result.Data);
         }
 
         [HttpPost, ActionName("Delete")]
         public IActionResult RealDelete(string id)
         {
-             var result = _managerService.Delete(id);
-             TempData["message"] = result.Message;
+            var result = _managerService.Delete(id);
+            TempData["message"] = result.Message;
             if (result.Status)
             {
                 return RedirectToAction("List");
@@ -95,19 +96,32 @@ namespace FarmProduceManagement.Controllers
         public IActionResult Update(string id)
         {
             var result = _managerService.Get(id);
-            return View(result.Data);
+            var model = new UpdateManagerRequestModel
+            {
+                Address = result.Data.Address,
+                Email = result.Data.Email,
+                FirstName = result.Data.FirstName,
+                LastName = result.Data.LastName,
+                PhoneNumber = result.Data.PhoneNumber,
+                // ProfilePicture = result.Data.ProfilePicture,
+            };
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult Update(string id, UpdateManagerRequestModel model)
         {
-            var result = _managerService.Update(id, model);
-            TempData["message"] = result.Message;
-            if (result.Status)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("List");
+                var result = _managerService.Update(id, model);
+                TempData["message"] = result.Message;
+                if (result.Status)
+                {
+                    return RedirectToAction("List");
+                }
             }
-            return View(result.Data);
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

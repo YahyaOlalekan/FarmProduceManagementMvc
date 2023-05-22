@@ -63,8 +63,8 @@ namespace FarmProduceManagement.Controllers
                 return Json(Ok(new{
                     Status = true,
                     Data = result.Data,
-                    TotalItem = result.Data.Select(c => c.QuantityToBuy).Sum(),
-                    TotalPrice = result.Data.Select(c => c.CostPrice * (decimal)c.QuantityToBuy).Sum(),
+                    TotalItem = result.Data.Select(c => c.Quantity).Sum(),
+                    TotalPrice = result.Data.Select(c => c.Price * (decimal)c.Quantity).Sum(),
                 }));
             }
 

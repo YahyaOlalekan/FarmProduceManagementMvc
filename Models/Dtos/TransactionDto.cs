@@ -55,9 +55,9 @@ namespace FarmProduceManagement.Models.Dtos
         [Required]
         [Display(Name = "Name")]
         public string ProduceName { get; set; }
-        [Required]
-        [Display(Name = "Quantity Available")]
-        public double QuantityAvailable { get; set; }
+        // [Required]
+        // [Display(Name = "Quantity Available")]
+        // public double QuantityAvailable { get; set; }
         [Required]
         [Display(Name = "Unit Of Measurement")]
         public string UnitOfMeasurement { get; set; }

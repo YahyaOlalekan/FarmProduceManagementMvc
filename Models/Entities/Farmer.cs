@@ -16,9 +16,6 @@ namespace FarmProduceManagement.Models.Entities
         public User User { get; set; }
    
         public ICollection<Transaction> Transactions { get; set; } = new HashSet<Transaction>();
-         public ICollection<FarmerManager> FarmerManagers { get; set; } = new HashSet<FarmerManager>();
-
-       
-       
+        
     }
 }

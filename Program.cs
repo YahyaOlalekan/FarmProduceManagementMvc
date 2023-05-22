@@ -34,9 +34,12 @@ builder.Services.AddScoped<IProduceRepository, ProduceRepository>();
 builder.Services.AddScoped<IProduceService, ProduceService>();
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //builder.Services.AddScoped<IProductService, ProductService>();
 
-// builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 // builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddScoped<IOrderProductRepository, OrderProductRepository>();
@@ -53,6 +56,9 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
 builder.Services.AddScoped<ICartItemService, CartItemService>();
+
+builder.Services.AddScoped<IOrderCartRepository, OrderCartRepository>();
+builder.Services.AddScoped<IOrderCartService, OrderCartService>();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

@@ -120,7 +120,7 @@
                     method: 'GET',
                     dataType: 'json',
                     success: function(result){
-                        // console.log(result.value);
+                        @* console.log(result.value); *@
                         let cartHtml = '<table class="table">';
                             cartHtml += '<tr>';
                                 cartHtml += '<td>Produce Name</td>';
@@ -138,16 +138,16 @@
                                         <input type="hidden" name="ProduceName" value="`+ cart.produce.produceName +`">
                                     </td>
                                     <td>
-                                        `+ cart.quantityToBuy +`
-                                        <input type="hidden" name="QuantityToBuy" value="`+ cart.quantityToBuy +`">
+                                        `+ cart.quantity +`
+                                        <input type="hidden" name="QuantityToBuy" value="`+ cart.quantity +`">
                                     </td>
                                     <td>
-                                        `+ cart.costPrice +`
-                                        <input type="hidden" name="CostPrice" value="`+ cart.costPrice +`">
+                                        `+ cart.price +`
+                                        <input type="hidden" name="CostPrice" value="`+ cart.price +`">
                                     </td>
                                     <td>
-                                        `+ cart.quantityToBuy * cart.costPrice +`
-                                        <input type="hidden" name="TotalPrice" value="`+ cart.quantityToBuy * cart.costPrice +`">
+                                        `+ cart.quantity * cart.price +`
+                                        <input type="hidden" name="TotalPrice" value="`+ cart.quantity * cart.price +`">
                                     </td>
                                     <td>
                                         `+ cart.unitOfMeasurement +`
@@ -188,10 +188,11 @@
                     $.ajax({
                         url: '/CartItem/Add',
                         method: 'POST',
-                        data: { ProduceId:produceId, 
+                        data: { 
+                            ProduceId:produceId, 
                             Name:produceName, 
-                            QuantityToBuy:produceQuantity, 
-                            CostPrice:producePrice, 
+                            Quantity:produceQuantity, 
+                            Price:producePrice, 
                             UnitOfMeasurement:unitOfMeasurement, 
                             CategoryId:nameOfCategory 
                         },

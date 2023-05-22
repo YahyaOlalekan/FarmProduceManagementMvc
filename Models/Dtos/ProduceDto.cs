@@ -28,12 +28,19 @@ namespace FarmProduceManagement.Models.Dtos
         [Required, MinLength(3), MaxLength(50)]
         [Display(Name = "Name")]
         public string ProduceName { get; set; }
+
         [Required]
-        [Display(Name = "Price")]
+        [Display(Name = "Cost Price")]
         public decimal CostPrice { get; set; }
+
+        [Required]
+        [Display(Name = "Selling Price")]
+        public decimal SellingPrice { get; set; }
+
         [Required]
         [Display(Name = "Unit Of Measurement")]
         public string UnitOfMeasurement { get; set; }
+
         [Required]
         [Display(Name = "Category")]
         public string CategoryId { get; set; }
@@ -66,12 +73,19 @@ namespace FarmProduceManagement.Models.Dtos
         [Required, MinLength(3), MaxLength(50)]
         [Display(Name = "Name")]
         public string ProduceName { get; set; }
+
         [Required]
         [Display(Name = "Quantity")]
         public double QuantityToBuy { get; set; }
+        
         [Required]
-         [Display(Name = "Price")]
+         [Display(Name = "Cost Price")]
         public decimal CostPrice { get; set; }
+
+         [Required]
+        [Display(Name = "Selling Price")]
+        public decimal SellingPrice { get; set; }
+
         [Required]
         [Display(Name = "Unit Of Measurement")]
         public string UnitOfMeasurement { get; set; }

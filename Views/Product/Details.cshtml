@@ -1,0 +1,40 @@
+@model FarmProduceManagement.Models.Dtos.ProductDto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "";
+}
+
+<div class="text-center">
+    <h1>@ViewData["Title"]</h1>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+    </div>
+    <div class="col-md-10">
+
+        <div>
+            <h4>
+                Name : @Model.ProduceName
+            </h4>
+            <P>
+                Quantity : @Model.QuantityToSell
+            </P>
+            <P>
+                Price : @Model.SellingPrice
+            </P>
+            <P>
+                Unit Of Measurement : @Model.UnitOfMeasurement
+            </P>
+            <P>
+                Category : @Model.NameOfCategory
+            </P>
+        </div>
+
+
+
+    </div>
+
+</div>
+

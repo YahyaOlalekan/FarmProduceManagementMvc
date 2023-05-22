@@ -1,0 +1,70 @@
+@model IEnumerable<FarmProduceManagement.Models.Dtos.TransactionDto>
+   
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewData["Title"] = "Undelivered Transactions";
+
+    var menu = "~/Views/User/Menu.cshtml";
+}
+
+
+<div class="row">
+      <div class="col-md-2 border">
+        <div>@await Html.PartialAsync(menu)</div>
+        </div>
+    <div class="col-md-10 border">
+        <div class="text-center"><h1>@ViewData["Title"]</h1></div>
+         <div class="text-center" style="color : red">@TempData["message"]</div> 
+         <div>
+        <table class="table">
+             <tr>
+                    <th>S/N</th>
+                    <th>Transaction Number</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Details</th>
+            </tr>
+           
+                @if(Model.Count() > 0)
+                {
+                    int serialNumCount = 1;
+                   
+                    @foreach(var transaction in Model)
+                    {
+                        <tr>  
+                            <td>@serialNumCount</td>
+                            <td>@transaction.TransactionNum</td>
+                            <td>@Math.Round(transaction.TotalQuantity, 4)</td>
+                            <td>@Math.Round(transaction.TotalAmount, 4)</td>
+                            <td><a asp-action="Details" asp-route-id="@transaction.Id">Click</a></td>
+                        </tr>
+                         serialNumCount ++;
+                    }
+                }
+                else{
+                    <tr>  
+                        <td colspan="5" class="text-center">No data</td>
+                    </tr>
+                }
+                
+            
+
+        </table>
+      
+    </div>
+        
+    </div>
+     
+</div>
+
+
+
+
+
+   
+
+    @* <button type="button" id="addProductButton">Add Product</button> *@
+
+  
+

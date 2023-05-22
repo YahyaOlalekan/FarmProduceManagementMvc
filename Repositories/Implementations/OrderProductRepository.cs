@@ -18,9 +18,9 @@ namespace FarmProduceManagement.Repositories.Implementations
         }
 
 
-        public bool CreateOrderProduct(List<OrderProduct> orders)
+        public bool CreateOrderProduct(List<OrderProduct> OrderProducts)
         {
-            _context.AddRange(orders);
+            _context.AddRange(OrderProducts);
             return true;
         }
 

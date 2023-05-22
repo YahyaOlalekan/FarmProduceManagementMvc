@@ -67,20 +67,29 @@ namespace FarmProduceManagement.Controllers
             return View(roles.Data);
         }
         [HttpGet]
-        public IActionResult Update()
+        public IActionResult Update(string id)
         {
-            return View();
+           var result = _roleService.Get(id);
+           var model = new UpdateRoleRequestModel
+           {
+               RoleName = result.Data.RoleName,
+               RoleDescription = result.Data.RoleDescription,
+           };
+            return View(model);
         }
         [HttpPost]
         public IActionResult Update(string id, UpdateRoleRequestModel roleModel)
         {
-            var updateRole = _roleService.Update(id, roleModel);
-            TempData["message"] = updateRole.Message;
-            if (updateRole.Status)
-            {
-                return RedirectToAction("List");
-            }
-            return View(roleModel);
+           if(ModelState.IsValid)
+           {
+                 var updateRole = _roleService.Update(id, roleModel);
+                TempData["message"] = updateRole.Message;
+                if (updateRole.Status)
+                {
+                    return RedirectToAction("List");
+                }
+           }
+           return View(roleModel);
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿@model FarmProduceManagement.Models.Dtos.CustomerDto;
+﻿@model FarmProduceManagement.Models.Dtos.UpdateCustomerRequestModel;
 
 @{Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Customer Update Form";}
 
-<div class="text-center"><h1>@ViewData["Title"]</h1></div>
+
 <div class="row">
       <div class="col-md-2">
         <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
@@ -11,7 +11,8 @@
     <div class="col-md-10">
            
 <div>
-    <div>@TempData["message"]</div>
+    <div class="text-center"><h3>@ViewData["Title"]</h3></div>
+    <div style="color:red">@TempData["message"]</div>
     <form asp-action="Update" enctype="multipart/form-data">
         <div>
             <div>

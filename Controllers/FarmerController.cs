@@ -137,12 +137,20 @@ namespace FarmProduceManagement.Controllers
 
         public IActionResult Update(string id)
         {
-            
             var user = _auth.GetLoginUser();
             TempData["balance"] = user.Balance;
 
             var result = _farmerService.Get(id);
-            return View(result.Data);
+
+            var model = new UpdateFarmerRequestModel{
+                Address = result.Data.Address,
+                Email = result.Data.Email,
+                FirstName = result.Data.FirstName,
+                LastName = result.Data.LastName,
+                PhoneNumber = result.Data.PhoneNumber
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -151,13 +159,16 @@ namespace FarmProduceManagement.Controllers
             var user = _auth.GetLoginUser();
             TempData["balance"] = user.Balance;
 
-            var result = _farmerService.Update(id, model);
-            TempData["message"] = result.Message;
-            if (result.Status)
+            if(ModelState.IsValid)
             {
-                return RedirectToAction("List");
+                var result = _farmerService.Update(id, model);
+                TempData["message"] = result.Message;
+                if (result.Status)
+                {
+                    return RedirectToAction("List");
+                }
             }
-            return View(result);
+            return View(model);
         }
 
 

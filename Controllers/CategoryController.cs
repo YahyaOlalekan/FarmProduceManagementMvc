@@ -66,21 +66,37 @@ namespace FarmProduceManagement.Controllers
             var categories = _categoryService.GetAll();
             return View(categories.Data);
         }
+
+
         [HttpGet]
-        public IActionResult Update()
+        public IActionResult Update(string id)
         {
-            return View();
+            var result = _categoryService.Get(id);
+            var model = new UpdateCategoryRequestModel
+            {
+                NameOfCategory = result.Data.NameOfCategory,
+                DescriptionOfCategory = result.Data.DescriptionOfCategory,
+            };
+
+            return View(model);
         }
+       
         [HttpPost]
         public IActionResult Update(string id, UpdateCategoryRequestModel categoryModel)
         {
-            var updateCategory = _categoryService.Update(id, categoryModel);
-            TempData["message"] = updateCategory.Message;
-            if (updateCategory.Status)
+           if(ModelState.IsValid)
             {
-                return RedirectToAction("List");
-            }
+                 var result = _categoryService.Update(id, categoryModel);
+                TempData["message"] = result.Message;
+                if (result.Status)
+                {
+                    return RedirectToAction("List");
+                }
+           }
+          
             return View(categoryModel);
         }
     }
 }
+
+ 

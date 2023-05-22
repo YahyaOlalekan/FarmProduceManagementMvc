@@ -1,0 +1,244 @@
+@model IEnumerable<FarmProduceManagement.Models.Dtos.ProductDto>
+@{
+    ViewData["Title"] = "Product List";
+    var message = TempData["message"] ?? " ";
+}
+<div class="row">
+    <div class="col-md-2">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+    </div>
+    <div class="col-md-10">
+        <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+        <span style="color: red">@message</span>
+        @if(User.IsInRole("Admin") || User.IsInRole("Manager"))
+        {
+            @await Html.PartialAsync("~/Views/Product/Manager/List.cshtml")
+        }
+        else{
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                    <tr>
+                        @* <th>Id</th> *@
+                        <th>S/N</th>
+                        <th>Produce Name</th>
+                        @* <th>Quantity</th> *@
+                        <th>Price</th>
+                        <th>Unit Of Measurement</th>
+                        <th>Name Of Category</th>
+                        <th>Quantity</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(Model.Count() > 0)
+                    {
+                        var serialNumberCount = 1;
+                        foreach (var product in Model)
+                        {
+                            var name = "name"+ @product.Id;
+                            var SellingPrice = "SellingPrice"+ @product.Id;
+                            var unitOfMeasurement = "unitOfMeasurement"+ @product.Id;
+                            var nameOfCategory = "nameOfCategory"+ @product.Id;
+                            var quantity = "quantity"+ @product.Id;
+                            <tr>
+                                <td>@serialNumberCount</td>
+                                <td>
+                                    @product.Produce.ProduceName
+                                    <input type="hidden" id="@name" value="@product.Produce.ProduceName">
+                                </td>
+                                @* <td>@product.QuantityToBuy</td> *@
+                                <td>
+                                    @Math.Round(product.SellingPrice, 4)
+                                    <input type="hidden" id="@SellingPrice" value="@Math.Round(product.SellingPrice, 4)">
+                                </td>
+                                <td>
+                                    @product.UnitOfMeasurement
+                                    <input type="hidden" id="@unitOfMeasurement" value="@product.UnitOfMeasurement">
+                                </td>
+                                <td>
+                                    @product.NameOfCategory
+                                    <input type="hidden" id="@nameOfCategory" value="@product.NameOfCategory">
+                                </td>
+                                <td>
+                                    <input type="number" id="@quantity" style="width: 70px" value="1">
+                                </td>
+                                <td><a id="@product.Id" class="btn btn-secondary AddProductToCart">Add to Cart</a></td>
+                            </tr>
+                            serialNumberCount++;
+                        }
+                    }
+                    else{
+                        <tr>
+                            <td class="text-center" colspan="5">
+                                Not found!
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        }
+        
+    </div>
+</div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form asp-action="Sell">
+                    <div class="modal-body cartDetals" id="cartDetals">
+                
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @* <div class="modal-dialog modal-lg">...</div> *@
+    
+</div>
+
+@section Scripts {
+    
+    <script>
+        $(document).ready(function(){
+
+            LoadProductCartItem();
+
+            function LoadProductCartItem(){
+                
+                $.ajax({
+                    url: '/OrderCart/List',
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(result){
+                        @* console.log(result.value); *@
+                        let cartHtml = '<table class="table">';
+                            cartHtml += '<tr>';
+                                cartHtml += '<td>Produce Name</td>';
+                                cartHtml += '<td>Quantity</td>';
+                                cartHtml += '<td>Price</td>';
+                                cartHtml += '<td>Total</td>';
+                                cartHtml += '<td>Unit</td>';
+                                cartHtml += '<td>Action</td>';
+                            cartHtml += '</tr>';
+                            $.each(result.value.data, function(index, cart){
+                                @* console.log(cart); *@
+                                cartHtml += `<tr>
+                                    <td>
+                                        `+ cart.produce.produceName +`
+                                        <input type="hidden" name="ProduceName" value="`+ cart.produce.produceName +`">
+                                    </td>
+                                    <td>
+                                        `+ cart.quantity +`
+                                        <input type="hidden" name="Quantity" value="`+ cart.quantity +`">
+                                    </td>
+                                    <td>
+                                        `+ cart.price +`
+                                        <input type="hidden" name="Price" value="`+ cart.price +`">
+                                    </td>
+                                    <td>
+                                        `+ cart.quantity * cart.price +`
+                                        <input type="hidden" name="TotalPrice" value="`+ cart.quantity * cart.price +`">
+                                    </td>
+                                    <td>
+                                        `+ cart.unitOfMeasurement +`
+                                        <input type="hidden" name="UnitOfMeasurement" value="`+ cart.unitOfMeasurement +`">
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning RemoveFromCart" id="`+ cart.id +`">Remove<a>
+                                        <input type="hidden" name="ProductId" value="`+ cart.productId +`">
+                                    </td>
+                                </tr>`;
+                            });
+                            cartHtml += `<tr>
+                                    <td colspan="3">Total</td>
+                                    <td>`+ result.value.totalPrice +`</td>
+
+                                </tr>
+                            </table>`;
+
+                        $(".cartDetals").html(cartHtml);
+                        $(".totalItem").html(result.value.totalItem);
+                        $(".totalPrice").html(result.value.totalPrice);
+                    }
+                });
+            }
+
+            
+            $(document).on("click", ".AddProductToCart", function()
+            {
+                let productId = $(this).attr('id');
+                let produceName = $("#name"+productId).val();
+                let produceQuantity = $("#quantity"+productId).val();
+                let producePrice = $("#SellingPrice"+productId).val();
+                let unitOfMeasurement = $("#unitOfMeasurement"+productId).val();
+                let nameOfCategory = $("#nameOfCategory"+productId).val();
+
+                let data = { 
+                    ProductId:productId, 
+                    Name:produceName, 
+                    Quantity:produceQuantity, 
+                    Price:producePrice, 
+                    UnitOfMeasurement:unitOfMeasurement, 
+                    CategoryId:nameOfCategory 
+                };
+                
+                @* console.log(data); *@
+
+                if(produceQuantity > 0)
+                {
+                    $.ajax({
+                        url: '/OrderCart/Add',
+                        method: 'POST',
+                        data: data,
+                        dataType: 'json',
+                        success: function(result){
+                            @* console.log(data); *@
+                            LoadProductCartItem();
+                            alert("Item added successfully");
+                            
+                        }
+                    });
+                }
+                else
+                {
+                    alert("Quantity must be greater than 0!");
+                }
+                
+                
+            })
+
+
+
+            $(document).on("click", ".RemoveFromCart", function()
+            {
+                let itemId = $(this).attr('id');
+                
+                $.ajax({
+                    url: '/CartItem/Delete',
+                    method: 'POST',
+                    data: { id:itemId },
+                    dataType: 'json',
+                    success: function(result){
+                        // console.log(result);
+                        LoadProductCartItem();
+                        alert("Item deleted successfully");
+                    }
+                });
+            })
+
+
+        })
+    </script>
+}

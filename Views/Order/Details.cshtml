@@ -1,0 +1,75 @@
+﻿@model FarmProduceManagement.Models.Dtos.OrderDto
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewData["Title"] = "Order Details";
+
+    var name = User.FindFirst(ClaimTypes.Name)?.Value;
+    var role = User.FindFirst(ClaimTypes.Role)?.Value;
+}
+
+
+<div class="row">
+    <div class="col-md-2">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+    </div>
+    <div class="col-md-10">
+        <h1>@ViewData["Title"]</h1>
+
+     <div>
+            <h4>
+                Transaction No : @Model.OrderNumber
+            </h4>
+            <p>
+                Name : @name
+            </p>
+            <P>
+                Total Quantity : @Model.TotalQuantity
+            </P>
+            <P>
+                Total Price : @Model.TotalAmount
+            </P>
+            <P>
+                Date Created : @Model.DateCreated
+            </P>
+            @* <P>
+                Status : @Model.Status
+            </P> *@
+            <table class="table">
+                <tr>
+                    <th colspan="5">Items</th>
+                </tr>
+                <tr>
+                    <th>Sn</th>
+                    <th>Produce Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+                @{
+
+                    var serialNo = 1;
+                    foreach (var item in Model.OrderProducts)
+                    {
+                        var total = (decimal)item.Quantity * item.Price;
+                        <tr>
+                            <td>@serialNo</td>
+                            <td>@item.Produce.ProduceName</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Price</td>
+                            <td>@total</td>
+                        </tr>
+                        serialNo++;
+                    }
+                }
+            </table>
+        </div>
+      
+
+    </div>
+    <div class="col-md-2">
+    </div>
+</div>
+
+
+

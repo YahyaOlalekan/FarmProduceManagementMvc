@@ -62,12 +62,12 @@
                     <ul class="navbar-nav">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item" style="align-self: center;">
+                            @* <li class="nav-item" style="align-self: center;">
                                 @if (true)
                                 {
                                     <img style="width:40px;height:40px">
                                 }
-                            </li>
+                            </li> *@
                             <li class="nav-item">
                                 <u><a class="nav-link text-dark">Hello @User.Identity?.Name.ToLower()!</a></u>
                             </li>

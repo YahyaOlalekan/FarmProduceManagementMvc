@@ -45,6 +45,7 @@ namespace FarmProduceManagement.Services.Implementations
                     ProduceName = model.ProduceName,
                     CategoryId = model.CategoryId,
                     CostPrice = model.CostPrice,
+                    SellingPrice = model.SellingPrice,
                     UnitOfMeasurement = model.UnitOfMeasurement,
                     CreatedBy = loginId
                 };
@@ -99,7 +100,7 @@ namespace FarmProduceManagement.Services.Implementations
                 return new BaseResponse<ProduceDto>
                 {
                     Message = "Not found",
-                    Status = false,
+                    Status = false, 
                 };
             }
             return new BaseResponse<ProduceDto>
@@ -110,8 +111,9 @@ namespace FarmProduceManagement.Services.Implementations
                 {
                     Id = produce.Id,
                     ProduceName = produce.ProduceName,
-                    NameOfCategory = produce.Category.NameOfCategory,
+                   // NameOfCategory = produce.Category.NameOfCategory,
                     CostPrice = produce.CostPrice,
+                    SellingPrice = produce.SellingPrice,
                     UnitOfMeasurement = produce.UnitOfMeasurement,
                     QuantityToBuy = produce.QuantityToBuy,
                    
@@ -141,6 +143,7 @@ namespace FarmProduceManagement.Services.Implementations
                     ProduceName = p.ProduceName,
                     NameOfCategory = p.Category.NameOfCategory,
                     CostPrice = p.CostPrice,
+                    SellingPrice = p.SellingPrice,
                     UnitOfMeasurement = p.UnitOfMeasurement,
                     QuantityToBuy = p.QuantityToBuy,
                   
@@ -170,6 +173,7 @@ namespace FarmProduceManagement.Services.Implementations
                     ProduceName = p.ProduceName,
                     /*NameOfCategory = p.Category.NameOfCategory,*/
                     CostPrice = p.CostPrice,
+                    SellingPrice = p.SellingPrice,
                     UnitOfMeasurement = p.UnitOfMeasurement,
                     QuantityToBuy = p.QuantityToBuy,
 
@@ -197,8 +201,8 @@ namespace FarmProduceManagement.Services.Implementations
                 };
             }
 
-            var totalAmount = cartItems.Select(p => p.TotalCostPrice).Sum();
-            var totalQuantity = cartItems.Select(p => p.QuantityToBuy).Sum();
+            var totalAmount = cartItems.Select(p => p.TotalPrice).Sum();
+            var totalQuantity = cartItems.Select(p => p.Quantity).Sum();
 
             var farmer = _farmerRepository.Get(f => f.UserId == loginId);
 
@@ -215,8 +219,8 @@ namespace FarmProduceManagement.Services.Implementations
             var transactionProduce = cartItems.Select(p => new TransactionProduce{
                 TransactionId = transaction.Id,
                 ProduceId = p.ProduceId,
-                Quantity = p.QuantityToBuy,
-                Price = p.CostPrice,
+                Quantity = p.Quantity,
+                Price = p.Price,
                 CreatedBy = loginId,
             });
 
@@ -258,6 +262,7 @@ namespace FarmProduceManagement.Services.Implementations
 
                 produce.ProduceName = model.ProduceName;
                 produce.CostPrice = model.CostPrice;
+                produce.SellingPrice = model.SellingPrice;
                 produce.QuantityToBuy = model.QuantityToBuy;
                 produce.UnitOfMeasurement = model.UnitOfMeasurement;
                 // produce.Category.NameOfCategory = model.NameOfCategory;
