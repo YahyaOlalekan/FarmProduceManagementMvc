@@ -125,20 +125,34 @@ namespace FarmProduceManagement.Controllers
 
 
         [HttpGet]
-        public IActionResult Update()
+        public IActionResult Update(string id)
         {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Update(string id, UpdateProductRequestModel productModel)
-        {
-            var updateProduct = _productService.Update(id, productModel);
-            TempData["message"] = updateProduct.Message;
-            if (updateProduct.Status)
+             var result = _productService.Get(id);
+            var model = new UpdateProductRequestModel
             {
-                return RedirectToAction("List");
-            }
-            return View(productModel);
+               ProduceName = result.Data.ProduceName,
+               SellingPrice = result.Data.SellingPrice,
+               QuantityToSell = result.Data.QuantityToSell,
+               UnitOfMeasurement = result.Data.UnitOfMeasurement,
+            };
+             return View(model);
+        }
+       
+       
+        [HttpPost]
+        public IActionResult Update(string id, UpdateProductRequestModel model)
+        {
+            if(ModelState.IsValid)
+           {
+                 var result = _productService.Update(id, model);
+                TempData["message"] = result.Message;
+                if (result.Status)
+                {
+                    return RedirectToAction("List");
+                }
+               
+           }
+            return View(model);
         }
 
 

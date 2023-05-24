@@ -14,25 +14,32 @@ namespace FarmProduceManagement
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IFarmerService _farmerService;
+        private readonly ICustomerService _customerService;
 
-        public Auth(IHttpContextAccessor httpContextAccessor, IFarmerService farmerService)
+        public Auth(IHttpContextAccessor httpContextAccessor, IFarmerService farmerService, ICustomerService customerService)
         {
             _httpContextAccessor = httpContextAccessor;
             _farmerService = farmerService;
+            _customerService = customerService;
         }
-
 
         public LoginUserModel GetLoginUser()
         {
             var userBalance = 0m;
-            string userId = "";
             var role = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Role)?.Value;
+            
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
             if (role == "Farmer")
             {
-                userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                 var farmer = _farmerService.Get(userId);
                 userBalance = Math.Round(farmer.Data.Wallet, 4);
+            }
+            else if(role == "Customer")
+            {
+                
+                var customer = _customerService.Get(userId);
+                userBalance = Math.Round(customer.Data.Wallet, 4);
             }
 
             return new LoginUserModel

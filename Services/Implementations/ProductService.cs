@@ -262,7 +262,7 @@ namespace FarmProduceManagement.Services.Implementations
                 {
                     return new BaseResponse<ProductDto>
                     {
-                        Message = "The product is not available!",
+                         Message = $"{model.ProduceName[i]} is not available!",
                         Status = false,
                     };
                 }

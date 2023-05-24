@@ -16,7 +16,7 @@ namespace FarmProduceManagement.Repositories.Implementations
         public Customer Get(string id)
         {
             return _context.Customers
-            //.Include(a => a.Orders)
+            .Include(a => a.Orders)
              .Include(a => a.User)
              .FirstOrDefault(a => a.UserId == id && a.IsDeleted == false);
         }
@@ -25,7 +25,7 @@ namespace FarmProduceManagement.Repositories.Implementations
         {
             return _context.Customers
             .Where(a => a.IsDeleted == false)
-            //.Include(a => a.Orders)
+            .Include(a => a.Orders)
             .Include(a => a.User)
             .FirstOrDefault(expression);
         }
@@ -35,7 +35,7 @@ namespace FarmProduceManagement.Repositories.Implementations
             return _context.Customers
             .Where(a => !a.IsDeleted)
             .Include(a => a.User)
-            //.Include(a => a.Orders)
+            .Include(a => a.Orders)
             .Where(expression)
             .ToList();
         }
@@ -47,7 +47,7 @@ namespace FarmProduceManagement.Repositories.Implementations
             return _context.Customers
             .Where(a => !a.IsDeleted)
             .Include(a => a.User)
-            //.Include(a => a.Orders)
+            .Include(a => a.Orders)
             .ToList();
         }
 
@@ -57,7 +57,7 @@ namespace FarmProduceManagement.Repositories.Implementations
             return _context.Customers
             .Where(a => ids.Contains(a.Id) && a.IsDeleted == false)
             .Include(a => a.User)
-            //.Include(a => a.Orders)
+            .Include(a => a.Orders)
             .ToList();
         }
 

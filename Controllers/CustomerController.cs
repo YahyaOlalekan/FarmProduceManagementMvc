@@ -10,16 +10,16 @@ namespace FarmProduceManagement.Controllers
         private readonly ILogger<CustomerController> _logger;
         private readonly ICustomerService _customerService;
         private readonly IHttpContextAccessor _httpAccessor;
+        private readonly IAuth _auth;
 
-
-        public CustomerController(ILogger<CustomerController> logger, ICustomerService customerService, IHttpContextAccessor httpAccessor)
+        public CustomerController(ILogger<CustomerController> logger, ICustomerService customerService, IHttpContextAccessor httpAccessor, IAuth auth)
         {
             _logger = logger;
             _customerService = customerService;
             _httpAccessor = httpAccessor;
-
+            _auth = auth;
         }
-
+    
         public IActionResult Register()
         {
             return View();
@@ -51,6 +51,9 @@ namespace FarmProduceManagement.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult RealDelete(string id)
         {
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = user.Balance;
+
             var result = _customerService.Delete(id);
             TempData["message"] = result.Message;
             if (result.Status)
@@ -62,12 +65,18 @@ namespace FarmProduceManagement.Controllers
 
         public IActionResult Details(string id)
         {
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = user.Balance;
+           
             var result = _customerService.Get(id);
             return View(result.Data);
         }
 
         public IActionResult List()
         {
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = user.Balance;
+           
             var result = _customerService.GetAll();
             return View(result.Data);
         }
@@ -92,7 +101,9 @@ namespace FarmProduceManagement.Controllers
         [HttpPost]
         public IActionResult Update(string id, UpdateCustomerRequestModel model)
         {
-
+             var user = _auth.GetLoginUser();
+            TempData["balance"] = user.Balance;
+           
             if (ModelState.IsValid)
             {
                 var result = _customerService.Update(id, model);

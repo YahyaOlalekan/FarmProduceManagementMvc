@@ -141,7 +141,7 @@ namespace FarmProduceManagement.Services.Implementations
                     {
                         Id = customer.Id,
                         RegistrationNumber = customer.RegistrationNumber,
-                        // Wallet = farmer.Wallet,
+                        Wallet = customer.Wallet,
                         FirstName = customer.User.FirstName,
                         LastName = customer.User.LastName,
                         Email = customer.User.Email,
@@ -234,5 +234,9 @@ namespace FarmProduceManagement.Services.Implementations
                 })
             };
         }
+
+
+
+       
     }
 }

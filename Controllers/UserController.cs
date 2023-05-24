@@ -103,6 +103,9 @@ namespace FarmProduceManagement.Controllers
         }
         public IActionResult Customer()
         {
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = user.Balance;
+
             return View();
         }
         public IActionResult Logout()

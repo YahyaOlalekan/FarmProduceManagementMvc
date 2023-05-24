@@ -1,4 +1,5 @@
-﻿using FarmProduceManagement.Models.Enums;
+﻿using FarmProduceManagement.Models.Entities;
+using FarmProduceManagement.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
@@ -16,10 +17,11 @@ namespace FarmProduceManagement.Models.Dtos
         public string RegistrationNumber { get; set; }
         public decimal Wallet { get; set; }
         public string UserId { get; set; }
+         public User User { get; set; }
         public string RoleId { get; set; }
-        // public string OrderId { get; set; }
+        public string OrderId { get; set; }
 
-        //public List<OrderDto> Orders { get; set; }
+        public List<OrderDto> Orders { get; set; }
 
     }
 

@@ -10,6 +10,7 @@ namespace FarmProduceManagement.Services.Interfaces
         //BaseResponse<IEnumerable<CustomerDto>> GetAll(Func<CustomerDto, bool> expression);
         BaseResponse<IEnumerable<CustomerDto>> GetAll();
         BaseResponse<CustomerDto> Delete(string id);
+        // BaseResponse<CustomerDto> FundWallet();
        
     }
 }

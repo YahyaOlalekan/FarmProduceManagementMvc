@@ -55,6 +55,10 @@ namespace FarmProduceManagement.Models.Dtos
         [Display(Name = "Produce")]
         public List<string> ProductId { get; set; }
 
+        [MinLength(3), MaxLength(50)]
+        [Display(Name = "Name")]
+        public List<string> ProduceName { get; set; }
+
         [Required]
         [Display(Name = "Quantity")]
         public List<double> Quantity { get; set; }

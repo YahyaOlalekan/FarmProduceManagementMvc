@@ -40,7 +40,9 @@
                             var unitOfMeasurement = "unitOfMeasurement"+ @product.Id;
                             var nameOfCategory = "nameOfCategory"+ @product.Id;
                             var quantity = "quantity"+ @product.Id;
-                            <tr>
+                            if(product.QuantityToSell > 0)
+                            {
+                                 <tr>
                                 <td>@serialNumberCount</td>
                                 <td>
                                     @product.Produce.ProduceName
@@ -65,6 +67,8 @@
                                 <td><a id="@product.Id" class="btn btn-secondary AddProductToCart">Add to Cart</a></td>
                             </tr>
                             serialNumberCount++;
+                            }
+                           
                         }
                     }
                     else{
@@ -88,7 +92,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Summary of Order</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form asp-action="Sell">
@@ -156,7 +160,7 @@
                                         <input type="hidden" name="UnitOfMeasurement" value="`+ cart.unitOfMeasurement +`">
                                     </td>
                                     <td>
-                                        <a class="btn btn-warning RemoveFromCart" id="`+ cart.id +`">Remove<a>
+                                        <a class="btn btn-warning RemoveProductFromCart" id="`+ cart.id +`">Remove<a>
                                         <input type="hidden" name="ProductId" value="`+ cart.productId +`">
                                     </td>
                                 </tr>`;
@@ -221,12 +225,12 @@
 
 
 
-            $(document).on("click", ".RemoveFromCart", function()
+            $(document).on("click", ".RemoveProductFromCart", function()
             {
                 let itemId = $(this).attr('id');
                 
                 $.ajax({
-                    url: '/CartItem/Delete',
+                    url: '/OrderCart/Delete',
                     method: 'POST',
                     data: { id:itemId },
                     dataType: 'json',

@@ -18,7 +18,7 @@
 
      <div>
             <h4>
-                Transaction No : @Model.OrderNumber
+                Order Number : @Model.OrderNumber
             </h4>
             <p>
                 Name : @name
@@ -40,7 +40,7 @@
                     <th colspan="5">Items</th>
                 </tr>
                 <tr>
-                    <th>Sn</th>
+                    <th>SN</th>
                     <th>Produce Name</th>
                     <th>Quantity</th>
                     <th>Price</th>
@@ -55,9 +55,9 @@
                         <tr>
                             <td>@serialNo</td>
                             <td>@item.Produce.ProduceName</td>
-                            <td>@item.Quantity</td>
-                            <td>@item.Price</td>
-                            <td>@total</td>
+                            <td>@Math.Round(item.Quantity, 4)</td>
+                            <td>@Math.Round(item.Price, 4)</td>
+                            <td>@Math.Round(total, 4)</td>
                         </tr>
                         serialNo++;
                     }

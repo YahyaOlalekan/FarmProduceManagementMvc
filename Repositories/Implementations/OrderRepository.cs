@@ -29,6 +29,7 @@ namespace FarmProduceManagement.Repositories.Implementations
             .Include(a => a.Customer)
             .Include(a => a.OrderProducts)
             .ThenInclude(a => a.Product)
+            .ThenInclude(a =>a.Produce)
             .SingleOrDefault(a => a.Id == id && a.IsDeleted == false);
         }
 
@@ -39,6 +40,7 @@ namespace FarmProduceManagement.Repositories.Implementations
             .Include(a => a.Customer)
             .Include(a => a.OrderProducts)
             .ThenInclude(a => a.Product)
+            .ThenInclude(a =>a.Produce)
             .SingleOrDefault(expression);
         }
 
@@ -49,6 +51,7 @@ namespace FarmProduceManagement.Repositories.Implementations
             .Include(a => a.Customer)
             .Include(a => a.OrderProducts)
             .ThenInclude(a => a.Product)
+            .ThenInclude(a =>a.Produce)
            .ToList();
         }
 
@@ -59,6 +62,7 @@ namespace FarmProduceManagement.Repositories.Implementations
             .Include(a => a.Customer)
             .Include(a => a.OrderProducts)
             .ThenInclude(a => a.Product)
+            .ThenInclude(a =>a.Produce)
             .ToList();
         }
 
@@ -69,6 +73,7 @@ namespace FarmProduceManagement.Repositories.Implementations
             .Include(a => a.Customer)
             .Include(a => a.OrderProducts)
             .ThenInclude(a => a.Product)
+            .ThenInclude(a =>a.Produce)
             .ToList();
         }
 
