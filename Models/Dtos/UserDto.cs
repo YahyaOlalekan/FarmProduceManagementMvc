@@ -30,4 +30,17 @@ namespace FarmProduceManagement.Models.Dtos
         public decimal Balance { get; set; }
         public string UserId { get; set; }
     }
+
+
+    
+
+     public class AdminDashboardModel
+    {
+        public int NoOfUsers { get; set; }
+        public int NoOfManagers { get; set; }
+        public int NoOfPendingFarmers { get; set; }
+        public int NoOfVerifiedFarmers { get; set; }
+        public int NoOfCustomers { get; set; }
+        public decimal CompanyBalance { get; set; }
+    }
 }

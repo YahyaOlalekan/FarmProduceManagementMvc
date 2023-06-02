@@ -14,11 +14,17 @@ namespace FarmProduceManagement.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IFarmerService _farmerService;
+        private readonly IManagerService _managerService;
+        private readonly ICustomerService _customerService;
         private readonly IAuth _auth;
 
-        public UserController(IUserService userService, IAuth auth)
+        public UserController(IUserService userService, IFarmerService farmerService, IManagerService managerService, ICustomerService customerService, IAuth auth)
         {
             _userService = userService;
+            _farmerService = farmerService;
+            _managerService = managerService;
+            _customerService = customerService;
             _auth = auth;
         }
 
@@ -87,7 +93,24 @@ namespace FarmProduceManagement.Controllers
 
         public IActionResult Super()
         {
-            return View();
+            // var users = _userService.GetAll().Data.Count();
+            var users = _userService.CountUser();
+            var managers = _managerService.GetAll().Data.Count();
+            var pendingFarmers = _farmerService.GetPendingFarmers().Data.Count();
+            var approvedFarmers = _farmerService.ApprovedFarmers().Data.Count();
+            var customers = _customerService.GetAll().Data.Count();
+           // var balance = 
+
+            var model = new AdminDashboardModel{
+                NoOfUsers = users,
+                NoOfManagers = managers,
+                NoOfPendingFarmers = pendingFarmers,
+                NoOfVerifiedFarmers = approvedFarmers,
+                NoOfCustomers = customers,
+               // CompanyBalance = balance,
+            };
+
+            return View(model);
         }
         public IActionResult Manager()
         {

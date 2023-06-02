@@ -20,3 +20,24 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.cardicon{
+  display: flex; 
+  margin: 5px; 
+  width: 25%; 
+  font-size: 20px; 
+  padding: 13px;
+
+}
+
+.cardnumber{
+  font-size: 35px;
+}
+
+.cardmessage{
+  font-size: 17px;
+}
+
+.cardcolor{
+  width: 75%; color:white;
+}

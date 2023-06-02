@@ -57,7 +57,7 @@ namespace FarmProduceManagement.Services.Implementations
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 PhoneNumber = model.PhoneNumber,
-                Password = model.Password,
+                Password = BCrypt.Net.BCrypt.HashPassword(model.Password),
                 Address = model.Address,
                 Email = model.Email,
                 ProfilePicture = profilePicture,

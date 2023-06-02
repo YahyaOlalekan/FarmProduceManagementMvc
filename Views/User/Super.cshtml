@@ -1,20 +1,64 @@
-@{Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "";}
+@model AdminDashboardModel;
+@{
+  Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "";
+}
 
-<div class="text-center"><h1>@ViewData["Title"]</h1></div>
+<h1>@ViewData["Title"]</h1>
+
 <div class="row">
       <div class="col-md-2">
         <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
         </div>
     <div class="col-md-10">
-            @* <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         <div class="text-center"><h1>@ViewData["Title"]</h1></div>
+<div class="col">
+      <div class="col" style="display: flex;">
+        <div class="cardicon" style=" background: rgb(118, 193, 62)">
+          <div class="cardcolor">
+            <div class="cardnumber">@Model.NoOfManagers <a> </a> </div>
+            <div class="cardmessage">Total Managers</div>
+          </div>
+          <img src="/icon/person_add.svg" alt="">
+        </div>
 
-            <button><a asp-action="Add" asp-controller="Manager" class="w-100 btn btn-lg btn-primary">Create Manager</a></button><br>
-            <button><a asp-action="List" asp-controller="Manager" class="w-100 btn btn-lg btn-primary">View Managers</a></button><br> *@
-            @* <button><a asp-action="List" asp-controller="Manager" class="w-100 btn btn-lg btn-primary">List Of Managers</a></button><br> *@
+        <div class="cardicon" style=" background: rgb(7, 14, 248)">
+          <div class="cardcolor">
+            <div class="cardnumber">@Model.NoOfPendingFarmers</div>
+            <div class="cardmessage">Pending Farmers</div>
+          </div>
+          <img src="/icon/pending.svg" alt="">
+        </div>
+
+        <div class="cardicon" style=" background: rgb(193, 62, 97)">
+          <div class="cardcolor">
+            <div class="cardnumber">@Model.NoOfCustomers</div>
+            <div class="cardmessage">Total Customers</div>
+          </div>
+          <img src="/icon/person_add.svg" alt="">
+        </div>
+
+        <div class="cardicon" style=" background: rgb(193, 182, 62)">
+          <div class="cardcolor">
+            <div class="cardnumber">@Model.NoOfVerifiedFarmers</div>
+            <div class="cardmessage">Verified Farmers</div>
+          </div>
+          <img src="/icon/verified.svg" alt="">
+        </div>
+      </div>
+</div>
+
+
+  
         
     </div>
-      @* <div class="col-md-2">
-      </div> *@
+      <div class="col-md-2">
+      </div>
 </div>
+
+
+
+
+
+
 

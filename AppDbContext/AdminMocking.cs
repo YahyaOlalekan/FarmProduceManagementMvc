@@ -28,7 +28,7 @@ namespace FarmProduceManagement.AppDbContext
                         LastName = "Bisi",
                         PhoneNumber = "08132759937",
                         Email ="ola@gmail.com",
-                        Password ="123",
+                        Password = BCrypt.Net.BCrypt.HashPassword("123"),
                         Address="Abk",
                         ProfilePicture="admin.jpg",
                         RoleId = role.Id

@@ -26,7 +26,7 @@
                         <th>Unit Of Measurement</th>
                         <th>Name Of Category</th>
                         <th>Quantity</th>
-                        <th></th>
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -35,8 +35,8 @@
                         var serialNumberCount = 1;
                         foreach (var product in Model)
                         {
-                            var name = "name"+ @product.Id;
-                            var SellingPrice = "SellingPrice"+ @product.Id;
+                            var name = "name"+ @product.ProduceName;
+                            var SellingPrice = "SellingPrice"+ @product.Produce.ProduceName;
                             var unitOfMeasurement = "unitOfMeasurement"+ @product.Id;
                             var nameOfCategory = "nameOfCategory"+ @product.Id;
                             var quantity = "quantity"+ @product.Id;
@@ -45,7 +45,7 @@
                                  <tr>
                                 <td>@serialNumberCount</td>
                                 <td>
-                                    @product.Produce.ProduceName
+                                    @product.Produce.Id
                                     <input type="hidden" id="@name" value="@product.Produce.ProduceName">
                                 </td>
                                 @* <td>@product.QuantityToBuy</td> *@
@@ -81,7 +81,7 @@
                 </tbody>
 
             </table>
-        }
+        } 
         
     </div>
 </div>

@@ -19,6 +19,13 @@ namespace FarmProduceManagement.Services.Implementations
             _farmerRepository = farmerRepository;
         }
 
+        public int CountUser()
+        {
+            var getUsers = _userRepository.GetAll();
+            
+            return getUsers.Count();
+        }
+
         public BaseResponse<UserDto> Get(string id)
         {
             var user = _userRepository.Get(id);
@@ -74,9 +81,9 @@ namespace FarmProduceManagement.Services.Implementations
 
         public BaseResponse<UserDto> Login(LoginUserRequestModel model)
         {
-            var user = _userRepository.Get(a => a.Email == model.Email && a.Password == model.Password);
+            var user = _userRepository.Get(a => a.Email == model.Email);
 
-            if (user != null)
+            if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
             {
 
                 if(user.Role.RoleName == "Farmer")
@@ -124,6 +131,7 @@ namespace FarmProduceManagement.Services.Implementations
                 };
 
             }
+            
             return new BaseResponse<UserDto>
             {
                 Message = "Incorrect email or password",

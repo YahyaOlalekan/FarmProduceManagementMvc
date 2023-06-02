@@ -8,7 +8,8 @@ namespace FarmProduceManagement.Services.Interfaces
 {
     public interface IUserService
     {
-         BaseResponse<UserDto> Login(LoginUserRequestModel model);
+        int CountUser();
+        BaseResponse<UserDto> Login(LoginUserRequestModel model);
         BaseResponse<UserDto> Get(string id);
         BaseResponse<List<UserDto>> GetAll();
 

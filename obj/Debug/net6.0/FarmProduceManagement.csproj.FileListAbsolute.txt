@@ -63,3 +63,4 @@ C:\Users\USER PC\Desktop\FarmProduceManagement\obj\Debug\net6.0\refint\FarmProdu
 C:\Users\USER PC\Desktop\FarmProduceManagement\obj\Debug\net6.0\FarmProduceManagement.pdb
 C:\Users\USER PC\Desktop\FarmProduceManagement\obj\Debug\net6.0\FarmProduceManagement.genruntimeconfig.cache
 C:\Users\USER PC\Desktop\FarmProduceManagement\obj\Debug\net6.0\ref\FarmProduceManagement.dll
+C:\Users\USER PC\Desktop\FarmProduceManagement\bin\Debug\net6.0\BCrypt.Net-Next.dll

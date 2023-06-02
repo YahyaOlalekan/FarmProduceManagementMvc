@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "NJlduzUDSvAYic2nttWrxIbcd0MNkUXb9JFnoSt9UN4dSb0bwG1PHmoaYMvKelS5e8Fg/k9fCXpMtkx95rdU3g==",
+  "dgSpecHash": "qyHU1isagscZQk4sG+IV9dMdrddyvlVI6C0eFhwt8w6GuIrmXhsZqo/9GUURxzqHT5gWEbLAJ7Cj3bertr2/FA==",
   "success": true,
   "projectFilePath": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\FarmProduceManagement.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\USER PC\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\USER PC\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\USER PC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\USER PC\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",

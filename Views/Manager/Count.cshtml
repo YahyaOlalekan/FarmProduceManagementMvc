@@ -1,0 +1,31 @@
+@using FarmProduceManagement.Models.Dtos;
+@model ManagerDashboardModel;
+@{
+    ViewData["Title"] = "Number Of Managers";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "";
+}
+
+<div class="text-center">
+    <h1>@ViewData["Title"]</h1>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
+    </div>
+    <div class="col-md-10">
+
+        <div>
+            <div class="pt-4">
+                @Model.NoOfManagers
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+

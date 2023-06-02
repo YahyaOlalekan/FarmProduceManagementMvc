@@ -1,7 +1,5 @@
 @model IEnumerable<FarmProduceManagement.Models.Dtos.ProductDto>
-@{
-    
-}
+
 
 <div>
     <table class="table table-bordered table-striped table-responsive">
@@ -15,8 +13,8 @@
                 <th>Selling Price</th>
                 <th>Unit Of Measurement</th>
                 <th>Name Of Category</th>
-                <th>Update</th>
-                <th>Delete</th>
+                @* <th>Update</th>
+                <th>Delete</th> *@
             </tr>
         </thead>
         <tbody>
@@ -27,14 +25,14 @@
                 {
                     <tr>
                         <td>@serialNumberCount</td>
-                        <td>@produce.ProduceName</td>
+                        <td>@produce.Produce.ProduceName</td>
                         @* <td>@produce.QuantityToBuy</td> *@
                         @* <td>@Math.Round(produce.CostPrice, 4)</td> *@
                         <td>@Math.Round(produce.SellingPrice, 4)</td>
                         <td>@produce.UnitOfMeasurement</td>
                         <td>@produce.NameOfCategory</td>
-                        <td><a asp-action="Update" asp-controller="Produce" asp-route-id="@produce.Id">Update</a></td>
-                        <td><a asp-action="Delete" asp-controller="Produce" asp-route-id="@produce.Id">Remove</a></td>
+                        @* <td><a asp-action="Update" asp-controller="Produce" asp-route-id="@produce.Id">Update</a></td>
+                        <td><a asp-action="Delete" asp-controller="Produce" asp-route-id="@produce.Id">Remove</a></td> *@
                     </tr>
                     serialNumberCount++;
                 }

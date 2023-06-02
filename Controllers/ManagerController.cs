@@ -91,6 +91,17 @@ namespace FarmProduceManagement.Controllers
             var result = _managerService.GetAll();
             return View(result.Data);
         }
+        public IActionResult Count()
+        {
+            var count = _managerService.GetAll().Data.Count();
+            TempData["message"] = count;
+
+            var model = new ManagerDashboardModel{
+                NoOfManagers = count,
+            };
+
+            return View(model);
+        }
 
 
         public IActionResult Update(string id)

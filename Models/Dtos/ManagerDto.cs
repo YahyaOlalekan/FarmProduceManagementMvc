@@ -70,4 +70,11 @@ namespace FarmProduceManagement.Models.Dtos
         [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif|.jpeg)$", ErrorMessage = "Only Image file allowed.")]
         public IFormFile ProfilePicture { get; set; }
     }
+
+     public class ManagerDashboardModel
+    {
+        public int NoOfManagers { get; set; }
+        public int NoOfFarmers { get; set; }
+    }
+
 }

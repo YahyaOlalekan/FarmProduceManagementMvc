@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\Upload\\images\\14c05467-00cd-442a-aa1f-3e3f88145f3a_bird.jpg"
     },
     {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\16de4e92-c826-4d79-b604-8c41f9c60a6b_ram image.jpg",
+      "PackagePath": "staticwebassets\\Upload\\images\\16de4e92-c826-4d79-b604-8c41f9c60a6b_ram image.jpg"
+    },
+    {
       "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\Upload\\images\\1b4c5593-9de8-44b0-a54b-1a8d0e4c1544_bird.jpg",
       "PackagePath": "staticwebassets\\Upload\\images\\1b4c5593-9de8-44b0-a54b-1a8d0e4c1544_bird.jpg"
     },
@@ -371,6 +375,46 @@
     {
       "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\icon\\group.svg",
+      "PackagePath": "staticwebassets\\icon\\group.svg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\icon\\group_add.svg",
+      "PackagePath": "staticwebassets\\icon\\group_add.svg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\icon\\groups.svg",
+      "PackagePath": "staticwebassets\\icon\\groups.svg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\icon\\manage_accounts.svg",
+      "PackagePath": "staticwebassets\\icon\\manage_accounts.svg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\icon\\patient_list.svg",
+      "PackagePath": "staticwebassets\\icon\\patient_list.svg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\icon\\pending.svg",
+      "PackagePath": "staticwebassets\\icon\\pending.svg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\icon\\person.svg",
+      "PackagePath": "staticwebassets\\icon\\person.svg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\icon\\person_add.svg",
+      "PackagePath": "staticwebassets\\icon\\person_add.svg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\icon\\shopping_cart_checkout.svg",
+      "PackagePath": "staticwebassets\\icon\\shopping_cart_checkout.svg"
+    },
+    {
+      "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\icon\\verified.svg",
+      "PackagePath": "staticwebassets\\icon\\verified.svg"
     },
     {
       "Id": "C:\\Users\\USER PC\\Desktop\\FarmProduceManagement\\wwwroot\\js\\Produce.js",

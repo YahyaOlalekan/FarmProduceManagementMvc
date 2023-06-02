@@ -30,6 +30,7 @@ namespace FarmProduceManagement.Controllers
             ViewData["allCategories"] = new SelectList(categories.Data, "Id", "NameOfCategory");
             return View();
         }
+        
         [HttpPost]
         public IActionResult Add(CreateProductRequestModel model)
         {
