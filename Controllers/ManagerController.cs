@@ -128,7 +128,7 @@ namespace FarmProduceManagement.Controllers
                 TempData["message"] = result.Message;
                 if (result.Status)
                 {
-                    return RedirectToAction("List");
+                    return RedirectToAction("Details", new{id = id});
                 }
             }
 

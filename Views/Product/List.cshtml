@@ -36,7 +36,7 @@
                         foreach (var product in Model)
                         {
                             var name = "name"+ @product.ProduceName;
-                            var SellingPrice = "SellingPrice"+ @product.Produce.ProduceName;
+                            var SellingPrice = "SellingPrice"+ @product.Id;
                             var unitOfMeasurement = "unitOfMeasurement"+ @product.Id;
                             var nameOfCategory = "nameOfCategory"+ @product.Id;
                             var quantity = "quantity"+ @product.Id;
@@ -45,7 +45,7 @@
                                  <tr>
                                 <td>@serialNumberCount</td>
                                 <td>
-                                    @product.Produce.Id
+                                    @product.Produce.ProduceName
                                     <input type="hidden" id="@name" value="@product.Produce.ProduceName">
                                 </td>
                                 @* <td>@product.QuantityToBuy</td> *@
@@ -101,7 +101,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Order</button>
                     </div>
                 </form>
             </div>

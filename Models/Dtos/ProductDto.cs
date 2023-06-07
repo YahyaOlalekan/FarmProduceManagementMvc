@@ -47,22 +47,19 @@ namespace FarmProduceManagement.Models.Dtos
 
     public class SellProductRequestModel
     {
-        // [Required, MinLength(3), MaxLength(50)]
-        [Display(Name = "Category")]
-        public string CategoryId { get; set; }
 
-        [Required]
+        [Required, MinLength(1), MaxLength(50)]
         [Display(Name = "Produce")]
         public List<string> ProductId { get; set; }
 
-        [MinLength(3), MaxLength(50)]
+        [Required]
         [Display(Name = "Name")]
         public List<string> ProduceName { get; set; }
+
 
         [Required]
         [Display(Name = "Quantity")]
         public List<double> Quantity { get; set; }
-        public bool IsAvailable { get; set; }
         
         // public SelectList CategoryList { get; set; }
        

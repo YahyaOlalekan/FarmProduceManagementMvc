@@ -34,7 +34,7 @@ namespace FarmProduceManagement.Services.Implementations
                 };
             }
 
-           BaseEntity phoneNumber = _customerRepository.Get(c => c.User.PhoneNumber == model.PhoneNumber);
+            BaseEntity phoneNumber = _customerRepository.Get(c => c.User.PhoneNumber == model.PhoneNumber);
             if (phoneNumber != null)
             {
                 return new BaseResponse<CustomerDto>
@@ -107,10 +107,11 @@ namespace FarmProduceManagement.Services.Implementations
 
         public BaseResponse<CustomerDto> Delete(string id)
         {
-            var customer = _customerRepository.Get(d => d.Id == id);        
+            var customer = _customerRepository.Get(d => d.Id == id);
             if (customer != null)
             {
                 customer.IsDeleted = true;
+                customer.User.IsDeleted = true;
                 _customerRepository.Update(customer);
                 _customerRepository.Save();
 
@@ -162,15 +163,19 @@ namespace FarmProduceManagement.Services.Implementations
 
         public BaseResponse<CustomerDto> Update(string id, UpdateCustomerRequestModel model)
         {
-            var customer = _customerRepository.Get(a => a.Id == id );
+            var customer = _customerRepository.Get(a => a.UserId == id);
             if (customer is not null)
             {
-                var profilePicture = UploadFile(model.ProfilePicture);
+                if (model.ProfilePicture != null)
+                {
+
+                    var profilePicture = UploadFile(model.ProfilePicture);
+                    customer.User.ProfilePicture = profilePicture;
+                }
 
                 customer.User.FirstName = model.FirstName;
                 customer.User.Address = model.Address;
                 customer.User.LastName = model.LastName;
-                customer.User.ProfilePicture = profilePicture;
                 customer.User.Email = model.Email;
                 customer.User.PhoneNumber = model.PhoneNumber;
 
@@ -203,7 +208,7 @@ namespace FarmProduceManagement.Services.Implementations
             return "FPM/CUS/00" + $"{_customerRepository.GetAll().Count() + 1}";
         }
 
-       
+
         public BaseResponse<IEnumerable<CustomerDto>> GetAll()
         {
             var customers = _customerRepository.GetAll();
@@ -235,8 +240,35 @@ namespace FarmProduceManagement.Services.Implementations
             };
         }
 
-
-
-       
+        public BaseResponse<CustomerDto> FundWallet(string id, FundWalletRequestModel model)
+        {
+            Customer customer = _customerRepository.Get(c => c.Id == id || c.UserId == id);
+            if (customer != null)
+            {
+                if (model.Amount > 0)
+                {
+                    customer.Wallet += model.Amount;
+                    _customerRepository.Save();
+                    return new BaseResponse<CustomerDto>
+                    {
+                        Message = $"Your balance is {Math.Round(customer.Wallet, 4)}",
+                        Status = true,
+                    };
+                }
+                else
+                {
+                    return new BaseResponse<CustomerDto>
+                    {
+                        Message = $"{model.Amount} is an invalid amount!",
+                        Status = false,
+                    };
+                }
+            }
+            return new BaseResponse<CustomerDto>
+            {
+                Message = "You are not a customer!",
+                Status = false,
+            };
+        }
     }
 }

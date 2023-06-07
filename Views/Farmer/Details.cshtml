@@ -1,7 +1,9 @@
 @model FarmProduceManagement.Models.Dtos.FarmerDto
 
 @{
-    ViewData["Name"] = $"{Model.FirstName} {Model.LastName}";
+    @* ViewData["Name"] = $"{Model.FirstName} {Model.LastName}"; *@
+
+    @* var name = $"{Model.FirstName} {Model.LastName}"; *@
 }
 <br />
 
@@ -15,46 +17,39 @@
     <div class="col-md-2">
         <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10" style="">
         <div class="text-center">
-    <h1>@ViewData["Title"]</h1>
-    </div>
-        <div>
-            <h4>
-                @ViewData["Name"]
-            </h4>
-            <div>
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="" style="width: 40%; margin: auto">
+            
+            <div class="text-center">
+                @* <h4>@name</h4> *@
                 <img src="~/Upload/Images/@Model.ProfilePicture" height="100" width="100">
             </div>
             <br />
-            <div>
+            <table class="table table-striped">
                 <tr>
                     <td><strong>First Name</strong></td>
                     <td>@Model.FirstName</td>
                 </tr>
-                <br />
                 <tr>
                     <td><strong>Last Name</strong></td>
                     <td>@Model.LastName</td>
                 </tr>
-                <br />
                 <tr>
                     <td><strong>Registration Number</strong></td>
                     <td>@Model.RegistrationNumber</td>
                 </tr>
-                <br />
                 <tr>
                     <td><strong>Email</strong></td>
                     <td>@Model.Email</td>
                 </tr>
-                <br />
-                <tr>
                 <tr>
                     <td><strong>Address</strong></td>
                     <td>@Model.Address</td>
                 </tr>
-                <br />
-            </div>
+            </table>
             @* <br />
             <div class="mt-2 text-end">
                 <button type="submit" class="btn btn-primary" style="width: 30%">

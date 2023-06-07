@@ -117,6 +117,7 @@ namespace FarmProduceManagement.Services.Implementations
             if (farmer != null)
             {
                 farmer.IsDeleted = true;
+                farmer.User.IsDeleted = true;
                 _farmerRepository.Update(farmer);
                 _farmerRepository.Save();
 
@@ -350,15 +351,20 @@ namespace FarmProduceManagement.Services.Implementations
 
         public BaseResponse<FarmerDto> Update(string id, UpdateFarmerRequestModel model)
         {
-            var farmer = _farmerRepository.Get(a => a.Id == id && a.FarmerRegStatus == FarmerRegStatus.Approved);
+            var farmer = _farmerRepository.Get(a => a.UserId == id && a.FarmerRegStatus == FarmerRegStatus.Approved);
             if (farmer is not null)
             {
-                var profilePicture = UploadFile(model.ProfilePicture);
+                
+                if(model.ProfilePicture != null)
+                {
+                    
+                    var profilePicture = UploadFile(model.ProfilePicture);
+                    farmer.User.ProfilePicture = profilePicture;
+                }
 
                 farmer.User.FirstName = model.FirstName;
                 farmer.User.Address = model.Address;
                 farmer.User.LastName = model.LastName;
-                farmer.User.ProfilePicture = profilePicture;
                 farmer.User.Email = model.Email;
                 // farmer.User.Password = model.Password;
                 //farmer.Wallet = model.Wallet;

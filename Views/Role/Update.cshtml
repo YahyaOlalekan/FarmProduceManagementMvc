@@ -14,18 +14,18 @@
         <div class="text-center"><h3>@ViewData["Title"]</h3></div>
 
    
-        <div>
+        <div style="width: 40%; margin: auto">
             <div style="color:red">@TempData["message"]</div>
             <div>
                 <form asp-action="Update">
                     <div>
                         <label asp-for="RoleName"></label>
-                        <input type="text" asp-for="RoleName">
+                        <input type="text" asp-for="RoleName" class="form-control">
                         <span asp-validation-for="RoleName"></span>
                     </div>
-                    <div>
+                    <div style="margin-bottom: 3mm;">
                         <label asp-for="RoleDescription"></label>
-                        <input type="text" asp-for="RoleDescription">
+                        <input type="text" asp-for="RoleDescription" class="form-control">
                         <span asp-validation-for="RoleDescription"></span>
                     </div>
                     <div>

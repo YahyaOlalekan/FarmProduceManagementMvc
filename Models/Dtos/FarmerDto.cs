@@ -56,7 +56,7 @@ namespace FarmProduceManagement.Models.Dtos
         public string Address { get; set; }
         
          [Display(Name = "Profile Picture"), Required(ErrorMessage = "Please select file.")]
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif|.jpeg)$", ErrorMessage = "Only Image file allowed.")]
+       // [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif|.jpeg)$", ErrorMessage = "Only Image file allowed.")]
         public IFormFile ProfilePicture { get; set; }
         
         // [Required]
@@ -83,8 +83,7 @@ namespace FarmProduceManagement.Models.Dtos
         [Required, MaxLength(20), MinLength(3)]
         public string Address { get; set; }
         
-         [Display(Name = "Profile Picture"), Required(ErrorMessage = "Please select file.")]
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif|.jpeg)$", ErrorMessage = "Only Image file allowed.")]
+         [Display(Name = "Profile Picture")]
         public IFormFile ProfilePicture { get; set; }
         // [Required]
         // public decimal Wallet { get; set; }

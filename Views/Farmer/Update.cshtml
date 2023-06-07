@@ -6,75 +6,69 @@
 
 
 <div class="row">
-      <div class="col-md-2">
+    <div class="col-md-2">
         <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
-        </div>
+        @* <div> <partial name="User/Menu.cshtml"></div> *@
+    </div>
+        
     <div class="col-md-10">
        <div class="text-center"><h1>@ViewData["Title"]</h1></div> 
+        <div style="width: 40%; margin: auto">
+            <div style="color: red">@TempData["message"]</div>
+            <form asp-action="Update" enctype="multipart/form-data">
+                
+                <div class="form-group">
+                    <label asp-for="FirstName"></label>
+                    <input type="text" asp-for="FirstName" class="form-control">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="LastName"></label>
+                    <input type="text" asp-for="LastName" class="form-control">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="PhoneNumber"></label>
+                    <input type="text" asp-for="PhoneNumber" class="form-control">
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input type="text" asp-for="Email" class="form-control">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                @* <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input type="text" asp-for="Password" class="form-control">
+                    <span asp-va lidation-for="Password"></span>
+                    <br>
+                </div> *@
+                <div class="form-group">
+                    <label asp-for="Address"></label>
+                    <input type="text" asp-for="Address" class="form-control" value="@Model.Address">
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProfilePicture"></label>
+                    <input type="file" asp-for="ProfilePicture" class="form-control">
+                    <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                </div>
+                
+                <div>
+                    <input class="btn btn-primary" type="submit" value="Submit"/>
+                </div>
+            </form>
+        </div> 
+    </div>
 
-<div>
-    <div>@TempData["message"]</div>
-    <form asp-action="Update" enctype="multipart/form-data">
-        <div>
-            <div>
-                <label asp-for="FirstName"></label>
-                <input type="text" asp-for="FirstName">
-                <span asp-validation-for="FirstName"></span>
-                <br>
-            </div>
-            
-            <div>
-                <label asp-for="LastName"></label>
-                <input type="text" asp-for="LastName">
-                <span asp-validation-for="LastName"></span>
-                <br>
-            </div>
-            
-            <div>
-                <label asp-for="PhoneNumber"></label>
-                <input type="text" asp-for="PhoneNumber">
-                <span asp-validation-for="PhoneNumber"></span>
-                <br>
-            </div>
-            <div>
-                <label asp-for="Email"></label>
-                <input type="text" asp-for="Email">
-                <span asp-validation-for="Email"></span>
-                <br>
-            </div>
-           @* <div>
-                <label asp-for="Password"></label>
-                <input type="text" asp-for="Password">
-                <span asp-va lidation-for="Password"></span>
-                <br>
-            </div> *@
-            <div>
-                <label asp-for="Address"></label>
-                <input type="text" asp-for="Address" value="@Model.Address">
-                <span asp-validation-for="Address"></span>
-                <br>
-            </div>
-            <div>
-                <label asp-for="ProfilePicture"></label>
-                <input type="file" asp-for="ProfilePicture">
-                <span asp-validation-for="ProfilePicture"></span>
-                <br>
-            </div>
-        </div>
-        <div>
-                <input class="btn btn-primary" type="submit" value="Submit"/>
-        </div>
-    </form>
-</div> 
-
+</div>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-    </div>
-
-</div>
 
 
 

@@ -118,7 +118,10 @@
         <a class="dropdown-item active" asp-action="Farmer" asp-controller="User">Dashboard</a>
         <!-- Button trigger modal -->
         <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <span class="totalItem">0</span>
+          <img src="~/icon/shopping_cart_checkout.svg" style="width: 25%;"/>
+            <sup style="background-color: red; border-radius: 10px; color: white; left: -10px; top: -10px;">
+              &nbsp;<span class="totalItem">0</span>&nbsp;
+            </sup>
             <span class="totalPrice">0.00</span>
         </a>
         @* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLg">Large modal</button> *@
@@ -134,7 +137,10 @@
         <a class="dropdown-item active" asp-action="Customer" asp-controller="User">Dashboard</a>
          <!-- Button trigger modal -->
         <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <span class="totalItem">0</span>
+          <img src="~/icon/shopping_cart_checkout.svg" style="width: 25%;"/>
+            <sup style="background-color: red; border-radius: 10px; color: white; left: -10px; top: -10px;">
+              &nbsp;<span class="totalItem">0</span>&nbsp;
+            </sup>
             <span class="totalPrice">0.00</span>
         </a>
         <a class="dropdown-item" asp-action="Details" asp-controller="Customer" asp-route-id="@userId">View Profile</a>
@@ -144,7 +150,7 @@
         <a class="dropdown-item" asp-route-id="@userId">Balance: @balance</a>
 
 
-        <a class="dropdown-item" asp-action="Delete" asp-controller="Customer" asp-route-id="@userId">Fund Wallet</a>
+        <a class="dropdown-item" asp-action="Wallet" asp-controller="Customer" asp-route-id="@userId">Fund Wallet</a>
        
        @* <a class="dropdown-item" asp-action="Update" asp-controller="Customer" asp-route-id="@userId">Change Password</a> *@
     }

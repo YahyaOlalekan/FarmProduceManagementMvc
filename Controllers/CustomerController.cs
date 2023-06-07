@@ -52,7 +52,7 @@ namespace FarmProduceManagement.Controllers
         public IActionResult RealDelete(string id)
         {
             var user = _auth.GetLoginUser();
-            TempData["balance"] = user.Balance;
+            TempData["balance"] = $"{user.Balance}";
 
             var result = _customerService.Delete(id);
             TempData["message"] = result.Message;
@@ -66,7 +66,7 @@ namespace FarmProduceManagement.Controllers
         public IActionResult Details(string id)
         {
             var user = _auth.GetLoginUser();
-            TempData["balance"] = user.Balance;
+            TempData["balance"] = $"{user.Balance}";
            
             var result = _customerService.Get(id);
             return View(result.Data);
@@ -75,7 +75,7 @@ namespace FarmProduceManagement.Controllers
         public IActionResult List()
         {
             var user = _auth.GetLoginUser();
-            TempData["balance"] = user.Balance;
+            TempData["balance"] = $"{user.Balance}";
            
             var result = _customerService.GetAll();
             return View(result.Data);
@@ -84,6 +84,9 @@ namespace FarmProduceManagement.Controllers
 
         public IActionResult Update(string id)
         {
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = $"{user.Balance}";
+
             var result = _customerService.Get(id);
             var model = new UpdateCustomerRequestModel
             {
@@ -101,24 +104,50 @@ namespace FarmProduceManagement.Controllers
         [HttpPost]
         public IActionResult Update(string id, UpdateCustomerRequestModel model)
         {
-             var user = _auth.GetLoginUser();
-            TempData["balance"] = user.Balance;
-           
             if (ModelState.IsValid)
             {
                 var result = _customerService.Update(id, model);
                 TempData["message"] = result.Message;
                 if (result.Status)
                 {
-                    return RedirectToAction("List");
+                    return RedirectToAction("Details", new{id = id});
                 }
             }
              return View(model);
         }
 
+         public IActionResult Wallet()
+        {
+            var user = _auth.GetLoginUser();
+            TempData["balance"] = $"{user.Balance}";
 
+            return View();
+        }
 
+        [HttpPost]
+        public IActionResult Wallet(string id, FundWalletRequestModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var result = _customerService.FundWallet(id, model);
+                TempData["message"] = result.Message;
+                if(result.Status)
+                {
+                    // return  View(result.Data);
+                    return RedirectToAction("Customer", "User");
+                }
+            }
+            return View(model);
+        }
 
+        // public IActionResult Balance(string id)
+        // {
+        //     var user = _auth.GetLoginUser();
+        //     TempData["balance"] = $"{user.Balance}";
+           
+        //     var result = _customerService.FundWallet(id, amount);
+        //     return View(result.Data);
+        // }
 
         /*
 

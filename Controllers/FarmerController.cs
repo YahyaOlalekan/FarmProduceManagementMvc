@@ -122,7 +122,7 @@ namespace FarmProduceManagement.Controllers
         public IActionResult Details(string id)
         {
             var user = _auth.GetLoginUser();
-            TempData["balance"] = user.Balance;
+            TempData["balance"] = $"{user.Balance}";
             
             var result = _farmerService.Get(id);
             return View(result.Data);
@@ -138,7 +138,7 @@ namespace FarmProduceManagement.Controllers
         public IActionResult Update(string id)
         {
             var user = _auth.GetLoginUser();
-            TempData["balance"] = user.Balance;
+            TempData["balance"] = $"{user.Balance}";
 
             var result = _farmerService.Get(id);
 
@@ -157,7 +157,7 @@ namespace FarmProduceManagement.Controllers
         public IActionResult Update(string id, UpdateFarmerRequestModel model)
         {
             var user = _auth.GetLoginUser();
-            TempData["balance"] = user.Balance;
+            TempData["balance"] = $"{user.Balance}";
 
             if(ModelState.IsValid)
             {
@@ -165,7 +165,7 @@ namespace FarmProduceManagement.Controllers
                 TempData["message"] = result.Message;
                 if (result.Status)
                 {
-                    return RedirectToAction("List");
+                    return RedirectToAction("Details", new{id = id});
                 }
             }
             return View(model);

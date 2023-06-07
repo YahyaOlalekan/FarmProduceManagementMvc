@@ -8,6 +8,14 @@
         <div>@await Html.PartialAsync("~/Views/User/Menu.cshtml")</div>
     </div>
     <div class="col-md-10">
+        @* @if(User.IsInRole("Admin") || User.IsInRole("Manager"))
+        {
+
+        }
+        else
+        {
+            
+        } *@
         <table class="table table-bordered table-striped table-responsive">
             <thead>
                 <div class="text-center"><h3>@ViewData["Title"]</div></h3>

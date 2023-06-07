@@ -115,6 +115,7 @@ namespace FarmProduceManagement.Services.Implementations
             if (manager != null)
             {
                 manager.IsDeleted = true;
+                manager.User.IsDeleted = true;
                 _managerRepository.Update(manager);
                 _managerRepository.Save();
 
@@ -196,15 +197,19 @@ namespace FarmProduceManagement.Services.Implementations
 
         public BaseResponse<ManagerDto> Update(string id, UpdateManagerRequestModel model)
         {
-            var manager = _managerRepository.Get(a => a.Id == id);
+            var manager = _managerRepository.Get(a => a.UserId == id);
             if (manager is not null)
             {
-                var profilePicture = UploadFile(model.ProfilePicture);
+                 if(model.ProfilePicture != null)
+                {
+                    
+                    var profilePicture = UploadFile(model.ProfilePicture);
+                    manager.User.ProfilePicture = profilePicture;
+                }
 
                 manager.User.FirstName = model.FirstName;
                 manager.User.Address = model.Address;
                 manager.User.LastName = model.LastName;
-                manager.User.ProfilePicture = profilePicture;
                 manager.User.Email = model.Email;
                 // manager.User.Password = model.Password;
                 manager.User.PhoneNumber = model.PhoneNumber;
